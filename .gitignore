@@ -1,0 +1,38 @@
+# Virtual environment
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Data files (large)
+*.mat
+*.h5
+*.hdf5
+
+# PDFs (reference docs — too large for git)
+*.pdf
+
+# Video
+*.mp4
+
+# Archives
+*.zip
+
+# Credentials (never commit)
+lib/devices/bftc_credentials.py
+lib/devices/XLD_Server_Passkey.py

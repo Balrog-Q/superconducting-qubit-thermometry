@@ -1,0 +1,25 @@
+# Zurich Instruments QCCS SDK
+laboneq>=2.0
+
+# Scientific computing
+numpy
+scipy
+matplotlib
+scikit-learn
+
+# Instrument communication
+pyvisa
+pyvisa-py
+
+# HTTP client (BlueFors XLD fridge)
+requests
+
+# Jupyter environment
+jupyterlab
+ipykernel
+
+# Audio notification
+playsound
+
+# Data persistence
+pandas
