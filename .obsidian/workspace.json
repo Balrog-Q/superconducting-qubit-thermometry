@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "README.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "Untitled.base",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for README"
+              "title": "Backlinks for Untitled"
             }
           },
           {
@@ -183,13 +183,22 @@
       "bases:Create new base": false
     }
   },
-  "active": "778d02fc44cc243b",
+  "active": "6a91b9c0cb20b81e",
   "lastOpenFiles": [
-    "Thesis - Techniques and protocols for temperature sensing with a transmon qubit.pdf",
-    "Untitled.base",
+    "slicing_code/4_readout_optimization.ipynb",
+    "slicing_code/5-single_shot_0_&_1_measurements.ipynb",
+    "slicing_code/4-readout-optimization.ipynb",
+    "S3_Q2_Cooldown_2_duplicate.ipynb",
+    "slicing_code/4-readout-optimization.json",
+    "S3_Q2_Cooldown_2_duplicate.json",
+    "slicing_code/3-control_pulse_setup.ipynb",
+    "slicing_code/2-spectroscopy.ipynb",
+    "slicing_code/1-imports_&_init.ipynb",
+    "slicing_code/spectroscopy.ipynb",
+    "slicing_code/Spectroscopy.ipynb",
     "README.md",
-    "QUICKSTART.md",
     "MANUAL.md",
+    "QUICKSTART.md",
     "Untitled.md"
   ]
 }
