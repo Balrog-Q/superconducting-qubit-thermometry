@@ -1,3 +1,0 @@
-2026-06-30 11:06:23,218 ERROR  - _get_value_request() L385  - Error: HTTPSConnectionPool(host='192.168.1.9', port=49098): Max retries exceeded with url: /values/mapper/heater_mappings_bftc/device/c6/temperature/?prettyprint=1&key=4f0283ae-3046-457a-bf87-3361f5e54833 (Caused by ConnectTimeoutError(<HTTPSConnection(host='192.168.1.9', port=49098) at 0x16591cad0>, 'Connection to 192.168.1.9 timed out. (connect timeout=None)'))
-2026-06-30 11:06:23,223 WARNING - _get_synchronization_status() L342  - Could not verify synchronization status
-2026-06-30 11:06:23,225 WARNING - _get_value_from_data_response() L311  - Could not verify synchronization status

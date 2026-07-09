@@ -29,8 +29,10 @@ from __future__ import annotations
 
 import json
 import os
+import time
 from typing import Iterable, Mapping, Optional, Union
 
+timestamp = time.strftime("%Y-%m-%d-%H:%M:%S")
 
 class QBaseParameters(dict):
     """A named set of measurement parameters bound to a :class:`QSample`.
@@ -159,8 +161,9 @@ class QBaseParameters(dict):
         Jupyter cell / REPL (both use ``__repr__``) or printed.
         """
         header = f"--- {self.name} ---"
+        dates = f"timestamp: {timestamp}"
         lines = [f"{key}: {value}" for key, value in self.items()]
-        return "\n".join([header, *lines])
+        return "\n".join([header, dates, *lines])
 
     # Jupyter/REPL display and ``print`` should both use the listing above.
     __repr__ = __str__
