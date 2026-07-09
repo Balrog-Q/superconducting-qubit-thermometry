@@ -150,44 +150,44 @@ def make_fast_flux_calib(th_res_freq, qb_freq, detuning, lo_freq):
 
 #Measure-Aquuire signal map (for simple one-tone spectroscopy)
 MA_map = {
-    "measure": "/logical_signal_groups/q0/measure_line",
-    "acquire": "/logical_signal_groups/q0/acquire_line",
+    "measure": "/logical_signal_groups/q0/measure",
+    "acquire": "/logical_signal_groups/q0/acquire",
 }
 
 # signal map for qubit exitation and measurement (spectroscopy)
 qubit_meas_map = {
-    "drive": "/logical_signal_groups/q0/drive_line",
-    "measure": "/logical_signal_groups/q0/measure_line",
-    "acquire": "/logical_signal_groups/q0/acquire_line",
+    "drive": "/logical_signal_groups/q0/drive",
+    "measure": "/logical_signal_groups/q0/measure",
+    "acquire": "/logical_signal_groups/q0/acquire",
 }
 
 # signal map for ef-measurements only (spectroscopy)
 qubit_ef_only_map = {
     "drive_ef": "/logical_signal_groups/q0/drive_ef_line",
-    "measure": "/logical_signal_groups/q0/measure_line",
-    "acquire": "/logical_signal_groups/q0/acquire_line",
+    "measure": "/logical_signal_groups/q0/measure",
+    "acquire": "/logical_signal_groups/q0/acquire",
 }
 
 qubit_ef_map = {
-    "drive": "/logical_signal_groups/q0/drive_line",
+    "drive": "/logical_signal_groups/q0/drive",
     "drive_ef": "/logical_signal_groups/q0/drive_ef_line",
-    "measure": "/logical_signal_groups/q0/measure_line",
-    "acquire": "/logical_signal_groups/q0/acquire_line",
+    "measure": "/logical_signal_groups/q0/measure",
+    "acquire": "/logical_signal_groups/q0/acquire",
 }
 
 qubit_resonator_map = {
-    "drive": "/logical_signal_groups/q0/drive_line",
-    "th_res": "/logical_signal_groups/q0/th_res_line",
-    "measure": "/logical_signal_groups/q0/measure_line",
-    "acquire": "/logical_signal_groups/q0/acquire_line",
+    "drive": "/logical_signal_groups/q0/drive",
+    "th_res": "/logical_signal_groups/q0/th_res",
+    "measure": "/logical_signal_groups/q0/measure",
+    "acquire": "/logical_signal_groups/q0/acquire",
 }
 
 qubit_all_map = {
-    "drive": "/logical_signal_groups/q0/drive_line",
+    "drive": "/logical_signal_groups/q0/drive",
     "drive_ef": "/logical_signal_groups/q0/drive_ef_line",
-    "th_res": "/logical_signal_groups/q0/th_res_line",
-    "measure": "/logical_signal_groups/q0/measure_line",
-    "acquire": "/logical_signal_groups/q0/acquire_line",
+    "th_res": "/logical_signal_groups/q0/th_res",
+    "measure": "/logical_signal_groups/q0/measure",
+    "acquire": "/logical_signal_groups/q0/acquire",
 }
 #######################################################################################################
 #default qubit readout pulse - here simple constant pulse

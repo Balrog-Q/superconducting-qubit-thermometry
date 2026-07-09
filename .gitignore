@@ -1,5 +1,7 @@
 # Virtual environment
+
 .venv/
+
 venv/
 
 # Python
@@ -16,6 +18,7 @@ build/
 .DS_Store
 
 # IDE
+
 .vscode/
 .idea/
 
@@ -33,6 +36,11 @@ build/
 # Archives
 *.zip
 
+# Device log
+.log
+bluefors.log.*
+
 # Credentials (never commit)
 lib/devices/bftc_credentials.py
 lib/devices/XLD_Server_Passkey.py
+BlueFTC/
