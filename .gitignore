@@ -1,5 +1,6 @@
 # Virtual environment
 
+
 .venv/
 
 venv/
@@ -44,3 +45,12 @@ bluefors.log.*
 lib/devices/bftc_credentials.py
 lib/devices/XLD_Server_Passkey.py
 BlueFTC/
+laboneq_output/
+
+
+# Obsidian
+.obsidian/
+
+# Presentation
+presentation/
+.pptx
