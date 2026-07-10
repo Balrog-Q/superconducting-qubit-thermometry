@@ -3,6 +3,7 @@
 
 
 
+
 .venv/
 
 venv/
@@ -40,7 +41,7 @@ build/
 *.zip
 
 # Device log
-.log
+*.log
 bluefors.log.*
 
 # Credentials (never commit)
@@ -50,8 +51,8 @@ lib/devices/XLD_Server_Passkey.py
 # Miscellanious
 BlueFTC/
 laboneq_output/
-.laboneq_output/
-.laboneq_output/log/
+*/laboneq_output/
+*/laboneq_output/log/
 laboneq_output/log/
 slicing_code/
 
