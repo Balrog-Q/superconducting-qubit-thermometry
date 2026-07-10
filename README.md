@@ -10,13 +10,20 @@ The core idea is to treat a transmon qubit as a primary thermometer: by measurin
 The main deliverables are:
 
 - **`lib/`** — a reusable Python library for instrument control, experiment construction, curve fitting, and temperature extraction.
-- **`S3_Q2_Cooldown_2.ipynb`** — a 668-cell Jupyter notebook that walks through an entire cooldown measurement campaign (sample S3, qubit Q2, cooldown #2).
+- **`qmeas/`** — a lightweight package for sample/parameter bookkeeping (on-disk layout, named parameter sets, JSON save/load).
+- **`scresonators_custom.py`** — a dependency-free resonator (single-tone spectroscopy) fitting module used to extract `f0`, `Qi`, and `Qc`.
+- **`S3_Q2_Cooldown_2.ipynb`** — a Jupyter notebook that walks through an entire cooldown measurement campaign (sample S3, qubit Q2, cooldown #2). `S3_Q2_Cooldown_2_update.ipynb` is a trimmed, updated variant of the same campaign.
+- **`slicing_code/`** — the same workflow split into smaller, topic-focused notebooks (imports, spectroscopy, control-pulse setup, readout optimisation, single-shot).
+- **`Q1_Qi_Fits_Nb.ipynb`** — a standalone notebook for internal quality-factor (`Qi`) fitting of resonators on sample qubit Q1.
 
 ## Project Structure
 
 ```
 superconducting-qubit-thermometry/
 ├── S3_Q2_Cooldown_2.ipynb          # Main experiment notebook
+├── S3_Q2_Cooldown_2_update.ipynb   # Trimmed / updated variant of the main notebook
+├── Q1_Qi_Fits_Nb.ipynb             # Resonator internal-Q (Qi) fitting notebook
+├── scresonators_custom.py          # Standalone single-tone-spectroscopy resonator fit
 ├── lib/
 │   ├── devices/                    # Instrument driver wrappers (VISA / HTTP)
 │   │   ├── KeysightDMM34465A.py    #   Keysight 34465A digital multimeter
@@ -24,10 +31,11 @@ superconducting-qubit-thermometry/
 │   │   ├── SIM_wrapper.py          #   SRS SIM900 / SIM928 voltage source
 │   │   ├── YokoGS200_wrapper.py    #   Yokogawa GS200 voltage/current source
 │   │   ├── XLD_Server_Client.py    #   BlueFors XLD dilution fridge HTTP client
-│   │   ├── XLD_Server_Passkey.py   #   Credentials for the XLD server
-│   │   └── bftc_credentials.py     #   BlueFors temperature controller credentials
+│   │   ├── XLD_Server_Passkey.py   #   Credentials for the XLD server (git-ignored)
+│   │   └── bftc_credentials.py     #   BlueFors temperature controller credentials (git-ignored)
 │   ├── helpers/                    # Experiment builders, fitting, & analysis
 │   │   ├── setup_helper.py         #   SHFQC descriptor & calibration definition
+│   │   ├── descriptor_*.yml        #   LabOne Q device-setup descriptors (SHFQC, HDAWG, ...)
 │   │   ├── meas_helper.py          #   Experiment pulse sequences (original)
 │   │   ├── meas_helper_mod.py      #   Experiment pulse sequences (extended)
 │   │   ├── meas_helper_mod_2.py    #   Additional experiment variants
@@ -40,13 +48,25 @@ superconducting-qubit-thermometry/
 │   │   ├── randomized_benchmarking_helper.py
 │   │   ├── example_notebook_helper.py
 │   │   └── example_notebook_simple.py
-│   └── utils/
-│       ├── calculator.py           #   Physics calculators (dispersive shift, TLS loss, Q-factor analysis)
-│       └── ding.mp3                #   Audio notification for long measurements
+│   ├── utils/
+│   │   ├── calculator.py           #   Physics calculators (dispersive shift, TLS loss, Q-factor analysis)
+│   │   └── ding.mp3                #   Audio notification for long measurements
+│   └── Per-module documentation for lib_.md
+├── qmeas/                          # Sample & parameter management package
+│   ├── qsample.py                  #   QSample: on-disk sample/structure layout
+│   └── qparameters.py              #   QBaseParameters / QLinkedParameters
+├── scresonators/                   # Vendored upstream scresonators-fit package
+├── slicing_code/                   # Modular notebook breakdown (git-ignored)
+│   ├── 1-imports_&_init.ipynb
+│   ├── 2-spectroscopy.ipynb
+│   ├── 3-control_pulse_setup.ipynb
+│   ├── 4_readout_optimization.ipynb
+│   └── 5-single_shot_0_&_1_measurements.ipynb
+├── BlueFTC/                        # Third-party BlueFors temp-controller driver (git-ignored)
 ├── requirements.txt
 ├── QUICKSTART.md
 └── docs/                           # Reference PDFs (not tracked in git)
-    ├── Thermometry Based on a Superconducting Qubit.pdf
+    ├── 2025 - Thermometry Based on a Superconducting Qubit.pdf
     ├── Thesis - Thermometry based on a superconducting qubit.pdf
     ├── Thesis - Techniques and protocols for temperature sensing with a transmon qubit.pdf
     ├── 2019 - Introduction to Experimental Quantum Measurement.pdf
@@ -115,6 +135,21 @@ Physics utility functions:
 - `calculator.py` (see above)
 - `ding.mp3` — audio notification played when a long measurement finishes
 
+### `qmeas/` — Sample & Parameter Management
+Lightweight helpers that the notebooks use to organise measured data and parameters:
+- `QSample` (`qsample.py`) — describes where a sample/structure lives on disk. Parameter files live under `<directory>/<sample>/<structure>/parameters`.
+- `QBaseParameters` (`qparameters.py`) — a `dict` subclass holding a named parameter set (qubit parameters, LO settings, ...) bound to a `QSample`, with `update_parameter()`/`add_parameter()`/`get_parameter()` helpers and JSON `save()`/`load()`.
+- `QLinkedParameters` — extends `QBaseParameters` with fallback resolution against one or more linked parameter sets, so a per-experiment set can inherit from a shared base without copying values.
+
+### `scresonators_custom.py` — Single-Tone Spectroscopy Fitting
+A self-contained (numpy/scipy/matplotlib only) replacement for the external `scresonators` wrapper used by the spectroscopy notebooks. It fits a complex S21 trace to the asymmetric-Lorentzian / Diameter-Correction-Method (DCM) model for a notch (hanger) resonator:
+- `fit_single_STS_wrapper(freqs, y_data)` → `(full_result, quick_result, sweep_manager)`; `quick_result` is a compact dict `{f0, qc, qi, ...}` used to update `qubit_parameters['ro_freq']`.
+- `plot_single_STS_wrapper(sweep_man=...)` — plots the raw data and fitted curve.
+- `SweepManager` — container holding the raw trace, sweep metadata, and fit results.
+
+### `scresonators/`
+A vendored copy of the upstream [`scresonators-fit`](https://github.com/boulder-cryogenic-quantum-testbed/scresonators) package (MIT), which fits complex S21 data for hanger-mode resonators using DCM, INV, CPZM, and PHI methods. Used by `Q1_Qi_Fits_Nb.ipynb` for internal-Q analysis.
+
 ## Notebook Workflow (`S3_Q2_Cooldown_2.ipynb`)
 
 The notebook is organised into the following major sections:
@@ -132,6 +167,8 @@ The notebook is organised into the following major sections:
 6. **Fast Flux Drive** — flux pulse calibration, decay vs. detuning, population measurement with flux excitation.
 7. **SINIS Calibration & Temperature Sweeps** — DC IV-curve measurement of SINIS junctions for cross-calibrated thermometry; flux sweeps; local heating experiments; dilution-fridge temperature sweeps.
 
+The same phases are also available as smaller, standalone notebooks under `slicing_code/` (imports/init, spectroscopy, control-pulse setup, readout optimisation, single-shot measurements), which are easier to run and debug in isolation.
+
 ## Hardware Requirements
 
 This code is designed to run on a measurement PC connected to:
@@ -147,7 +184,7 @@ This code is designed to run on a measurement PC connected to:
 
 The following reference materials are included in the project directory:
 
-- *Thermometry Based on a Superconducting Qubit* (2024)
+- *Thermometry Based on a Superconducting Qubit* (2025)
 - *Techniques and protocols for temperature sensing with a transmon qubit* (Thesis)
 - *Thermometry based on a superconducting qubit* (Thesis)
 - *Introduction to Experimental Quantum Measurement* (2019)

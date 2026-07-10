@@ -12753,3 +12753,1992 @@
 2026.07.09 18:35:39.930   get /dev12192/raw/error/json/errors -
 2026.07.09 18:35:39.930   get /dev12192/raw/error/json/errors -
 2026.07.09 18:35:39.930   set /dev12192/qachannels/*/spectroscopy/envelope/enable 1
+2026.07.10 02:00:38.574 Node log from the data server with id 'zi_server':
+2026.07.10 02:00:38.575   get /dev12192/sgchannels/0/busy -
+2026.07.10 02:00:38.575   get /dev12192/qachannels/0/busy -
+2026.07.10 02:00:38.575   set /dev12192/sgchannels/0/output/on 1
+2026.07.10 02:00:38.576   set /dev12192/sgchannels/0/output/range 10.0
+2026.07.10 02:00:38.576   set /dev12192/sgchannels/0/awg/single 1
+2026.07.10 02:00:38.576   set /dev12192/sgchannels/0/awg/modulation/enable 1
+2026.07.10 02:00:38.576   set /dev12192/sgchannels/0/marker/source 0
+2026.07.10 02:00:38.576   set /dev12192/sgchannels/0/trigger/delay 0.0
+2026.07.10 02:00:38.576   set /dev12192/sgchannels/0/output/rflfpath 1
+2026.07.10 02:00:38.576   set /dev12192/qachannels/0/output/on 1
+2026.07.10 02:00:38.576   set /dev12192/qachannels/0/output/range -20.0
+2026.07.10 02:00:38.576   set /dev12192/qachannels/0/generator/single 1
+2026.07.10 02:00:38.576   set /dev12192/qachannels/0/input/rflfpath 1
+2026.07.10 02:00:38.576   set /dev12192/qachannels/0/input/on 1
+2026.07.10 02:00:38.576   set /dev12192/qachannels/0/input/range -35.0
+2026.07.10 02:00:38.576   set /dev12192/sgchannels/0/sines/0/oscselect 0
+2026.07.10 02:00:38.576   set /dev12192/sgchannels/0/sines/0/harmonic 1
+2026.07.10 02:00:38.576   set /dev12192/sgchannels/0/sines/0/phaseshift 0
+2026.07.10 02:00:38.576   set /dev12192/raw/error/clear 1
+2026.07.10 02:00:38.576   get /dev12192/sgchannels/0/output/overrangecount -
+2026.07.10 02:00:38.576   get /dev12192/sgchannels/1/output/overrangecount -
+2026.07.10 02:00:38.576   get /dev12192/sgchannels/2/output/overrangecount -
+2026.07.10 02:00:38.576   get /dev12192/sgchannels/3/output/overrangecount -
+2026.07.10 02:00:38.576   get /dev12192/sgchannels/4/output/overrangecount -
+2026.07.10 02:00:38.576   get /dev12192/sgchannels/5/output/overrangecount -
+2026.07.10 02:00:38.576   get /dev12192/qachannels/0/output/overrangecount -
+2026.07.10 02:00:38.576   get /dev12192/qachannels/0/input/overrangecount -
+2026.07.10 02:00:38.576   set /dev12192/sgchannels/0/oscs/0/freq -327973566.4786179
+2026.07.10 02:00:38.576   set /dev12192/system/internaltrigger/enable 0
+2026.07.10 02:00:38.576   set /dev12192/system/internaltrigger/repetitions 1
+2026.07.10 02:00:38.576   set /dev12192/sgchannels/0/awg/auxtriggers/0/slope 1
+2026.07.10 02:00:38.577   set /dev12192/sgchannels/0/awg/auxtriggers/0/channel 8
+2026.07.10 02:00:38.577   set /dev12192/qachannels/0/markers/0/source 32
+2026.07.10 02:00:38.577   set /dev12192/qachannels/0/markers/1/source 36
+2026.07.10 02:00:38.577   set /dev12192/qachannels/0/generator/auxtriggers/0/channel 8
+2026.07.10 02:00:38.577   set /dev12192/sgchannels/0/oscs/0/freq -327973566.4786179
+2026.07.10 02:00:38.577   set /dev12192/synthesizers/1/centerfreq 3800000000.0
+2026.07.10 02:00:38.577   set /dev12192/qachannels/0/centerfreq 6200000000.0
+2026.07.10 02:00:38.577   set /dev12192/qachannels/0/generator/delay 0.0
+2026.07.10 02:00:38.577   set /dev12192/qachannels/0/readout/integration/delay 5.42e-07
+2026.07.10 02:00:38.577   set /dev12192/sgchannels/0/output/delay 0.0
+2026.07.10 02:00:38.577   set /dev12192/qachannels/0/mode 1
+2026.07.10 02:00:38.577   set /dev12192/qachannels/0/readout/multistate/qudits/*/enable 0
+2026.07.10 02:00:38.577   set /dev12192/sgchannels/0/awg/elf/data vector (?? B)
+2026.07.10 02:00:38.577   set /dev12192/sgchannels/0/awg/waveform/waves/0 vector (?? B)
+2026.07.10 02:00:38.577   set /dev12192/sgchannels/0/awg/waveform/waves/1 vector (?? B)
+2026.07.10 02:00:38.577   set /dev12192/sgchannels/0/awg/waveform/waves/2 vector (?? B)
+2026.07.10 02:00:38.577   set /dev12192/sgchannels/0/awg/waveform/waves/3 vector (?? B)
+2026.07.10 02:00:38.577   set /dev12192/sgchannels/0/awg/waveform/waves/4 vector (?? B)
+2026.07.10 02:00:38.577   set /dev12192/sgchannels/0/awg/commandtable/data vector (?? B)
+2026.07.10 02:00:38.577   set /dev12192/qachannels/0/readout/multistate/enable 1
+2026.07.10 02:00:38.577   set /dev12192/qachannels/0/readout/multistate/zsync/packed 1
+2026.07.10 02:00:38.577   set /dev12192/qachannels/0/readout/multistate/qudits/0/numstates 2
+2026.07.10 02:00:38.577   set /dev12192/qachannels/0/readout/multistate/qudits/0/enable 1
+2026.07.10 02:00:38.577   set /dev12192/qachannels/0/readout/multistate/qudits/0/assignmentvec vector (?? B)
+2026.07.10 02:00:38.577   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:38.577   set /dev12192/qachannels/0/readout/result/source 1
+2026.07.10 02:00:38.577   set /dev12192/qachannels/0/readout/result/length 101
+2026.07.10 02:00:38.577   set /dev12192/qachannels/0/readout/result/averages 4096
+2026.07.10 02:00:38.577   set /dev12192/qachannels/0/readout/result/mode 0
+2026.07.10 02:00:38.578   set /dev12192/qachannels/0/readout/multistate/qudits/0/thresholds/0/value 0.0
+2026.07.10 02:00:38.578   set /dev12192/qachannels/0/readout/result/enable 1
+2026.07.10 02:00:38.578   set /dev12192/qachannels/0/spectroscopy/result/enable 0
+2026.07.10 02:00:38.578   set /dev12192/scopes/0/enable 0
+2026.07.10 02:00:38.578   set /dev12192/qachannels/0/generator/elf/data vector (?? B)
+2026.07.10 02:00:38.578   set /dev12192/qachannels/0/generator/clearwave 1
+2026.07.10 02:00:38.578   set /dev12192/qachannels/0/generator/waveforms/0/wave <unexpected type>
+2026.07.10 02:00:38.578   set /dev12192/qachannels/0/spectroscopy/envelope/enable 0
+2026.07.10 02:00:38.578   set /dev12192/qachannels/0/readout/multistate/qudits/0/weights/0/wave vector (?? B)
+2026.07.10 02:00:38.578   set /dev12192/qachannels/0/readout/integration/length 800
+2026.07.10 02:00:38.578   set /dev12192/system/internaltrigger/synchronization/enable 0
+2026.07.10 02:00:38.578   set /dev12192/system/synchronization/source 0
+2026.07.10 02:00:38.578   set /dev12192/sgchannels/0/awg/enable 1
+2026.07.10 02:00:38.578   set /dev12192/qachannels/0/generator/enable 1
+2026.07.10 02:00:38.578   set /dev12192/system/internaltrigger/enable 1
+2026.07.10 02:00:38.578   set /dev12192/raw/system/awg/runtimechecks/enable 0
+2026.07.10 02:00:38.578   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:38.578   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:38.578   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:38.578   set /dev12192/qachannels/*/spectroscopy/envelope/enable 1
+2026.07.10 02:00:38.614 Node log from the data server with id 'zi_server':
+2026.07.10 02:00:38.614   get /dev12192/sgchannels/0/busy -
+2026.07.10 02:00:38.614   get /dev12192/qachannels/0/busy -
+2026.07.10 02:00:38.614   set /dev12192/sgchannels/0/output/on 1
+2026.07.10 02:00:38.614   set /dev12192/sgchannels/0/output/range 10.0
+2026.07.10 02:00:38.614   set /dev12192/sgchannels/0/awg/single 1
+2026.07.10 02:00:38.614   set /dev12192/sgchannels/0/awg/modulation/enable 1
+2026.07.10 02:00:38.614   set /dev12192/sgchannels/0/marker/source 0
+2026.07.10 02:00:38.615   set /dev12192/sgchannels/0/trigger/delay 0.0
+2026.07.10 02:00:38.615   set /dev12192/sgchannels/0/output/rflfpath 1
+2026.07.10 02:00:38.615   set /dev12192/qachannels/0/output/on 1
+2026.07.10 02:00:38.615   set /dev12192/qachannels/0/output/range -20.0
+2026.07.10 02:00:38.615   set /dev12192/qachannels/0/generator/single 1
+2026.07.10 02:00:38.615   set /dev12192/qachannels/0/input/rflfpath 1
+2026.07.10 02:00:38.615   set /dev12192/qachannels/0/input/on 1
+2026.07.10 02:00:38.615   set /dev12192/qachannels/0/input/range -35.0
+2026.07.10 02:00:38.615   set /dev12192/sgchannels/0/sines/0/oscselect 0
+2026.07.10 02:00:38.615   set /dev12192/sgchannels/0/sines/0/harmonic 1
+2026.07.10 02:00:38.615   set /dev12192/sgchannels/0/sines/0/phaseshift 0
+2026.07.10 02:00:38.615   set /dev12192/raw/error/clear 1
+2026.07.10 02:00:38.615   get /dev12192/sgchannels/0/output/overrangecount -
+2026.07.10 02:00:38.615   get /dev12192/sgchannels/1/output/overrangecount -
+2026.07.10 02:00:38.615   get /dev12192/sgchannels/2/output/overrangecount -
+2026.07.10 02:00:38.615   get /dev12192/sgchannels/3/output/overrangecount -
+2026.07.10 02:00:38.615   get /dev12192/sgchannels/4/output/overrangecount -
+2026.07.10 02:00:38.615   get /dev12192/sgchannels/5/output/overrangecount -
+2026.07.10 02:00:38.615   get /dev12192/qachannels/0/output/overrangecount -
+2026.07.10 02:00:38.615   get /dev12192/qachannels/0/input/overrangecount -
+2026.07.10 02:00:38.615   set /dev12192/sgchannels/0/oscs/0/freq -327773566.4786179
+2026.07.10 02:00:38.615   set /dev12192/system/internaltrigger/enable 0
+2026.07.10 02:00:38.615   set /dev12192/system/internaltrigger/repetitions 1
+2026.07.10 02:00:38.615   set /dev12192/sgchannels/0/awg/auxtriggers/0/slope 1
+2026.07.10 02:00:38.615   set /dev12192/sgchannels/0/awg/auxtriggers/0/channel 8
+2026.07.10 02:00:38.615   set /dev12192/qachannels/0/markers/0/source 32
+2026.07.10 02:00:38.615   set /dev12192/qachannels/0/markers/1/source 36
+2026.07.10 02:00:38.615   set /dev12192/qachannels/0/generator/auxtriggers/0/channel 8
+2026.07.10 02:00:38.615   set /dev12192/sgchannels/0/oscs/0/freq -327773566.4786179
+2026.07.10 02:00:38.616   set /dev12192/synthesizers/1/centerfreq 3800000000.0
+2026.07.10 02:00:38.616   set /dev12192/qachannels/0/centerfreq 6200000000.0
+2026.07.10 02:00:38.616   set /dev12192/qachannels/0/generator/delay 0.0
+2026.07.10 02:00:38.616   set /dev12192/qachannels/0/readout/integration/delay 5.42e-07
+2026.07.10 02:00:38.616   set /dev12192/sgchannels/0/output/delay 0.0
+2026.07.10 02:00:38.616   set /dev12192/qachannels/0/mode 1
+2026.07.10 02:00:38.616   set /dev12192/qachannels/0/readout/multistate/qudits/*/enable 0
+2026.07.10 02:00:38.616   set /dev12192/sgchannels/0/awg/elf/data vector (?? B)
+2026.07.10 02:00:38.616   set /dev12192/sgchannels/0/awg/waveform/waves/0 vector (?? B)
+2026.07.10 02:00:38.616   set /dev12192/sgchannels/0/awg/waveform/waves/1 vector (?? B)
+2026.07.10 02:00:38.616   set /dev12192/sgchannels/0/awg/waveform/waves/2 vector (?? B)
+2026.07.10 02:00:38.616   set /dev12192/sgchannels/0/awg/waveform/waves/3 vector (?? B)
+2026.07.10 02:00:38.616   set /dev12192/sgchannels/0/awg/waveform/waves/4 vector (?? B)
+2026.07.10 02:00:38.616   set /dev12192/sgchannels/0/awg/commandtable/data vector (?? B)
+2026.07.10 02:00:38.616   set /dev12192/qachannels/0/readout/multistate/enable 1
+2026.07.10 02:00:38.616   set /dev12192/qachannels/0/readout/multistate/zsync/packed 1
+2026.07.10 02:00:38.616   set /dev12192/qachannels/0/readout/multistate/qudits/0/numstates 2
+2026.07.10 02:00:38.616   set /dev12192/qachannels/0/readout/multistate/qudits/0/enable 1
+2026.07.10 02:00:38.616   set /dev12192/qachannels/0/readout/multistate/qudits/0/assignmentvec vector (?? B)
+2026.07.10 02:00:38.616   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:38.616   set /dev12192/qachannels/0/readout/result/source 1
+2026.07.10 02:00:38.616   set /dev12192/qachannels/0/readout/result/length 101
+2026.07.10 02:00:38.616   set /dev12192/qachannels/0/readout/result/averages 4096
+2026.07.10 02:00:38.616   set /dev12192/qachannels/0/readout/result/mode 0
+2026.07.10 02:00:38.616   set /dev12192/qachannels/0/readout/multistate/qudits/0/thresholds/0/value 0.0
+2026.07.10 02:00:38.616   set /dev12192/qachannels/0/readout/result/enable 1
+2026.07.10 02:00:38.616   set /dev12192/qachannels/0/spectroscopy/result/enable 0
+2026.07.10 02:00:38.616   set /dev12192/scopes/0/enable 0
+2026.07.10 02:00:38.616   set /dev12192/qachannels/0/generator/elf/data vector (?? B)
+2026.07.10 02:00:38.617   set /dev12192/qachannels/0/generator/clearwave 1
+2026.07.10 02:00:38.617   set /dev12192/qachannels/0/generator/waveforms/0/wave <unexpected type>
+2026.07.10 02:00:38.617   set /dev12192/qachannels/0/spectroscopy/envelope/enable 0
+2026.07.10 02:00:38.617   set /dev12192/qachannels/0/readout/multistate/qudits/0/weights/0/wave vector (?? B)
+2026.07.10 02:00:38.617   set /dev12192/qachannels/0/readout/integration/length 800
+2026.07.10 02:00:38.617   set /dev12192/system/internaltrigger/synchronization/enable 0
+2026.07.10 02:00:38.617   set /dev12192/system/synchronization/source 0
+2026.07.10 02:00:38.617   set /dev12192/sgchannels/0/awg/enable 1
+2026.07.10 02:00:38.617   set /dev12192/qachannels/0/generator/enable 1
+2026.07.10 02:00:38.617   set /dev12192/system/internaltrigger/enable 1
+2026.07.10 02:00:38.617   set /dev12192/raw/system/awg/runtimechecks/enable 0
+2026.07.10 02:00:38.617   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:38.617   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:38.617   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:38.617   set /dev12192/qachannels/*/spectroscopy/envelope/enable 1
+2026.07.10 02:00:38.655 Node log from the data server with id 'zi_server':
+2026.07.10 02:00:38.655   get /dev12192/sgchannels/0/busy -
+2026.07.10 02:00:38.655   get /dev12192/qachannels/0/busy -
+2026.07.10 02:00:38.655   set /dev12192/sgchannels/0/output/on 1
+2026.07.10 02:00:38.655   set /dev12192/sgchannels/0/output/range 10.0
+2026.07.10 02:00:38.655   set /dev12192/sgchannels/0/awg/single 1
+2026.07.10 02:00:38.655   set /dev12192/sgchannels/0/awg/modulation/enable 1
+2026.07.10 02:00:38.656   set /dev12192/sgchannels/0/marker/source 0
+2026.07.10 02:00:38.656   set /dev12192/sgchannels/0/trigger/delay 0.0
+2026.07.10 02:00:38.656   set /dev12192/sgchannels/0/output/rflfpath 1
+2026.07.10 02:00:38.656   set /dev12192/qachannels/0/output/on 1
+2026.07.10 02:00:38.656   set /dev12192/qachannels/0/output/range -20.0
+2026.07.10 02:00:38.656   set /dev12192/qachannels/0/generator/single 1
+2026.07.10 02:00:38.656   set /dev12192/qachannels/0/input/rflfpath 1
+2026.07.10 02:00:38.656   set /dev12192/qachannels/0/input/on 1
+2026.07.10 02:00:38.656   set /dev12192/qachannels/0/input/range -35.0
+2026.07.10 02:00:38.656   set /dev12192/sgchannels/0/sines/0/oscselect 0
+2026.07.10 02:00:38.656   set /dev12192/sgchannels/0/sines/0/harmonic 1
+2026.07.10 02:00:38.656   set /dev12192/sgchannels/0/sines/0/phaseshift 0
+2026.07.10 02:00:38.656   set /dev12192/raw/error/clear 1
+2026.07.10 02:00:38.656   get /dev12192/sgchannels/0/output/overrangecount -
+2026.07.10 02:00:38.656   get /dev12192/sgchannels/1/output/overrangecount -
+2026.07.10 02:00:38.656   get /dev12192/sgchannels/2/output/overrangecount -
+2026.07.10 02:00:38.656   get /dev12192/sgchannels/3/output/overrangecount -
+2026.07.10 02:00:38.656   get /dev12192/sgchannels/4/output/overrangecount -
+2026.07.10 02:00:38.656   get /dev12192/sgchannels/5/output/overrangecount -
+2026.07.10 02:00:38.656   get /dev12192/qachannels/0/output/overrangecount -
+2026.07.10 02:00:38.656   get /dev12192/qachannels/0/input/overrangecount -
+2026.07.10 02:00:38.656   set /dev12192/sgchannels/0/oscs/0/freq -327573566.4786179
+2026.07.10 02:00:38.656   set /dev12192/system/internaltrigger/enable 0
+2026.07.10 02:00:38.656   set /dev12192/system/internaltrigger/repetitions 1
+2026.07.10 02:00:38.656   set /dev12192/sgchannels/0/awg/auxtriggers/0/slope 1
+2026.07.10 02:00:38.656   set /dev12192/sgchannels/0/awg/auxtriggers/0/channel 8
+2026.07.10 02:00:38.656   set /dev12192/qachannels/0/markers/0/source 32
+2026.07.10 02:00:38.656   set /dev12192/qachannels/0/markers/1/source 36
+2026.07.10 02:00:38.656   set /dev12192/qachannels/0/generator/auxtriggers/0/channel 8
+2026.07.10 02:00:38.656   set /dev12192/sgchannels/0/oscs/0/freq -327573566.4786179
+2026.07.10 02:00:38.657   set /dev12192/synthesizers/1/centerfreq 3800000000.0
+2026.07.10 02:00:38.657   set /dev12192/qachannels/0/centerfreq 6200000000.0
+2026.07.10 02:00:38.657   set /dev12192/qachannels/0/generator/delay 0.0
+2026.07.10 02:00:38.657   set /dev12192/qachannels/0/readout/integration/delay 5.42e-07
+2026.07.10 02:00:38.657   set /dev12192/sgchannels/0/output/delay 0.0
+2026.07.10 02:00:38.657   set /dev12192/qachannels/0/mode 1
+2026.07.10 02:00:38.657   set /dev12192/qachannels/0/readout/multistate/qudits/*/enable 0
+2026.07.10 02:00:38.657   set /dev12192/sgchannels/0/awg/elf/data vector (?? B)
+2026.07.10 02:00:38.657   set /dev12192/sgchannels/0/awg/waveform/waves/0 vector (?? B)
+2026.07.10 02:00:38.657   set /dev12192/sgchannels/0/awg/waveform/waves/1 vector (?? B)
+2026.07.10 02:00:38.657   set /dev12192/sgchannels/0/awg/waveform/waves/2 vector (?? B)
+2026.07.10 02:00:38.657   set /dev12192/sgchannels/0/awg/waveform/waves/3 vector (?? B)
+2026.07.10 02:00:38.657   set /dev12192/sgchannels/0/awg/waveform/waves/4 vector (?? B)
+2026.07.10 02:00:38.657   set /dev12192/sgchannels/0/awg/commandtable/data vector (?? B)
+2026.07.10 02:00:38.657   set /dev12192/qachannels/0/readout/multistate/enable 1
+2026.07.10 02:00:38.657   set /dev12192/qachannels/0/readout/multistate/zsync/packed 1
+2026.07.10 02:00:38.657   set /dev12192/qachannels/0/readout/multistate/qudits/0/numstates 2
+2026.07.10 02:00:38.657   set /dev12192/qachannels/0/readout/multistate/qudits/0/enable 1
+2026.07.10 02:00:38.657   set /dev12192/qachannels/0/readout/multistate/qudits/0/assignmentvec vector (?? B)
+2026.07.10 02:00:38.657   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:38.657   set /dev12192/qachannels/0/readout/result/source 1
+2026.07.10 02:00:38.657   set /dev12192/qachannels/0/readout/result/length 101
+2026.07.10 02:00:38.657   set /dev12192/qachannels/0/readout/result/averages 4096
+2026.07.10 02:00:38.657   set /dev12192/qachannels/0/readout/result/mode 0
+2026.07.10 02:00:38.657   set /dev12192/qachannels/0/readout/multistate/qudits/0/thresholds/0/value 0.0
+2026.07.10 02:00:38.657   set /dev12192/qachannels/0/readout/result/enable 1
+2026.07.10 02:00:38.657   set /dev12192/qachannels/0/spectroscopy/result/enable 0
+2026.07.10 02:00:38.657   set /dev12192/scopes/0/enable 0
+2026.07.10 02:00:38.657   set /dev12192/qachannels/0/generator/elf/data vector (?? B)
+2026.07.10 02:00:38.658   set /dev12192/qachannels/0/generator/clearwave 1
+2026.07.10 02:00:38.658   set /dev12192/qachannels/0/generator/waveforms/0/wave <unexpected type>
+2026.07.10 02:00:38.658   set /dev12192/qachannels/0/spectroscopy/envelope/enable 0
+2026.07.10 02:00:38.658   set /dev12192/qachannels/0/readout/multistate/qudits/0/weights/0/wave vector (?? B)
+2026.07.10 02:00:38.658   set /dev12192/qachannels/0/readout/integration/length 800
+2026.07.10 02:00:38.658   set /dev12192/system/internaltrigger/synchronization/enable 0
+2026.07.10 02:00:38.658   set /dev12192/system/synchronization/source 0
+2026.07.10 02:00:38.658   set /dev12192/sgchannels/0/awg/enable 1
+2026.07.10 02:00:38.658   set /dev12192/qachannels/0/generator/enable 1
+2026.07.10 02:00:38.658   set /dev12192/system/internaltrigger/enable 1
+2026.07.10 02:00:38.658   set /dev12192/raw/system/awg/runtimechecks/enable 0
+2026.07.10 02:00:38.658   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:38.658   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:38.658   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:38.658   set /dev12192/qachannels/*/spectroscopy/envelope/enable 1
+2026.07.10 02:00:38.694 Node log from the data server with id 'zi_server':
+2026.07.10 02:00:38.694   get /dev12192/sgchannels/0/busy -
+2026.07.10 02:00:38.694   get /dev12192/qachannels/0/busy -
+2026.07.10 02:00:38.694   set /dev12192/sgchannels/0/output/on 1
+2026.07.10 02:00:38.694   set /dev12192/sgchannels/0/output/range 10.0
+2026.07.10 02:00:38.694   set /dev12192/sgchannels/0/awg/single 1
+2026.07.10 02:00:38.694   set /dev12192/sgchannels/0/awg/modulation/enable 1
+2026.07.10 02:00:38.694   set /dev12192/sgchannels/0/marker/source 0
+2026.07.10 02:00:38.694   set /dev12192/sgchannels/0/trigger/delay 0.0
+2026.07.10 02:00:38.695   set /dev12192/sgchannels/0/output/rflfpath 1
+2026.07.10 02:00:38.695   set /dev12192/qachannels/0/output/on 1
+2026.07.10 02:00:38.695   set /dev12192/qachannels/0/output/range -20.0
+2026.07.10 02:00:38.695   set /dev12192/qachannels/0/generator/single 1
+2026.07.10 02:00:38.695   set /dev12192/qachannels/0/input/rflfpath 1
+2026.07.10 02:00:38.695   set /dev12192/qachannels/0/input/on 1
+2026.07.10 02:00:38.695   set /dev12192/qachannels/0/input/range -35.0
+2026.07.10 02:00:38.695   set /dev12192/sgchannels/0/sines/0/oscselect 0
+2026.07.10 02:00:38.695   set /dev12192/sgchannels/0/sines/0/harmonic 1
+2026.07.10 02:00:38.695   set /dev12192/sgchannels/0/sines/0/phaseshift 0
+2026.07.10 02:00:38.695   set /dev12192/raw/error/clear 1
+2026.07.10 02:00:38.695   get /dev12192/sgchannels/0/output/overrangecount -
+2026.07.10 02:00:38.695   get /dev12192/sgchannels/1/output/overrangecount -
+2026.07.10 02:00:38.695   get /dev12192/sgchannels/2/output/overrangecount -
+2026.07.10 02:00:38.695   get /dev12192/sgchannels/3/output/overrangecount -
+2026.07.10 02:00:38.695   get /dev12192/sgchannels/4/output/overrangecount -
+2026.07.10 02:00:38.695   get /dev12192/sgchannels/5/output/overrangecount -
+2026.07.10 02:00:38.695   get /dev12192/qachannels/0/output/overrangecount -
+2026.07.10 02:00:38.695   get /dev12192/qachannels/0/input/overrangecount -
+2026.07.10 02:00:38.695   set /dev12192/sgchannels/0/oscs/0/freq -327373566.4786179
+2026.07.10 02:00:38.695   set /dev12192/system/internaltrigger/enable 0
+2026.07.10 02:00:38.695   set /dev12192/system/internaltrigger/repetitions 1
+2026.07.10 02:00:38.695   set /dev12192/sgchannels/0/awg/auxtriggers/0/slope 1
+2026.07.10 02:00:38.695   set /dev12192/sgchannels/0/awg/auxtriggers/0/channel 8
+2026.07.10 02:00:38.695   set /dev12192/qachannels/0/markers/0/source 32
+2026.07.10 02:00:38.696   set /dev12192/qachannels/0/markers/1/source 36
+2026.07.10 02:00:38.696   set /dev12192/qachannels/0/generator/auxtriggers/0/channel 8
+2026.07.10 02:00:38.696   set /dev12192/sgchannels/0/oscs/0/freq -327373566.4786179
+2026.07.10 02:00:38.696   set /dev12192/synthesizers/1/centerfreq 3800000000.0
+2026.07.10 02:00:38.696   set /dev12192/qachannels/0/centerfreq 6200000000.0
+2026.07.10 02:00:38.696   set /dev12192/qachannels/0/generator/delay 0.0
+2026.07.10 02:00:38.696   set /dev12192/qachannels/0/readout/integration/delay 5.42e-07
+2026.07.10 02:00:38.696   set /dev12192/sgchannels/0/output/delay 0.0
+2026.07.10 02:00:38.696   set /dev12192/qachannels/0/mode 1
+2026.07.10 02:00:38.696   set /dev12192/qachannels/0/readout/multistate/qudits/*/enable 0
+2026.07.10 02:00:38.696   set /dev12192/sgchannels/0/awg/elf/data vector (?? B)
+2026.07.10 02:00:38.696   set /dev12192/sgchannels/0/awg/waveform/waves/0 vector (?? B)
+2026.07.10 02:00:38.696   set /dev12192/sgchannels/0/awg/waveform/waves/1 vector (?? B)
+2026.07.10 02:00:38.696   set /dev12192/sgchannels/0/awg/waveform/waves/2 vector (?? B)
+2026.07.10 02:00:38.696   set /dev12192/sgchannels/0/awg/waveform/waves/3 vector (?? B)
+2026.07.10 02:00:38.696   set /dev12192/sgchannels/0/awg/waveform/waves/4 vector (?? B)
+2026.07.10 02:00:38.696   set /dev12192/sgchannels/0/awg/commandtable/data vector (?? B)
+2026.07.10 02:00:38.696   set /dev12192/qachannels/0/readout/multistate/enable 1
+2026.07.10 02:00:38.696   set /dev12192/qachannels/0/readout/multistate/zsync/packed 1
+2026.07.10 02:00:38.696   set /dev12192/qachannels/0/readout/multistate/qudits/0/numstates 2
+2026.07.10 02:00:38.696   set /dev12192/qachannels/0/readout/multistate/qudits/0/enable 1
+2026.07.10 02:00:38.696   set /dev12192/qachannels/0/readout/multistate/qudits/0/assignmentvec vector (?? B)
+2026.07.10 02:00:38.696   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:38.696   set /dev12192/qachannels/0/readout/result/source 1
+2026.07.10 02:00:38.696   set /dev12192/qachannels/0/readout/result/length 101
+2026.07.10 02:00:38.696   set /dev12192/qachannels/0/readout/result/averages 4096
+2026.07.10 02:00:38.697   set /dev12192/qachannels/0/readout/result/mode 0
+2026.07.10 02:00:38.697   set /dev12192/qachannels/0/readout/multistate/qudits/0/thresholds/0/value 0.0
+2026.07.10 02:00:38.697   set /dev12192/qachannels/0/readout/result/enable 1
+2026.07.10 02:00:38.697   set /dev12192/qachannels/0/spectroscopy/result/enable 0
+2026.07.10 02:00:38.697   set /dev12192/scopes/0/enable 0
+2026.07.10 02:00:38.697   set /dev12192/qachannels/0/generator/elf/data vector (?? B)
+2026.07.10 02:00:38.697   set /dev12192/qachannels/0/generator/clearwave 1
+2026.07.10 02:00:38.697   set /dev12192/qachannels/0/generator/waveforms/0/wave <unexpected type>
+2026.07.10 02:00:38.697   set /dev12192/qachannels/0/spectroscopy/envelope/enable 0
+2026.07.10 02:00:38.697   set /dev12192/qachannels/0/readout/multistate/qudits/0/weights/0/wave vector (?? B)
+2026.07.10 02:00:38.697   set /dev12192/qachannels/0/readout/integration/length 800
+2026.07.10 02:00:38.697   set /dev12192/system/internaltrigger/synchronization/enable 0
+2026.07.10 02:00:38.697   set /dev12192/system/synchronization/source 0
+2026.07.10 02:00:38.697   set /dev12192/sgchannels/0/awg/enable 1
+2026.07.10 02:00:38.697   set /dev12192/qachannels/0/generator/enable 1
+2026.07.10 02:00:38.697   set /dev12192/system/internaltrigger/enable 1
+2026.07.10 02:00:38.697   set /dev12192/raw/system/awg/runtimechecks/enable 0
+2026.07.10 02:00:38.697   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:38.697   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:38.697   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:38.697   set /dev12192/qachannels/*/spectroscopy/envelope/enable 1
+2026.07.10 02:00:38.732 Node log from the data server with id 'zi_server':
+2026.07.10 02:00:38.732   get /dev12192/sgchannels/0/busy -
+2026.07.10 02:00:38.732   get /dev12192/qachannels/0/busy -
+2026.07.10 02:00:38.732   set /dev12192/sgchannels/0/output/on 1
+2026.07.10 02:00:38.732   set /dev12192/sgchannels/0/output/range 10.0
+2026.07.10 02:00:38.732   set /dev12192/sgchannels/0/awg/single 1
+2026.07.10 02:00:38.732   set /dev12192/sgchannels/0/awg/modulation/enable 1
+2026.07.10 02:00:38.732   set /dev12192/sgchannels/0/marker/source 0
+2026.07.10 02:00:38.733   set /dev12192/sgchannels/0/trigger/delay 0.0
+2026.07.10 02:00:38.733   set /dev12192/sgchannels/0/output/rflfpath 1
+2026.07.10 02:00:38.733   set /dev12192/qachannels/0/output/on 1
+2026.07.10 02:00:38.733   set /dev12192/qachannels/0/output/range -20.0
+2026.07.10 02:00:38.733   set /dev12192/qachannels/0/generator/single 1
+2026.07.10 02:00:38.733   set /dev12192/qachannels/0/input/rflfpath 1
+2026.07.10 02:00:38.733   set /dev12192/qachannels/0/input/on 1
+2026.07.10 02:00:38.733   set /dev12192/qachannels/0/input/range -35.0
+2026.07.10 02:00:38.733   set /dev12192/sgchannels/0/sines/0/oscselect 0
+2026.07.10 02:00:38.733   set /dev12192/sgchannels/0/sines/0/harmonic 1
+2026.07.10 02:00:38.733   set /dev12192/sgchannels/0/sines/0/phaseshift 0
+2026.07.10 02:00:38.733   set /dev12192/raw/error/clear 1
+2026.07.10 02:00:38.733   get /dev12192/sgchannels/0/output/overrangecount -
+2026.07.10 02:00:38.733   get /dev12192/sgchannels/1/output/overrangecount -
+2026.07.10 02:00:38.733   get /dev12192/sgchannels/2/output/overrangecount -
+2026.07.10 02:00:38.733   get /dev12192/sgchannels/3/output/overrangecount -
+2026.07.10 02:00:38.733   get /dev12192/sgchannels/4/output/overrangecount -
+2026.07.10 02:00:38.733   get /dev12192/sgchannels/5/output/overrangecount -
+2026.07.10 02:00:38.733   get /dev12192/qachannels/0/output/overrangecount -
+2026.07.10 02:00:38.733   get /dev12192/qachannels/0/input/overrangecount -
+2026.07.10 02:00:38.733   set /dev12192/sgchannels/0/oscs/0/freq -327173566.4786179
+2026.07.10 02:00:38.733   set /dev12192/system/internaltrigger/enable 0
+2026.07.10 02:00:38.733   set /dev12192/system/internaltrigger/repetitions 1
+2026.07.10 02:00:38.733   set /dev12192/sgchannels/0/awg/auxtriggers/0/slope 1
+2026.07.10 02:00:38.733   set /dev12192/sgchannels/0/awg/auxtriggers/0/channel 8
+2026.07.10 02:00:38.733   set /dev12192/qachannels/0/markers/0/source 32
+2026.07.10 02:00:38.733   set /dev12192/qachannels/0/markers/1/source 36
+2026.07.10 02:00:38.733   set /dev12192/qachannels/0/generator/auxtriggers/0/channel 8
+2026.07.10 02:00:38.733   set /dev12192/sgchannels/0/oscs/0/freq -327173566.4786179
+2026.07.10 02:00:38.733   set /dev12192/synthesizers/1/centerfreq 3800000000.0
+2026.07.10 02:00:38.734   set /dev12192/qachannels/0/centerfreq 6200000000.0
+2026.07.10 02:00:38.734   set /dev12192/qachannels/0/generator/delay 0.0
+2026.07.10 02:00:38.734   set /dev12192/qachannels/0/readout/integration/delay 5.42e-07
+2026.07.10 02:00:38.734   set /dev12192/sgchannels/0/output/delay 0.0
+2026.07.10 02:00:38.734   set /dev12192/qachannels/0/mode 1
+2026.07.10 02:00:38.734   set /dev12192/qachannels/0/readout/multistate/qudits/*/enable 0
+2026.07.10 02:00:38.734   set /dev12192/sgchannels/0/awg/elf/data vector (?? B)
+2026.07.10 02:00:38.734   set /dev12192/sgchannels/0/awg/waveform/waves/0 vector (?? B)
+2026.07.10 02:00:38.734   set /dev12192/sgchannels/0/awg/waveform/waves/1 vector (?? B)
+2026.07.10 02:00:38.734   set /dev12192/sgchannels/0/awg/waveform/waves/2 vector (?? B)
+2026.07.10 02:00:38.734   set /dev12192/sgchannels/0/awg/waveform/waves/3 vector (?? B)
+2026.07.10 02:00:38.734   set /dev12192/sgchannels/0/awg/waveform/waves/4 vector (?? B)
+2026.07.10 02:00:38.734   set /dev12192/sgchannels/0/awg/commandtable/data vector (?? B)
+2026.07.10 02:00:38.734   set /dev12192/qachannels/0/readout/multistate/enable 1
+2026.07.10 02:00:38.734   set /dev12192/qachannels/0/readout/multistate/zsync/packed 1
+2026.07.10 02:00:38.734   set /dev12192/qachannels/0/readout/multistate/qudits/0/numstates 2
+2026.07.10 02:00:38.734   set /dev12192/qachannels/0/readout/multistate/qudits/0/enable 1
+2026.07.10 02:00:38.734   set /dev12192/qachannels/0/readout/multistate/qudits/0/assignmentvec vector (?? B)
+2026.07.10 02:00:38.734   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:38.734   set /dev12192/qachannels/0/readout/result/source 1
+2026.07.10 02:00:38.734   set /dev12192/qachannels/0/readout/result/length 101
+2026.07.10 02:00:38.734   set /dev12192/qachannels/0/readout/result/averages 4096
+2026.07.10 02:00:38.734   set /dev12192/qachannels/0/readout/result/mode 0
+2026.07.10 02:00:38.734   set /dev12192/qachannels/0/readout/multistate/qudits/0/thresholds/0/value 0.0
+2026.07.10 02:00:38.734   set /dev12192/qachannels/0/readout/result/enable 1
+2026.07.10 02:00:38.734   set /dev12192/qachannels/0/spectroscopy/result/enable 0
+2026.07.10 02:00:38.734   set /dev12192/scopes/0/enable 0
+2026.07.10 02:00:38.735   set /dev12192/qachannels/0/generator/elf/data vector (?? B)
+2026.07.10 02:00:38.735   set /dev12192/qachannels/0/generator/clearwave 1
+2026.07.10 02:00:38.735   set /dev12192/qachannels/0/generator/waveforms/0/wave <unexpected type>
+2026.07.10 02:00:38.735   set /dev12192/qachannels/0/spectroscopy/envelope/enable 0
+2026.07.10 02:00:38.735   set /dev12192/qachannels/0/readout/multistate/qudits/0/weights/0/wave vector (?? B)
+2026.07.10 02:00:38.735   set /dev12192/qachannels/0/readout/integration/length 800
+2026.07.10 02:00:38.735   set /dev12192/system/internaltrigger/synchronization/enable 0
+2026.07.10 02:00:38.735   set /dev12192/system/synchronization/source 0
+2026.07.10 02:00:38.735   set /dev12192/sgchannels/0/awg/enable 1
+2026.07.10 02:00:38.735   set /dev12192/qachannels/0/generator/enable 1
+2026.07.10 02:00:38.735   set /dev12192/system/internaltrigger/enable 1
+2026.07.10 02:00:38.735   set /dev12192/raw/system/awg/runtimechecks/enable 0
+2026.07.10 02:00:38.735   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:38.735   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:38.735   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:38.735   set /dev12192/qachannels/*/spectroscopy/envelope/enable 1
+2026.07.10 02:00:38.770 Node log from the data server with id 'zi_server':
+2026.07.10 02:00:38.770   get /dev12192/sgchannels/0/busy -
+2026.07.10 02:00:38.770   get /dev12192/qachannels/0/busy -
+2026.07.10 02:00:38.770   set /dev12192/sgchannels/0/output/on 1
+2026.07.10 02:00:38.770   set /dev12192/sgchannels/0/output/range 10.0
+2026.07.10 02:00:38.770   set /dev12192/sgchannels/0/awg/single 1
+2026.07.10 02:00:38.771   set /dev12192/sgchannels/0/awg/modulation/enable 1
+2026.07.10 02:00:38.771   set /dev12192/sgchannels/0/marker/source 0
+2026.07.10 02:00:38.771   set /dev12192/sgchannels/0/trigger/delay 0.0
+2026.07.10 02:00:38.771   set /dev12192/sgchannels/0/output/rflfpath 1
+2026.07.10 02:00:38.771   set /dev12192/qachannels/0/output/on 1
+2026.07.10 02:00:38.771   set /dev12192/qachannels/0/output/range -20.0
+2026.07.10 02:00:38.771   set /dev12192/qachannels/0/generator/single 1
+2026.07.10 02:00:38.771   set /dev12192/qachannels/0/input/rflfpath 1
+2026.07.10 02:00:38.771   set /dev12192/qachannels/0/input/on 1
+2026.07.10 02:00:38.771   set /dev12192/qachannels/0/input/range -35.0
+2026.07.10 02:00:38.771   set /dev12192/sgchannels/0/sines/0/oscselect 0
+2026.07.10 02:00:38.771   set /dev12192/sgchannels/0/sines/0/harmonic 1
+2026.07.10 02:00:38.771   set /dev12192/sgchannels/0/sines/0/phaseshift 0
+2026.07.10 02:00:38.771   set /dev12192/raw/error/clear 1
+2026.07.10 02:00:38.771   get /dev12192/sgchannels/0/output/overrangecount -
+2026.07.10 02:00:38.771   get /dev12192/sgchannels/1/output/overrangecount -
+2026.07.10 02:00:38.771   get /dev12192/sgchannels/2/output/overrangecount -
+2026.07.10 02:00:38.771   get /dev12192/sgchannels/3/output/overrangecount -
+2026.07.10 02:00:38.771   get /dev12192/sgchannels/4/output/overrangecount -
+2026.07.10 02:00:38.771   get /dev12192/sgchannels/5/output/overrangecount -
+2026.07.10 02:00:38.771   get /dev12192/qachannels/0/output/overrangecount -
+2026.07.10 02:00:38.771   get /dev12192/qachannels/0/input/overrangecount -
+2026.07.10 02:00:38.771   set /dev12192/sgchannels/0/oscs/0/freq -326973566.4786179
+2026.07.10 02:00:38.771   set /dev12192/system/internaltrigger/enable 0
+2026.07.10 02:00:38.771   set /dev12192/system/internaltrigger/repetitions 1
+2026.07.10 02:00:38.771   set /dev12192/sgchannels/0/awg/auxtriggers/0/slope 1
+2026.07.10 02:00:38.772   set /dev12192/sgchannels/0/awg/auxtriggers/0/channel 8
+2026.07.10 02:00:38.772   set /dev12192/qachannels/0/markers/0/source 32
+2026.07.10 02:00:38.772   set /dev12192/qachannels/0/markers/1/source 36
+2026.07.10 02:00:38.772   set /dev12192/qachannels/0/generator/auxtriggers/0/channel 8
+2026.07.10 02:00:38.772   set /dev12192/sgchannels/0/oscs/0/freq -326973566.4786179
+2026.07.10 02:00:38.772   set /dev12192/synthesizers/1/centerfreq 3800000000.0
+2026.07.10 02:00:38.772   set /dev12192/qachannels/0/centerfreq 6200000000.0
+2026.07.10 02:00:38.772   set /dev12192/qachannels/0/generator/delay 0.0
+2026.07.10 02:00:38.772   set /dev12192/qachannels/0/readout/integration/delay 5.42e-07
+2026.07.10 02:00:38.772   set /dev12192/sgchannels/0/output/delay 0.0
+2026.07.10 02:00:38.772   set /dev12192/qachannels/0/mode 1
+2026.07.10 02:00:38.772   set /dev12192/qachannels/0/readout/multistate/qudits/*/enable 0
+2026.07.10 02:00:38.772   set /dev12192/sgchannels/0/awg/elf/data vector (?? B)
+2026.07.10 02:00:38.772   set /dev12192/sgchannels/0/awg/waveform/waves/0 vector (?? B)
+2026.07.10 02:00:38.772   set /dev12192/sgchannels/0/awg/waveform/waves/1 vector (?? B)
+2026.07.10 02:00:38.772   set /dev12192/sgchannels/0/awg/waveform/waves/2 vector (?? B)
+2026.07.10 02:00:38.772   set /dev12192/sgchannels/0/awg/waveform/waves/3 vector (?? B)
+2026.07.10 02:00:38.772   set /dev12192/sgchannels/0/awg/waveform/waves/4 vector (?? B)
+2026.07.10 02:00:38.772   set /dev12192/sgchannels/0/awg/commandtable/data vector (?? B)
+2026.07.10 02:00:38.772   set /dev12192/qachannels/0/readout/multistate/enable 1
+2026.07.10 02:00:38.772   set /dev12192/qachannels/0/readout/multistate/zsync/packed 1
+2026.07.10 02:00:38.772   set /dev12192/qachannels/0/readout/multistate/qudits/0/numstates 2
+2026.07.10 02:00:38.772   set /dev12192/qachannels/0/readout/multistate/qudits/0/enable 1
+2026.07.10 02:00:38.772   set /dev12192/qachannels/0/readout/multistate/qudits/0/assignmentvec vector (?? B)
+2026.07.10 02:00:38.772   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:38.772   set /dev12192/qachannels/0/readout/result/source 1
+2026.07.10 02:00:38.772   set /dev12192/qachannels/0/readout/result/length 101
+2026.07.10 02:00:38.773   set /dev12192/qachannels/0/readout/result/averages 4096
+2026.07.10 02:00:38.773   set /dev12192/qachannels/0/readout/result/mode 0
+2026.07.10 02:00:38.773   set /dev12192/qachannels/0/readout/multistate/qudits/0/thresholds/0/value 0.0
+2026.07.10 02:00:38.773   set /dev12192/qachannels/0/readout/result/enable 1
+2026.07.10 02:00:38.773   set /dev12192/qachannels/0/spectroscopy/result/enable 0
+2026.07.10 02:00:38.773   set /dev12192/scopes/0/enable 0
+2026.07.10 02:00:38.773   set /dev12192/qachannels/0/generator/elf/data vector (?? B)
+2026.07.10 02:00:38.773   set /dev12192/qachannels/0/generator/clearwave 1
+2026.07.10 02:00:38.773   set /dev12192/qachannels/0/generator/waveforms/0/wave <unexpected type>
+2026.07.10 02:00:38.773   set /dev12192/qachannels/0/spectroscopy/envelope/enable 0
+2026.07.10 02:00:38.773   set /dev12192/qachannels/0/readout/multistate/qudits/0/weights/0/wave vector (?? B)
+2026.07.10 02:00:38.773   set /dev12192/qachannels/0/readout/integration/length 800
+2026.07.10 02:00:38.773   set /dev12192/system/internaltrigger/synchronization/enable 0
+2026.07.10 02:00:38.773   set /dev12192/system/synchronization/source 0
+2026.07.10 02:00:38.773   set /dev12192/sgchannels/0/awg/enable 1
+2026.07.10 02:00:38.773   set /dev12192/qachannels/0/generator/enable 1
+2026.07.10 02:00:38.773   set /dev12192/system/internaltrigger/enable 1
+2026.07.10 02:00:38.773   set /dev12192/raw/system/awg/runtimechecks/enable 0
+2026.07.10 02:00:38.773   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:38.773   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:38.773   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:38.773   set /dev12192/qachannels/*/spectroscopy/envelope/enable 1
+2026.07.10 02:00:38.810 Node log from the data server with id 'zi_server':
+2026.07.10 02:00:38.810   get /dev12192/sgchannels/0/busy -
+2026.07.10 02:00:38.810   get /dev12192/qachannels/0/busy -
+2026.07.10 02:00:38.811   set /dev12192/sgchannels/0/output/on 1
+2026.07.10 02:00:38.811   set /dev12192/sgchannels/0/output/range 10.0
+2026.07.10 02:00:38.811   set /dev12192/sgchannels/0/awg/single 1
+2026.07.10 02:00:38.811   set /dev12192/sgchannels/0/awg/modulation/enable 1
+2026.07.10 02:00:38.811   set /dev12192/sgchannels/0/marker/source 0
+2026.07.10 02:00:38.811   set /dev12192/sgchannels/0/trigger/delay 0.0
+2026.07.10 02:00:38.811   set /dev12192/sgchannels/0/output/rflfpath 1
+2026.07.10 02:00:38.811   set /dev12192/qachannels/0/output/on 1
+2026.07.10 02:00:38.811   set /dev12192/qachannels/0/output/range -20.0
+2026.07.10 02:00:38.811   set /dev12192/qachannels/0/generator/single 1
+2026.07.10 02:00:38.811   set /dev12192/qachannels/0/input/rflfpath 1
+2026.07.10 02:00:38.811   set /dev12192/qachannels/0/input/on 1
+2026.07.10 02:00:38.811   set /dev12192/qachannels/0/input/range -35.0
+2026.07.10 02:00:38.811   set /dev12192/sgchannels/0/sines/0/oscselect 0
+2026.07.10 02:00:38.811   set /dev12192/sgchannels/0/sines/0/harmonic 1
+2026.07.10 02:00:38.811   set /dev12192/sgchannels/0/sines/0/phaseshift 0
+2026.07.10 02:00:38.811   set /dev12192/raw/error/clear 1
+2026.07.10 02:00:38.811   get /dev12192/sgchannels/0/output/overrangecount -
+2026.07.10 02:00:38.811   get /dev12192/sgchannels/1/output/overrangecount -
+2026.07.10 02:00:38.811   get /dev12192/sgchannels/2/output/overrangecount -
+2026.07.10 02:00:38.811   get /dev12192/sgchannels/3/output/overrangecount -
+2026.07.10 02:00:38.811   get /dev12192/sgchannels/4/output/overrangecount -
+2026.07.10 02:00:38.811   get /dev12192/sgchannels/5/output/overrangecount -
+2026.07.10 02:00:38.811   get /dev12192/qachannels/0/output/overrangecount -
+2026.07.10 02:00:38.811   get /dev12192/qachannels/0/input/overrangecount -
+2026.07.10 02:00:38.811   set /dev12192/sgchannels/0/oscs/0/freq -326773566.4786179
+2026.07.10 02:00:38.811   set /dev12192/system/internaltrigger/enable 0
+2026.07.10 02:00:38.811   set /dev12192/system/internaltrigger/repetitions 1
+2026.07.10 02:00:38.811   set /dev12192/sgchannels/0/awg/auxtriggers/0/slope 1
+2026.07.10 02:00:38.812   set /dev12192/sgchannels/0/awg/auxtriggers/0/channel 8
+2026.07.10 02:00:38.812   set /dev12192/qachannels/0/markers/0/source 32
+2026.07.10 02:00:38.812   set /dev12192/qachannels/0/markers/1/source 36
+2026.07.10 02:00:38.812   set /dev12192/qachannels/0/generator/auxtriggers/0/channel 8
+2026.07.10 02:00:38.812   set /dev12192/sgchannels/0/oscs/0/freq -326773566.4786179
+2026.07.10 02:00:38.812   set /dev12192/synthesizers/1/centerfreq 3800000000.0
+2026.07.10 02:00:38.812   set /dev12192/qachannels/0/centerfreq 6200000000.0
+2026.07.10 02:00:38.812   set /dev12192/qachannels/0/generator/delay 0.0
+2026.07.10 02:00:38.812   set /dev12192/qachannels/0/readout/integration/delay 5.42e-07
+2026.07.10 02:00:38.812   set /dev12192/sgchannels/0/output/delay 0.0
+2026.07.10 02:00:38.812   set /dev12192/qachannels/0/mode 1
+2026.07.10 02:00:38.812   set /dev12192/qachannels/0/readout/multistate/qudits/*/enable 0
+2026.07.10 02:00:38.812   set /dev12192/sgchannels/0/awg/elf/data vector (?? B)
+2026.07.10 02:00:38.812   set /dev12192/sgchannels/0/awg/waveform/waves/0 vector (?? B)
+2026.07.10 02:00:38.812   set /dev12192/sgchannels/0/awg/waveform/waves/1 vector (?? B)
+2026.07.10 02:00:38.812   set /dev12192/sgchannels/0/awg/waveform/waves/2 vector (?? B)
+2026.07.10 02:00:38.812   set /dev12192/sgchannels/0/awg/waveform/waves/3 vector (?? B)
+2026.07.10 02:00:38.812   set /dev12192/sgchannels/0/awg/waveform/waves/4 vector (?? B)
+2026.07.10 02:00:38.812   set /dev12192/sgchannels/0/awg/commandtable/data vector (?? B)
+2026.07.10 02:00:38.812   set /dev12192/qachannels/0/readout/multistate/enable 1
+2026.07.10 02:00:38.812   set /dev12192/qachannels/0/readout/multistate/zsync/packed 1
+2026.07.10 02:00:38.812   set /dev12192/qachannels/0/readout/multistate/qudits/0/numstates 2
+2026.07.10 02:00:38.812   set /dev12192/qachannels/0/readout/multistate/qudits/0/enable 1
+2026.07.10 02:00:38.812   set /dev12192/qachannels/0/readout/multistate/qudits/0/assignmentvec vector (?? B)
+2026.07.10 02:00:38.812   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:38.812   set /dev12192/qachannels/0/readout/result/source 1
+2026.07.10 02:00:38.812   set /dev12192/qachannels/0/readout/result/length 101
+2026.07.10 02:00:38.813   set /dev12192/qachannels/0/readout/result/averages 4096
+2026.07.10 02:00:38.813   set /dev12192/qachannels/0/readout/result/mode 0
+2026.07.10 02:00:38.813   set /dev12192/qachannels/0/readout/multistate/qudits/0/thresholds/0/value 0.0
+2026.07.10 02:00:38.813   set /dev12192/qachannels/0/readout/result/enable 1
+2026.07.10 02:00:38.813   set /dev12192/qachannels/0/spectroscopy/result/enable 0
+2026.07.10 02:00:38.813   set /dev12192/scopes/0/enable 0
+2026.07.10 02:00:38.813   set /dev12192/qachannels/0/generator/elf/data vector (?? B)
+2026.07.10 02:00:38.813   set /dev12192/qachannels/0/generator/clearwave 1
+2026.07.10 02:00:38.813   set /dev12192/qachannels/0/generator/waveforms/0/wave <unexpected type>
+2026.07.10 02:00:38.813   set /dev12192/qachannels/0/spectroscopy/envelope/enable 0
+2026.07.10 02:00:38.813   set /dev12192/qachannels/0/readout/multistate/qudits/0/weights/0/wave vector (?? B)
+2026.07.10 02:00:38.813   set /dev12192/qachannels/0/readout/integration/length 800
+2026.07.10 02:00:38.813   set /dev12192/system/internaltrigger/synchronization/enable 0
+2026.07.10 02:00:38.813   set /dev12192/system/synchronization/source 0
+2026.07.10 02:00:38.813   set /dev12192/sgchannels/0/awg/enable 1
+2026.07.10 02:00:38.813   set /dev12192/qachannels/0/generator/enable 1
+2026.07.10 02:00:38.813   set /dev12192/system/internaltrigger/enable 1
+2026.07.10 02:00:38.813   set /dev12192/raw/system/awg/runtimechecks/enable 0
+2026.07.10 02:00:38.813   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:38.813   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:38.813   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:38.813   set /dev12192/qachannels/*/spectroscopy/envelope/enable 1
+2026.07.10 02:00:38.849 Node log from the data server with id 'zi_server':
+2026.07.10 02:00:38.849   get /dev12192/sgchannels/0/busy -
+2026.07.10 02:00:38.849   get /dev12192/qachannels/0/busy -
+2026.07.10 02:00:38.849   set /dev12192/sgchannels/0/output/on 1
+2026.07.10 02:00:38.849   set /dev12192/sgchannels/0/output/range 10.0
+2026.07.10 02:00:38.849   set /dev12192/sgchannels/0/awg/single 1
+2026.07.10 02:00:38.849   set /dev12192/sgchannels/0/awg/modulation/enable 1
+2026.07.10 02:00:38.849   set /dev12192/sgchannels/0/marker/source 0
+2026.07.10 02:00:38.849   set /dev12192/sgchannels/0/trigger/delay 0.0
+2026.07.10 02:00:38.849   set /dev12192/sgchannels/0/output/rflfpath 1
+2026.07.10 02:00:38.849   set /dev12192/qachannels/0/output/on 1
+2026.07.10 02:00:38.849   set /dev12192/qachannels/0/output/range -20.0
+2026.07.10 02:00:38.849   set /dev12192/qachannels/0/generator/single 1
+2026.07.10 02:00:38.849   set /dev12192/qachannels/0/input/rflfpath 1
+2026.07.10 02:00:38.849   set /dev12192/qachannels/0/input/on 1
+2026.07.10 02:00:38.849   set /dev12192/qachannels/0/input/range -35.0
+2026.07.10 02:00:38.849   set /dev12192/sgchannels/0/sines/0/oscselect 0
+2026.07.10 02:00:38.849   set /dev12192/sgchannels/0/sines/0/harmonic 1
+2026.07.10 02:00:38.849   set /dev12192/sgchannels/0/sines/0/phaseshift 0
+2026.07.10 02:00:38.849   set /dev12192/raw/error/clear 1
+2026.07.10 02:00:38.849   get /dev12192/sgchannels/0/output/overrangecount -
+2026.07.10 02:00:38.850   get /dev12192/sgchannels/1/output/overrangecount -
+2026.07.10 02:00:38.850   get /dev12192/sgchannels/2/output/overrangecount -
+2026.07.10 02:00:38.850   get /dev12192/sgchannels/3/output/overrangecount -
+2026.07.10 02:00:38.850   get /dev12192/sgchannels/4/output/overrangecount -
+2026.07.10 02:00:38.850   get /dev12192/sgchannels/5/output/overrangecount -
+2026.07.10 02:00:38.850   get /dev12192/qachannels/0/output/overrangecount -
+2026.07.10 02:00:38.850   get /dev12192/qachannels/0/input/overrangecount -
+2026.07.10 02:00:38.850   set /dev12192/sgchannels/0/oscs/0/freq -326573566.4786179
+2026.07.10 02:00:38.850   set /dev12192/system/internaltrigger/enable 0
+2026.07.10 02:00:38.850   set /dev12192/system/internaltrigger/repetitions 1
+2026.07.10 02:00:38.850   set /dev12192/sgchannels/0/awg/auxtriggers/0/slope 1
+2026.07.10 02:00:38.850   set /dev12192/sgchannels/0/awg/auxtriggers/0/channel 8
+2026.07.10 02:00:38.850   set /dev12192/qachannels/0/markers/0/source 32
+2026.07.10 02:00:38.850   set /dev12192/qachannels/0/markers/1/source 36
+2026.07.10 02:00:38.850   set /dev12192/qachannels/0/generator/auxtriggers/0/channel 8
+2026.07.10 02:00:38.850   set /dev12192/sgchannels/0/oscs/0/freq -326573566.4786179
+2026.07.10 02:00:38.850   set /dev12192/synthesizers/1/centerfreq 3800000000.0
+2026.07.10 02:00:38.850   set /dev12192/qachannels/0/centerfreq 6200000000.0
+2026.07.10 02:00:38.850   set /dev12192/qachannels/0/generator/delay 0.0
+2026.07.10 02:00:38.850   set /dev12192/qachannels/0/readout/integration/delay 5.42e-07
+2026.07.10 02:00:38.850   set /dev12192/sgchannels/0/output/delay 0.0
+2026.07.10 02:00:38.850   set /dev12192/qachannels/0/mode 1
+2026.07.10 02:00:38.850   set /dev12192/qachannels/0/readout/multistate/qudits/*/enable 0
+2026.07.10 02:00:38.850   set /dev12192/sgchannels/0/awg/elf/data vector (?? B)
+2026.07.10 02:00:38.850   set /dev12192/sgchannels/0/awg/waveform/waves/0 vector (?? B)
+2026.07.10 02:00:38.850   set /dev12192/sgchannels/0/awg/waveform/waves/1 vector (?? B)
+2026.07.10 02:00:38.850   set /dev12192/sgchannels/0/awg/waveform/waves/2 vector (?? B)
+2026.07.10 02:00:38.850   set /dev12192/sgchannels/0/awg/waveform/waves/3 vector (?? B)
+2026.07.10 02:00:38.851   set /dev12192/sgchannels/0/awg/waveform/waves/4 vector (?? B)
+2026.07.10 02:00:38.851   set /dev12192/sgchannels/0/awg/commandtable/data vector (?? B)
+2026.07.10 02:00:38.851   set /dev12192/qachannels/0/readout/multistate/enable 1
+2026.07.10 02:00:38.851   set /dev12192/qachannels/0/readout/multistate/zsync/packed 1
+2026.07.10 02:00:38.851   set /dev12192/qachannels/0/readout/multistate/qudits/0/numstates 2
+2026.07.10 02:00:38.851   set /dev12192/qachannels/0/readout/multistate/qudits/0/enable 1
+2026.07.10 02:00:38.851   set /dev12192/qachannels/0/readout/multistate/qudits/0/assignmentvec vector (?? B)
+2026.07.10 02:00:38.851   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:38.851   set /dev12192/qachannels/0/readout/result/source 1
+2026.07.10 02:00:38.851   set /dev12192/qachannels/0/readout/result/length 101
+2026.07.10 02:00:38.851   set /dev12192/qachannels/0/readout/result/averages 4096
+2026.07.10 02:00:38.851   set /dev12192/qachannels/0/readout/result/mode 0
+2026.07.10 02:00:38.851   set /dev12192/qachannels/0/readout/multistate/qudits/0/thresholds/0/value 0.0
+2026.07.10 02:00:38.851   set /dev12192/qachannels/0/readout/result/enable 1
+2026.07.10 02:00:38.851   set /dev12192/qachannels/0/spectroscopy/result/enable 0
+2026.07.10 02:00:38.851   set /dev12192/scopes/0/enable 0
+2026.07.10 02:00:38.851   set /dev12192/qachannels/0/generator/elf/data vector (?? B)
+2026.07.10 02:00:38.851   set /dev12192/qachannels/0/generator/clearwave 1
+2026.07.10 02:00:38.851   set /dev12192/qachannels/0/generator/waveforms/0/wave <unexpected type>
+2026.07.10 02:00:38.851   set /dev12192/qachannels/0/spectroscopy/envelope/enable 0
+2026.07.10 02:00:38.851   set /dev12192/qachannels/0/readout/multistate/qudits/0/weights/0/wave vector (?? B)
+2026.07.10 02:00:38.851   set /dev12192/qachannels/0/readout/integration/length 800
+2026.07.10 02:00:38.851   set /dev12192/system/internaltrigger/synchronization/enable 0
+2026.07.10 02:00:38.851   set /dev12192/system/synchronization/source 0
+2026.07.10 02:00:38.851   set /dev12192/sgchannels/0/awg/enable 1
+2026.07.10 02:00:38.851   set /dev12192/qachannels/0/generator/enable 1
+2026.07.10 02:00:38.851   set /dev12192/system/internaltrigger/enable 1
+2026.07.10 02:00:38.851   set /dev12192/raw/system/awg/runtimechecks/enable 0
+2026.07.10 02:00:38.852   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:38.852   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:38.852   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:38.852   set /dev12192/qachannels/*/spectroscopy/envelope/enable 1
+2026.07.10 02:00:38.887 Node log from the data server with id 'zi_server':
+2026.07.10 02:00:38.887   get /dev12192/sgchannels/0/busy -
+2026.07.10 02:00:38.887   get /dev12192/qachannels/0/busy -
+2026.07.10 02:00:38.887   set /dev12192/sgchannels/0/output/on 1
+2026.07.10 02:00:38.887   set /dev12192/sgchannels/0/output/range 10.0
+2026.07.10 02:00:38.887   set /dev12192/sgchannels/0/awg/single 1
+2026.07.10 02:00:38.887   set /dev12192/sgchannels/0/awg/modulation/enable 1
+2026.07.10 02:00:38.887   set /dev12192/sgchannels/0/marker/source 0
+2026.07.10 02:00:38.887   set /dev12192/sgchannels/0/trigger/delay 0.0
+2026.07.10 02:00:38.887   set /dev12192/sgchannels/0/output/rflfpath 1
+2026.07.10 02:00:38.887   set /dev12192/qachannels/0/output/on 1
+2026.07.10 02:00:38.887   set /dev12192/qachannels/0/output/range -20.0
+2026.07.10 02:00:38.887   set /dev12192/qachannels/0/generator/single 1
+2026.07.10 02:00:38.887   set /dev12192/qachannels/0/input/rflfpath 1
+2026.07.10 02:00:38.887   set /dev12192/qachannels/0/input/on 1
+2026.07.10 02:00:38.887   set /dev12192/qachannels/0/input/range -35.0
+2026.07.10 02:00:38.887   set /dev12192/sgchannels/0/sines/0/oscselect 0
+2026.07.10 02:00:38.887   set /dev12192/sgchannels/0/sines/0/harmonic 1
+2026.07.10 02:00:38.888   set /dev12192/sgchannels/0/sines/0/phaseshift 0
+2026.07.10 02:00:38.888   set /dev12192/raw/error/clear 1
+2026.07.10 02:00:38.888   get /dev12192/sgchannels/0/output/overrangecount -
+2026.07.10 02:00:38.888   get /dev12192/sgchannels/1/output/overrangecount -
+2026.07.10 02:00:38.888   get /dev12192/sgchannels/2/output/overrangecount -
+2026.07.10 02:00:38.888   get /dev12192/sgchannels/3/output/overrangecount -
+2026.07.10 02:00:38.888   get /dev12192/sgchannels/4/output/overrangecount -
+2026.07.10 02:00:38.888   get /dev12192/sgchannels/5/output/overrangecount -
+2026.07.10 02:00:38.888   get /dev12192/qachannels/0/output/overrangecount -
+2026.07.10 02:00:38.888   get /dev12192/qachannels/0/input/overrangecount -
+2026.07.10 02:00:38.888   set /dev12192/sgchannels/0/oscs/0/freq -326373566.4786179
+2026.07.10 02:00:38.888   set /dev12192/system/internaltrigger/enable 0
+2026.07.10 02:00:38.888   set /dev12192/system/internaltrigger/repetitions 1
+2026.07.10 02:00:38.888   set /dev12192/sgchannels/0/awg/auxtriggers/0/slope 1
+2026.07.10 02:00:38.888   set /dev12192/sgchannels/0/awg/auxtriggers/0/channel 8
+2026.07.10 02:00:38.888   set /dev12192/qachannels/0/markers/0/source 32
+2026.07.10 02:00:38.888   set /dev12192/qachannels/0/markers/1/source 36
+2026.07.10 02:00:38.888   set /dev12192/qachannels/0/generator/auxtriggers/0/channel 8
+2026.07.10 02:00:38.888   set /dev12192/sgchannels/0/oscs/0/freq -326373566.4786179
+2026.07.10 02:00:38.888   set /dev12192/synthesizers/1/centerfreq 3800000000.0
+2026.07.10 02:00:38.888   set /dev12192/qachannels/0/centerfreq 6200000000.0
+2026.07.10 02:00:38.888   set /dev12192/qachannels/0/generator/delay 0.0
+2026.07.10 02:00:38.888   set /dev12192/qachannels/0/readout/integration/delay 5.42e-07
+2026.07.10 02:00:38.888   set /dev12192/sgchannels/0/output/delay 0.0
+2026.07.10 02:00:38.888   set /dev12192/qachannels/0/mode 1
+2026.07.10 02:00:38.888   set /dev12192/qachannels/0/readout/multistate/qudits/*/enable 0
+2026.07.10 02:00:38.888   set /dev12192/sgchannels/0/awg/elf/data vector (?? B)
+2026.07.10 02:00:38.888   set /dev12192/sgchannels/0/awg/waveform/waves/0 vector (?? B)
+2026.07.10 02:00:38.888   set /dev12192/sgchannels/0/awg/waveform/waves/1 vector (?? B)
+2026.07.10 02:00:38.889   set /dev12192/sgchannels/0/awg/waveform/waves/2 vector (?? B)
+2026.07.10 02:00:38.889   set /dev12192/sgchannels/0/awg/waveform/waves/3 vector (?? B)
+2026.07.10 02:00:38.889   set /dev12192/sgchannels/0/awg/waveform/waves/4 vector (?? B)
+2026.07.10 02:00:38.889   set /dev12192/sgchannels/0/awg/commandtable/data vector (?? B)
+2026.07.10 02:00:38.889   set /dev12192/qachannels/0/readout/multistate/enable 1
+2026.07.10 02:00:38.889   set /dev12192/qachannels/0/readout/multistate/zsync/packed 1
+2026.07.10 02:00:38.889   set /dev12192/qachannels/0/readout/multistate/qudits/0/numstates 2
+2026.07.10 02:00:38.889   set /dev12192/qachannels/0/readout/multistate/qudits/0/enable 1
+2026.07.10 02:00:38.889   set /dev12192/qachannels/0/readout/multistate/qudits/0/assignmentvec vector (?? B)
+2026.07.10 02:00:38.889   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:38.889   set /dev12192/qachannels/0/readout/result/source 1
+2026.07.10 02:00:38.889   set /dev12192/qachannels/0/readout/result/length 101
+2026.07.10 02:00:38.889   set /dev12192/qachannels/0/readout/result/averages 4096
+2026.07.10 02:00:38.889   set /dev12192/qachannels/0/readout/result/mode 0
+2026.07.10 02:00:38.889   set /dev12192/qachannels/0/readout/multistate/qudits/0/thresholds/0/value 0.0
+2026.07.10 02:00:38.889   set /dev12192/qachannels/0/readout/result/enable 1
+2026.07.10 02:00:38.889   set /dev12192/qachannels/0/spectroscopy/result/enable 0
+2026.07.10 02:00:38.889   set /dev12192/scopes/0/enable 0
+2026.07.10 02:00:38.889   set /dev12192/qachannels/0/generator/elf/data vector (?? B)
+2026.07.10 02:00:38.889   set /dev12192/qachannels/0/generator/clearwave 1
+2026.07.10 02:00:38.889   set /dev12192/qachannels/0/generator/waveforms/0/wave <unexpected type>
+2026.07.10 02:00:38.889   set /dev12192/qachannels/0/spectroscopy/envelope/enable 0
+2026.07.10 02:00:38.889   set /dev12192/qachannels/0/readout/multistate/qudits/0/weights/0/wave vector (?? B)
+2026.07.10 02:00:38.889   set /dev12192/qachannels/0/readout/integration/length 800
+2026.07.10 02:00:38.889   set /dev12192/system/internaltrigger/synchronization/enable 0
+2026.07.10 02:00:38.889   set /dev12192/system/synchronization/source 0
+2026.07.10 02:00:38.889   set /dev12192/sgchannels/0/awg/enable 1
+2026.07.10 02:00:38.889   set /dev12192/qachannels/0/generator/enable 1
+2026.07.10 02:00:38.889   set /dev12192/system/internaltrigger/enable 1
+2026.07.10 02:00:38.890   set /dev12192/raw/system/awg/runtimechecks/enable 0
+2026.07.10 02:00:38.890   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:38.890   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:38.890   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:38.890   set /dev12192/qachannels/*/spectroscopy/envelope/enable 1
+2026.07.10 02:00:38.925 Node log from the data server with id 'zi_server':
+2026.07.10 02:00:38.925   get /dev12192/sgchannels/0/busy -
+2026.07.10 02:00:38.925   get /dev12192/qachannels/0/busy -
+2026.07.10 02:00:38.925   set /dev12192/sgchannels/0/output/on 1
+2026.07.10 02:00:38.925   set /dev12192/sgchannels/0/output/range 10.0
+2026.07.10 02:00:38.925   set /dev12192/sgchannels/0/awg/single 1
+2026.07.10 02:00:38.925   set /dev12192/sgchannels/0/awg/modulation/enable 1
+2026.07.10 02:00:38.925   set /dev12192/sgchannels/0/marker/source 0
+2026.07.10 02:00:38.925   set /dev12192/sgchannels/0/trigger/delay 0.0
+2026.07.10 02:00:38.925   set /dev12192/sgchannels/0/output/rflfpath 1
+2026.07.10 02:00:38.925   set /dev12192/qachannels/0/output/on 1
+2026.07.10 02:00:38.925   set /dev12192/qachannels/0/output/range -20.0
+2026.07.10 02:00:38.925   set /dev12192/qachannels/0/generator/single 1
+2026.07.10 02:00:38.925   set /dev12192/qachannels/0/input/rflfpath 1
+2026.07.10 02:00:38.925   set /dev12192/qachannels/0/input/on 1
+2026.07.10 02:00:38.925   set /dev12192/qachannels/0/input/range -35.0
+2026.07.10 02:00:38.925   set /dev12192/sgchannels/0/sines/0/oscselect 0
+2026.07.10 02:00:38.925   set /dev12192/sgchannels/0/sines/0/harmonic 1
+2026.07.10 02:00:38.925   set /dev12192/sgchannels/0/sines/0/phaseshift 0
+2026.07.10 02:00:38.925   set /dev12192/raw/error/clear 1
+2026.07.10 02:00:38.925   get /dev12192/sgchannels/0/output/overrangecount -
+2026.07.10 02:00:38.925   get /dev12192/sgchannels/1/output/overrangecount -
+2026.07.10 02:00:38.926   get /dev12192/sgchannels/2/output/overrangecount -
+2026.07.10 02:00:38.926   get /dev12192/sgchannels/3/output/overrangecount -
+2026.07.10 02:00:38.926   get /dev12192/sgchannels/4/output/overrangecount -
+2026.07.10 02:00:38.926   get /dev12192/sgchannels/5/output/overrangecount -
+2026.07.10 02:00:38.926   get /dev12192/qachannels/0/output/overrangecount -
+2026.07.10 02:00:38.926   get /dev12192/qachannels/0/input/overrangecount -
+2026.07.10 02:00:38.926   set /dev12192/sgchannels/0/oscs/0/freq -326173566.4786179
+2026.07.10 02:00:38.926   set /dev12192/system/internaltrigger/enable 0
+2026.07.10 02:00:38.926   set /dev12192/system/internaltrigger/repetitions 1
+2026.07.10 02:00:38.926   set /dev12192/sgchannels/0/awg/auxtriggers/0/slope 1
+2026.07.10 02:00:38.926   set /dev12192/sgchannels/0/awg/auxtriggers/0/channel 8
+2026.07.10 02:00:38.926   set /dev12192/qachannels/0/markers/0/source 32
+2026.07.10 02:00:38.926   set /dev12192/qachannels/0/markers/1/source 36
+2026.07.10 02:00:38.926   set /dev12192/qachannels/0/generator/auxtriggers/0/channel 8
+2026.07.10 02:00:38.926   set /dev12192/sgchannels/0/oscs/0/freq -326173566.4786179
+2026.07.10 02:00:38.926   set /dev12192/synthesizers/1/centerfreq 3800000000.0
+2026.07.10 02:00:38.926   set /dev12192/qachannels/0/centerfreq 6200000000.0
+2026.07.10 02:00:38.926   set /dev12192/qachannels/0/generator/delay 0.0
+2026.07.10 02:00:38.926   set /dev12192/qachannels/0/readout/integration/delay 5.42e-07
+2026.07.10 02:00:38.926   set /dev12192/sgchannels/0/output/delay 0.0
+2026.07.10 02:00:38.926   set /dev12192/qachannels/0/mode 1
+2026.07.10 02:00:38.926   set /dev12192/qachannels/0/readout/multistate/qudits/*/enable 0
+2026.07.10 02:00:38.926   set /dev12192/sgchannels/0/awg/elf/data vector (?? B)
+2026.07.10 02:00:38.926   set /dev12192/sgchannels/0/awg/waveform/waves/0 vector (?? B)
+2026.07.10 02:00:38.926   set /dev12192/sgchannels/0/awg/waveform/waves/1 vector (?? B)
+2026.07.10 02:00:38.926   set /dev12192/sgchannels/0/awg/waveform/waves/2 vector (?? B)
+2026.07.10 02:00:38.926   set /dev12192/sgchannels/0/awg/waveform/waves/3 vector (?? B)
+2026.07.10 02:00:38.927   set /dev12192/sgchannels/0/awg/waveform/waves/4 vector (?? B)
+2026.07.10 02:00:38.927   set /dev12192/sgchannels/0/awg/commandtable/data vector (?? B)
+2026.07.10 02:00:38.927   set /dev12192/qachannels/0/readout/multistate/enable 1
+2026.07.10 02:00:38.927   set /dev12192/qachannels/0/readout/multistate/zsync/packed 1
+2026.07.10 02:00:38.927   set /dev12192/qachannels/0/readout/multistate/qudits/0/numstates 2
+2026.07.10 02:00:38.927   set /dev12192/qachannels/0/readout/multistate/qudits/0/enable 1
+2026.07.10 02:00:38.927   set /dev12192/qachannels/0/readout/multistate/qudits/0/assignmentvec vector (?? B)
+2026.07.10 02:00:38.927   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:38.927   set /dev12192/qachannels/0/readout/result/source 1
+2026.07.10 02:00:38.927   set /dev12192/qachannels/0/readout/result/length 101
+2026.07.10 02:00:38.927   set /dev12192/qachannels/0/readout/result/averages 4096
+2026.07.10 02:00:38.927   set /dev12192/qachannels/0/readout/result/mode 0
+2026.07.10 02:00:38.927   set /dev12192/qachannels/0/readout/multistate/qudits/0/thresholds/0/value 0.0
+2026.07.10 02:00:38.927   set /dev12192/qachannels/0/readout/result/enable 1
+2026.07.10 02:00:38.927   set /dev12192/qachannels/0/spectroscopy/result/enable 0
+2026.07.10 02:00:38.927   set /dev12192/scopes/0/enable 0
+2026.07.10 02:00:38.927   set /dev12192/qachannels/0/generator/elf/data vector (?? B)
+2026.07.10 02:00:38.927   set /dev12192/qachannels/0/generator/clearwave 1
+2026.07.10 02:00:38.927   set /dev12192/qachannels/0/generator/waveforms/0/wave <unexpected type>
+2026.07.10 02:00:38.927   set /dev12192/qachannels/0/spectroscopy/envelope/enable 0
+2026.07.10 02:00:38.927   set /dev12192/qachannels/0/readout/multistate/qudits/0/weights/0/wave vector (?? B)
+2026.07.10 02:00:38.927   set /dev12192/qachannels/0/readout/integration/length 800
+2026.07.10 02:00:38.927   set /dev12192/system/internaltrigger/synchronization/enable 0
+2026.07.10 02:00:38.927   set /dev12192/system/synchronization/source 0
+2026.07.10 02:00:38.927   set /dev12192/sgchannels/0/awg/enable 1
+2026.07.10 02:00:38.927   set /dev12192/qachannels/0/generator/enable 1
+2026.07.10 02:00:38.927   set /dev12192/system/internaltrigger/enable 1
+2026.07.10 02:00:38.927   set /dev12192/raw/system/awg/runtimechecks/enable 0
+2026.07.10 02:00:38.928   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:38.928   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:38.928   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:38.928   set /dev12192/qachannels/*/spectroscopy/envelope/enable 1
+2026.07.10 02:00:38.963 Node log from the data server with id 'zi_server':
+2026.07.10 02:00:38.963   get /dev12192/sgchannels/0/busy -
+2026.07.10 02:00:38.963   get /dev12192/qachannels/0/busy -
+2026.07.10 02:00:38.963   set /dev12192/sgchannels/0/output/on 1
+2026.07.10 02:00:38.963   set /dev12192/sgchannels/0/output/range 10.0
+2026.07.10 02:00:38.963   set /dev12192/sgchannels/0/awg/single 1
+2026.07.10 02:00:38.963   set /dev12192/sgchannels/0/awg/modulation/enable 1
+2026.07.10 02:00:38.963   set /dev12192/sgchannels/0/marker/source 0
+2026.07.10 02:00:38.963   set /dev12192/sgchannels/0/trigger/delay 0.0
+2026.07.10 02:00:38.963   set /dev12192/sgchannels/0/output/rflfpath 1
+2026.07.10 02:00:38.963   set /dev12192/qachannels/0/output/on 1
+2026.07.10 02:00:38.963   set /dev12192/qachannels/0/output/range -20.0
+2026.07.10 02:00:38.963   set /dev12192/qachannels/0/generator/single 1
+2026.07.10 02:00:38.963   set /dev12192/qachannels/0/input/rflfpath 1
+2026.07.10 02:00:38.963   set /dev12192/qachannels/0/input/on 1
+2026.07.10 02:00:38.963   set /dev12192/qachannels/0/input/range -35.0
+2026.07.10 02:00:38.963   set /dev12192/sgchannels/0/sines/0/oscselect 0
+2026.07.10 02:00:38.963   set /dev12192/sgchannels/0/sines/0/harmonic 1
+2026.07.10 02:00:38.963   set /dev12192/sgchannels/0/sines/0/phaseshift 0
+2026.07.10 02:00:38.963   set /dev12192/raw/error/clear 1
+2026.07.10 02:00:38.963   get /dev12192/sgchannels/0/output/overrangecount -
+2026.07.10 02:00:38.963   get /dev12192/sgchannels/1/output/overrangecount -
+2026.07.10 02:00:38.963   get /dev12192/sgchannels/2/output/overrangecount -
+2026.07.10 02:00:38.963   get /dev12192/sgchannels/3/output/overrangecount -
+2026.07.10 02:00:38.963   get /dev12192/sgchannels/4/output/overrangecount -
+2026.07.10 02:00:38.963   get /dev12192/sgchannels/5/output/overrangecount -
+2026.07.10 02:00:38.963   get /dev12192/qachannels/0/output/overrangecount -
+2026.07.10 02:00:38.964   get /dev12192/qachannels/0/input/overrangecount -
+2026.07.10 02:00:38.964   set /dev12192/sgchannels/0/oscs/0/freq -325973566.4786179
+2026.07.10 02:00:38.964   set /dev12192/system/internaltrigger/enable 0
+2026.07.10 02:00:38.964   set /dev12192/system/internaltrigger/repetitions 1
+2026.07.10 02:00:38.964   set /dev12192/sgchannels/0/awg/auxtriggers/0/slope 1
+2026.07.10 02:00:38.964   set /dev12192/sgchannels/0/awg/auxtriggers/0/channel 8
+2026.07.10 02:00:38.964   set /dev12192/qachannels/0/markers/0/source 32
+2026.07.10 02:00:38.964   set /dev12192/qachannels/0/markers/1/source 36
+2026.07.10 02:00:38.964   set /dev12192/qachannels/0/generator/auxtriggers/0/channel 8
+2026.07.10 02:00:38.964   set /dev12192/sgchannels/0/oscs/0/freq -325973566.4786179
+2026.07.10 02:00:38.964   set /dev12192/synthesizers/1/centerfreq 3800000000.0
+2026.07.10 02:00:38.964   set /dev12192/qachannels/0/centerfreq 6200000000.0
+2026.07.10 02:00:38.964   set /dev12192/qachannels/0/generator/delay 0.0
+2026.07.10 02:00:38.964   set /dev12192/qachannels/0/readout/integration/delay 5.42e-07
+2026.07.10 02:00:38.964   set /dev12192/sgchannels/0/output/delay 0.0
+2026.07.10 02:00:38.964   set /dev12192/qachannels/0/mode 1
+2026.07.10 02:00:38.964   set /dev12192/qachannels/0/readout/multistate/qudits/*/enable 0
+2026.07.10 02:00:38.964   set /dev12192/sgchannels/0/awg/elf/data vector (?? B)
+2026.07.10 02:00:38.964   set /dev12192/sgchannels/0/awg/waveform/waves/0 vector (?? B)
+2026.07.10 02:00:38.964   set /dev12192/sgchannels/0/awg/waveform/waves/1 vector (?? B)
+2026.07.10 02:00:38.964   set /dev12192/sgchannels/0/awg/waveform/waves/2 vector (?? B)
+2026.07.10 02:00:38.964   set /dev12192/sgchannels/0/awg/waveform/waves/3 vector (?? B)
+2026.07.10 02:00:38.964   set /dev12192/sgchannels/0/awg/waveform/waves/4 vector (?? B)
+2026.07.10 02:00:38.964   set /dev12192/sgchannels/0/awg/commandtable/data vector (?? B)
+2026.07.10 02:00:38.964   set /dev12192/qachannels/0/readout/multistate/enable 1
+2026.07.10 02:00:38.964   set /dev12192/qachannels/0/readout/multistate/zsync/packed 1
+2026.07.10 02:00:38.964   set /dev12192/qachannels/0/readout/multistate/qudits/0/numstates 2
+2026.07.10 02:00:38.965   set /dev12192/qachannels/0/readout/multistate/qudits/0/enable 1
+2026.07.10 02:00:38.965   set /dev12192/qachannels/0/readout/multistate/qudits/0/assignmentvec vector (?? B)
+2026.07.10 02:00:38.965   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:38.965   set /dev12192/qachannels/0/readout/result/source 1
+2026.07.10 02:00:38.965   set /dev12192/qachannels/0/readout/result/length 101
+2026.07.10 02:00:38.965   set /dev12192/qachannels/0/readout/result/averages 4096
+2026.07.10 02:00:38.965   set /dev12192/qachannels/0/readout/result/mode 0
+2026.07.10 02:00:38.965   set /dev12192/qachannels/0/readout/multistate/qudits/0/thresholds/0/value 0.0
+2026.07.10 02:00:38.965   set /dev12192/qachannels/0/readout/result/enable 1
+2026.07.10 02:00:38.965   set /dev12192/qachannels/0/spectroscopy/result/enable 0
+2026.07.10 02:00:38.965   set /dev12192/scopes/0/enable 0
+2026.07.10 02:00:38.965   set /dev12192/qachannels/0/generator/elf/data vector (?? B)
+2026.07.10 02:00:38.965   set /dev12192/qachannels/0/generator/clearwave 1
+2026.07.10 02:00:38.965   set /dev12192/qachannels/0/generator/waveforms/0/wave <unexpected type>
+2026.07.10 02:00:38.965   set /dev12192/qachannels/0/spectroscopy/envelope/enable 0
+2026.07.10 02:00:38.965   set /dev12192/qachannels/0/readout/multistate/qudits/0/weights/0/wave vector (?? B)
+2026.07.10 02:00:38.965   set /dev12192/qachannels/0/readout/integration/length 800
+2026.07.10 02:00:38.965   set /dev12192/system/internaltrigger/synchronization/enable 0
+2026.07.10 02:00:38.965   set /dev12192/system/synchronization/source 0
+2026.07.10 02:00:38.965   set /dev12192/sgchannels/0/awg/enable 1
+2026.07.10 02:00:38.965   set /dev12192/qachannels/0/generator/enable 1
+2026.07.10 02:00:38.965   set /dev12192/system/internaltrigger/enable 1
+2026.07.10 02:00:38.965   set /dev12192/raw/system/awg/runtimechecks/enable 0
+2026.07.10 02:00:38.965   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:38.965   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:38.965   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:38.965   set /dev12192/qachannels/*/spectroscopy/envelope/enable 1
+2026.07.10 02:00:39.000 Node log from the data server with id 'zi_server':
+2026.07.10 02:00:39.001   get /dev12192/sgchannels/0/busy -
+2026.07.10 02:00:39.001   get /dev12192/qachannels/0/busy -
+2026.07.10 02:00:39.001   set /dev12192/sgchannels/0/output/on 1
+2026.07.10 02:00:39.001   set /dev12192/sgchannels/0/output/range 10.0
+2026.07.10 02:00:39.001   set /dev12192/sgchannels/0/awg/single 1
+2026.07.10 02:00:39.001   set /dev12192/sgchannels/0/awg/modulation/enable 1
+2026.07.10 02:00:39.001   set /dev12192/sgchannels/0/marker/source 0
+2026.07.10 02:00:39.001   set /dev12192/sgchannels/0/trigger/delay 0.0
+2026.07.10 02:00:39.001   set /dev12192/sgchannels/0/output/rflfpath 1
+2026.07.10 02:00:39.001   set /dev12192/qachannels/0/output/on 1
+2026.07.10 02:00:39.001   set /dev12192/qachannels/0/output/range -20.0
+2026.07.10 02:00:39.001   set /dev12192/qachannels/0/generator/single 1
+2026.07.10 02:00:39.001   set /dev12192/qachannels/0/input/rflfpath 1
+2026.07.10 02:00:39.001   set /dev12192/qachannels/0/input/on 1
+2026.07.10 02:00:39.001   set /dev12192/qachannels/0/input/range -35.0
+2026.07.10 02:00:39.001   set /dev12192/sgchannels/0/sines/0/oscselect 0
+2026.07.10 02:00:39.001   set /dev12192/sgchannels/0/sines/0/harmonic 1
+2026.07.10 02:00:39.001   set /dev12192/sgchannels/0/sines/0/phaseshift 0
+2026.07.10 02:00:39.001   set /dev12192/raw/error/clear 1
+2026.07.10 02:00:39.001   get /dev12192/sgchannels/0/output/overrangecount -
+2026.07.10 02:00:39.001   get /dev12192/sgchannels/1/output/overrangecount -
+2026.07.10 02:00:39.001   get /dev12192/sgchannels/2/output/overrangecount -
+2026.07.10 02:00:39.001   get /dev12192/sgchannels/3/output/overrangecount -
+2026.07.10 02:00:39.001   get /dev12192/sgchannels/4/output/overrangecount -
+2026.07.10 02:00:39.001   get /dev12192/sgchannels/5/output/overrangecount -
+2026.07.10 02:00:39.001   get /dev12192/qachannels/0/output/overrangecount -
+2026.07.10 02:00:39.001   get /dev12192/qachannels/0/input/overrangecount -
+2026.07.10 02:00:39.002   set /dev12192/sgchannels/0/oscs/0/freq -325773566.4786179
+2026.07.10 02:00:39.002   set /dev12192/system/internaltrigger/enable 0
+2026.07.10 02:00:39.002   set /dev12192/system/internaltrigger/repetitions 1
+2026.07.10 02:00:39.002   set /dev12192/sgchannels/0/awg/auxtriggers/0/slope 1
+2026.07.10 02:00:39.002   set /dev12192/sgchannels/0/awg/auxtriggers/0/channel 8
+2026.07.10 02:00:39.002   set /dev12192/qachannels/0/markers/0/source 32
+2026.07.10 02:00:39.002   set /dev12192/qachannels/0/markers/1/source 36
+2026.07.10 02:00:39.002   set /dev12192/qachannels/0/generator/auxtriggers/0/channel 8
+2026.07.10 02:00:39.002   set /dev12192/sgchannels/0/oscs/0/freq -325773566.4786179
+2026.07.10 02:00:39.002   set /dev12192/synthesizers/1/centerfreq 3800000000.0
+2026.07.10 02:00:39.002   set /dev12192/qachannels/0/centerfreq 6200000000.0
+2026.07.10 02:00:39.002   set /dev12192/qachannels/0/generator/delay 0.0
+2026.07.10 02:00:39.002   set /dev12192/qachannels/0/readout/integration/delay 5.42e-07
+2026.07.10 02:00:39.002   set /dev12192/sgchannels/0/output/delay 0.0
+2026.07.10 02:00:39.002   set /dev12192/qachannels/0/mode 1
+2026.07.10 02:00:39.002   set /dev12192/qachannels/0/readout/multistate/qudits/*/enable 0
+2026.07.10 02:00:39.002   set /dev12192/sgchannels/0/awg/elf/data vector (?? B)
+2026.07.10 02:00:39.002   set /dev12192/sgchannels/0/awg/waveform/waves/0 vector (?? B)
+2026.07.10 02:00:39.002   set /dev12192/sgchannels/0/awg/waveform/waves/1 vector (?? B)
+2026.07.10 02:00:39.002   set /dev12192/sgchannels/0/awg/waveform/waves/2 vector (?? B)
+2026.07.10 02:00:39.002   set /dev12192/sgchannels/0/awg/waveform/waves/3 vector (?? B)
+2026.07.10 02:00:39.002   set /dev12192/sgchannels/0/awg/waveform/waves/4 vector (?? B)
+2026.07.10 02:00:39.002   set /dev12192/sgchannels/0/awg/commandtable/data vector (?? B)
+2026.07.10 02:00:39.002   set /dev12192/qachannels/0/readout/multistate/enable 1
+2026.07.10 02:00:39.002   set /dev12192/qachannels/0/readout/multistate/zsync/packed 1
+2026.07.10 02:00:39.002   set /dev12192/qachannels/0/readout/multistate/qudits/0/numstates 2
+2026.07.10 02:00:39.002   set /dev12192/qachannels/0/readout/multistate/qudits/0/enable 1
+2026.07.10 02:00:39.002   set /dev12192/qachannels/0/readout/multistate/qudits/0/assignmentvec vector (?? B)
+2026.07.10 02:00:39.003   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:39.003   set /dev12192/qachannels/0/readout/result/source 1
+2026.07.10 02:00:39.003   set /dev12192/qachannels/0/readout/result/length 101
+2026.07.10 02:00:39.003   set /dev12192/qachannels/0/readout/result/averages 4096
+2026.07.10 02:00:39.003   set /dev12192/qachannels/0/readout/result/mode 0
+2026.07.10 02:00:39.003   set /dev12192/qachannels/0/readout/multistate/qudits/0/thresholds/0/value 0.0
+2026.07.10 02:00:39.003   set /dev12192/qachannels/0/readout/result/enable 1
+2026.07.10 02:00:39.003   set /dev12192/qachannels/0/spectroscopy/result/enable 0
+2026.07.10 02:00:39.003   set /dev12192/scopes/0/enable 0
+2026.07.10 02:00:39.003   set /dev12192/qachannels/0/generator/elf/data vector (?? B)
+2026.07.10 02:00:39.003   set /dev12192/qachannels/0/generator/clearwave 1
+2026.07.10 02:00:39.003   set /dev12192/qachannels/0/generator/waveforms/0/wave <unexpected type>
+2026.07.10 02:00:39.003   set /dev12192/qachannels/0/spectroscopy/envelope/enable 0
+2026.07.10 02:00:39.003   set /dev12192/qachannels/0/readout/multistate/qudits/0/weights/0/wave vector (?? B)
+2026.07.10 02:00:39.003   set /dev12192/qachannels/0/readout/integration/length 800
+2026.07.10 02:00:39.003   set /dev12192/system/internaltrigger/synchronization/enable 0
+2026.07.10 02:00:39.003   set /dev12192/system/synchronization/source 0
+2026.07.10 02:00:39.003   set /dev12192/sgchannels/0/awg/enable 1
+2026.07.10 02:00:39.003   set /dev12192/qachannels/0/generator/enable 1
+2026.07.10 02:00:39.003   set /dev12192/system/internaltrigger/enable 1
+2026.07.10 02:00:39.003   set /dev12192/raw/system/awg/runtimechecks/enable 0
+2026.07.10 02:00:39.003   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:39.003   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:39.003   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:39.003   set /dev12192/qachannels/*/spectroscopy/envelope/enable 1
+2026.07.10 02:00:39.039 Node log from the data server with id 'zi_server':
+2026.07.10 02:00:39.039   get /dev12192/sgchannels/0/busy -
+2026.07.10 02:00:39.039   get /dev12192/qachannels/0/busy -
+2026.07.10 02:00:39.039   set /dev12192/sgchannels/0/output/on 1
+2026.07.10 02:00:39.039   set /dev12192/sgchannels/0/output/range 10.0
+2026.07.10 02:00:39.039   set /dev12192/sgchannels/0/awg/single 1
+2026.07.10 02:00:39.039   set /dev12192/sgchannels/0/awg/modulation/enable 1
+2026.07.10 02:00:39.039   set /dev12192/sgchannels/0/marker/source 0
+2026.07.10 02:00:39.039   set /dev12192/sgchannels/0/trigger/delay 0.0
+2026.07.10 02:00:39.039   set /dev12192/sgchannels/0/output/rflfpath 1
+2026.07.10 02:00:39.039   set /dev12192/qachannels/0/output/on 1
+2026.07.10 02:00:39.039   set /dev12192/qachannels/0/output/range -20.0
+2026.07.10 02:00:39.039   set /dev12192/qachannels/0/generator/single 1
+2026.07.10 02:00:39.039   set /dev12192/qachannels/0/input/rflfpath 1
+2026.07.10 02:00:39.039   set /dev12192/qachannels/0/input/on 1
+2026.07.10 02:00:39.039   set /dev12192/qachannels/0/input/range -35.0
+2026.07.10 02:00:39.040   set /dev12192/sgchannels/0/sines/0/oscselect 0
+2026.07.10 02:00:39.040   set /dev12192/sgchannels/0/sines/0/harmonic 1
+2026.07.10 02:00:39.040   set /dev12192/sgchannels/0/sines/0/phaseshift 0
+2026.07.10 02:00:39.040   set /dev12192/raw/error/clear 1
+2026.07.10 02:00:39.040   get /dev12192/sgchannels/0/output/overrangecount -
+2026.07.10 02:00:39.040   get /dev12192/sgchannels/1/output/overrangecount -
+2026.07.10 02:00:39.040   get /dev12192/sgchannels/2/output/overrangecount -
+2026.07.10 02:00:39.040   get /dev12192/sgchannels/3/output/overrangecount -
+2026.07.10 02:00:39.040   get /dev12192/sgchannels/4/output/overrangecount -
+2026.07.10 02:00:39.040   get /dev12192/sgchannels/5/output/overrangecount -
+2026.07.10 02:00:39.040   get /dev12192/qachannels/0/output/overrangecount -
+2026.07.10 02:00:39.040   get /dev12192/qachannels/0/input/overrangecount -
+2026.07.10 02:00:39.040   set /dev12192/sgchannels/0/oscs/0/freq -325573566.4786179
+2026.07.10 02:00:39.040   set /dev12192/system/internaltrigger/enable 0
+2026.07.10 02:00:39.040   set /dev12192/system/internaltrigger/repetitions 1
+2026.07.10 02:00:39.040   set /dev12192/sgchannels/0/awg/auxtriggers/0/slope 1
+2026.07.10 02:00:39.040   set /dev12192/sgchannels/0/awg/auxtriggers/0/channel 8
+2026.07.10 02:00:39.040   set /dev12192/qachannels/0/markers/0/source 32
+2026.07.10 02:00:39.040   set /dev12192/qachannels/0/markers/1/source 36
+2026.07.10 02:00:39.040   set /dev12192/qachannels/0/generator/auxtriggers/0/channel 8
+2026.07.10 02:00:39.040   set /dev12192/sgchannels/0/oscs/0/freq -325573566.4786179
+2026.07.10 02:00:39.040   set /dev12192/synthesizers/1/centerfreq 3800000000.0
+2026.07.10 02:00:39.040   set /dev12192/qachannels/0/centerfreq 6200000000.0
+2026.07.10 02:00:39.040   set /dev12192/qachannels/0/generator/delay 0.0
+2026.07.10 02:00:39.040   set /dev12192/qachannels/0/readout/integration/delay 5.42e-07
+2026.07.10 02:00:39.040   set /dev12192/sgchannels/0/output/delay 0.0
+2026.07.10 02:00:39.040   set /dev12192/qachannels/0/mode 1
+2026.07.10 02:00:39.040   set /dev12192/qachannels/0/readout/multistate/qudits/*/enable 0
+2026.07.10 02:00:39.041   set /dev12192/sgchannels/0/awg/elf/data vector (?? B)
+2026.07.10 02:00:39.041   set /dev12192/sgchannels/0/awg/waveform/waves/0 vector (?? B)
+2026.07.10 02:00:39.041   set /dev12192/sgchannels/0/awg/waveform/waves/1 vector (?? B)
+2026.07.10 02:00:39.041   set /dev12192/sgchannels/0/awg/waveform/waves/2 vector (?? B)
+2026.07.10 02:00:39.041   set /dev12192/sgchannels/0/awg/waveform/waves/3 vector (?? B)
+2026.07.10 02:00:39.041   set /dev12192/sgchannels/0/awg/waveform/waves/4 vector (?? B)
+2026.07.10 02:00:39.041   set /dev12192/sgchannels/0/awg/commandtable/data vector (?? B)
+2026.07.10 02:00:39.041   set /dev12192/qachannels/0/readout/multistate/enable 1
+2026.07.10 02:00:39.041   set /dev12192/qachannels/0/readout/multistate/zsync/packed 1
+2026.07.10 02:00:39.041   set /dev12192/qachannels/0/readout/multistate/qudits/0/numstates 2
+2026.07.10 02:00:39.041   set /dev12192/qachannels/0/readout/multistate/qudits/0/enable 1
+2026.07.10 02:00:39.041   set /dev12192/qachannels/0/readout/multistate/qudits/0/assignmentvec vector (?? B)
+2026.07.10 02:00:39.041   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:39.041   set /dev12192/qachannels/0/readout/result/source 1
+2026.07.10 02:00:39.041   set /dev12192/qachannels/0/readout/result/length 101
+2026.07.10 02:00:39.041   set /dev12192/qachannels/0/readout/result/averages 4096
+2026.07.10 02:00:39.041   set /dev12192/qachannels/0/readout/result/mode 0
+2026.07.10 02:00:39.041   set /dev12192/qachannels/0/readout/multistate/qudits/0/thresholds/0/value 0.0
+2026.07.10 02:00:39.041   set /dev12192/qachannels/0/readout/result/enable 1
+2026.07.10 02:00:39.041   set /dev12192/qachannels/0/spectroscopy/result/enable 0
+2026.07.10 02:00:39.041   set /dev12192/scopes/0/enable 0
+2026.07.10 02:00:39.041   set /dev12192/qachannels/0/generator/elf/data vector (?? B)
+2026.07.10 02:00:39.041   set /dev12192/qachannels/0/generator/clearwave 1
+2026.07.10 02:00:39.041   set /dev12192/qachannels/0/generator/waveforms/0/wave <unexpected type>
+2026.07.10 02:00:39.041   set /dev12192/qachannels/0/spectroscopy/envelope/enable 0
+2026.07.10 02:00:39.041   set /dev12192/qachannels/0/readout/multistate/qudits/0/weights/0/wave vector (?? B)
+2026.07.10 02:00:39.041   set /dev12192/qachannels/0/readout/integration/length 800
+2026.07.10 02:00:39.042   set /dev12192/system/internaltrigger/synchronization/enable 0
+2026.07.10 02:00:39.042   set /dev12192/system/synchronization/source 0
+2026.07.10 02:00:39.042   set /dev12192/sgchannels/0/awg/enable 1
+2026.07.10 02:00:39.042   set /dev12192/qachannels/0/generator/enable 1
+2026.07.10 02:00:39.042   set /dev12192/system/internaltrigger/enable 1
+2026.07.10 02:00:39.042   set /dev12192/raw/system/awg/runtimechecks/enable 0
+2026.07.10 02:00:39.042   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:39.042   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:39.042   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:39.042   set /dev12192/qachannels/*/spectroscopy/envelope/enable 1
+2026.07.10 02:00:39.076 Node log from the data server with id 'zi_server':
+2026.07.10 02:00:39.076   get /dev12192/sgchannels/0/busy -
+2026.07.10 02:00:39.077   get /dev12192/qachannels/0/busy -
+2026.07.10 02:00:39.077   set /dev12192/sgchannels/0/output/on 1
+2026.07.10 02:00:39.077   set /dev12192/sgchannels/0/output/range 10.0
+2026.07.10 02:00:39.077   set /dev12192/sgchannels/0/awg/single 1
+2026.07.10 02:00:39.077   set /dev12192/sgchannels/0/awg/modulation/enable 1
+2026.07.10 02:00:39.077   set /dev12192/sgchannels/0/marker/source 0
+2026.07.10 02:00:39.077   set /dev12192/sgchannels/0/trigger/delay 0.0
+2026.07.10 02:00:39.077   set /dev12192/sgchannels/0/output/rflfpath 1
+2026.07.10 02:00:39.077   set /dev12192/qachannels/0/output/on 1
+2026.07.10 02:00:39.077   set /dev12192/qachannels/0/output/range -20.0
+2026.07.10 02:00:39.077   set /dev12192/qachannels/0/generator/single 1
+2026.07.10 02:00:39.077   set /dev12192/qachannels/0/input/rflfpath 1
+2026.07.10 02:00:39.077   set /dev12192/qachannels/0/input/on 1
+2026.07.10 02:00:39.077   set /dev12192/qachannels/0/input/range -35.0
+2026.07.10 02:00:39.077   set /dev12192/sgchannels/0/sines/0/oscselect 0
+2026.07.10 02:00:39.077   set /dev12192/sgchannels/0/sines/0/harmonic 1
+2026.07.10 02:00:39.077   set /dev12192/sgchannels/0/sines/0/phaseshift 0
+2026.07.10 02:00:39.077   set /dev12192/raw/error/clear 1
+2026.07.10 02:00:39.077   get /dev12192/sgchannels/0/output/overrangecount -
+2026.07.10 02:00:39.077   get /dev12192/sgchannels/1/output/overrangecount -
+2026.07.10 02:00:39.077   get /dev12192/sgchannels/2/output/overrangecount -
+2026.07.10 02:00:39.077   get /dev12192/sgchannels/3/output/overrangecount -
+2026.07.10 02:00:39.077   get /dev12192/sgchannels/4/output/overrangecount -
+2026.07.10 02:00:39.077   get /dev12192/sgchannels/5/output/overrangecount -
+2026.07.10 02:00:39.077   get /dev12192/qachannels/0/output/overrangecount -
+2026.07.10 02:00:39.077   get /dev12192/qachannels/0/input/overrangecount -
+2026.07.10 02:00:39.077   set /dev12192/sgchannels/0/oscs/0/freq -325373566.4786179
+2026.07.10 02:00:39.077   set /dev12192/system/internaltrigger/enable 0
+2026.07.10 02:00:39.077   set /dev12192/system/internaltrigger/repetitions 1
+2026.07.10 02:00:39.077   set /dev12192/sgchannels/0/awg/auxtriggers/0/slope 1
+2026.07.10 02:00:39.078   set /dev12192/sgchannels/0/awg/auxtriggers/0/channel 8
+2026.07.10 02:00:39.078   set /dev12192/qachannels/0/markers/0/source 32
+2026.07.10 02:00:39.078   set /dev12192/qachannels/0/markers/1/source 36
+2026.07.10 02:00:39.078   set /dev12192/qachannels/0/generator/auxtriggers/0/channel 8
+2026.07.10 02:00:39.078   set /dev12192/sgchannels/0/oscs/0/freq -325373566.4786179
+2026.07.10 02:00:39.078   set /dev12192/synthesizers/1/centerfreq 3800000000.0
+2026.07.10 02:00:39.078   set /dev12192/qachannels/0/centerfreq 6200000000.0
+2026.07.10 02:00:39.078   set /dev12192/qachannels/0/generator/delay 0.0
+2026.07.10 02:00:39.078   set /dev12192/qachannels/0/readout/integration/delay 5.42e-07
+2026.07.10 02:00:39.078   set /dev12192/sgchannels/0/output/delay 0.0
+2026.07.10 02:00:39.078   set /dev12192/qachannels/0/mode 1
+2026.07.10 02:00:39.078   set /dev12192/qachannels/0/readout/multistate/qudits/*/enable 0
+2026.07.10 02:00:39.078   set /dev12192/sgchannels/0/awg/elf/data vector (?? B)
+2026.07.10 02:00:39.078   set /dev12192/sgchannels/0/awg/waveform/waves/0 vector (?? B)
+2026.07.10 02:00:39.078   set /dev12192/sgchannels/0/awg/waveform/waves/1 vector (?? B)
+2026.07.10 02:00:39.078   set /dev12192/sgchannels/0/awg/waveform/waves/2 vector (?? B)
+2026.07.10 02:00:39.078   set /dev12192/sgchannels/0/awg/waveform/waves/3 vector (?? B)
+2026.07.10 02:00:39.078   set /dev12192/sgchannels/0/awg/waveform/waves/4 vector (?? B)
+2026.07.10 02:00:39.078   set /dev12192/sgchannels/0/awg/commandtable/data vector (?? B)
+2026.07.10 02:00:39.078   set /dev12192/qachannels/0/readout/multistate/enable 1
+2026.07.10 02:00:39.078   set /dev12192/qachannels/0/readout/multistate/zsync/packed 1
+2026.07.10 02:00:39.078   set /dev12192/qachannels/0/readout/multistate/qudits/0/numstates 2
+2026.07.10 02:00:39.078   set /dev12192/qachannels/0/readout/multistate/qudits/0/enable 1
+2026.07.10 02:00:39.078   set /dev12192/qachannels/0/readout/multistate/qudits/0/assignmentvec vector (?? B)
+2026.07.10 02:00:39.078   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:39.078   set /dev12192/qachannels/0/readout/result/source 1
+2026.07.10 02:00:39.078   set /dev12192/qachannels/0/readout/result/length 101
+2026.07.10 02:00:39.078   set /dev12192/qachannels/0/readout/result/averages 4096
+2026.07.10 02:00:39.079   set /dev12192/qachannels/0/readout/result/mode 0
+2026.07.10 02:00:39.079   set /dev12192/qachannels/0/readout/multistate/qudits/0/thresholds/0/value 0.0
+2026.07.10 02:00:39.079   set /dev12192/qachannels/0/readout/result/enable 1
+2026.07.10 02:00:39.079   set /dev12192/qachannels/0/spectroscopy/result/enable 0
+2026.07.10 02:00:39.079   set /dev12192/scopes/0/enable 0
+2026.07.10 02:00:39.079   set /dev12192/qachannels/0/generator/elf/data vector (?? B)
+2026.07.10 02:00:39.079   set /dev12192/qachannels/0/generator/clearwave 1
+2026.07.10 02:00:39.079   set /dev12192/qachannels/0/generator/waveforms/0/wave <unexpected type>
+2026.07.10 02:00:39.079   set /dev12192/qachannels/0/spectroscopy/envelope/enable 0
+2026.07.10 02:00:39.079   set /dev12192/qachannels/0/readout/multistate/qudits/0/weights/0/wave vector (?? B)
+2026.07.10 02:00:39.079   set /dev12192/qachannels/0/readout/integration/length 800
+2026.07.10 02:00:39.079   set /dev12192/system/internaltrigger/synchronization/enable 0
+2026.07.10 02:00:39.079   set /dev12192/system/synchronization/source 0
+2026.07.10 02:00:39.079   set /dev12192/sgchannels/0/awg/enable 1
+2026.07.10 02:00:39.079   set /dev12192/qachannels/0/generator/enable 1
+2026.07.10 02:00:39.079   set /dev12192/system/internaltrigger/enable 1
+2026.07.10 02:00:39.079   set /dev12192/raw/system/awg/runtimechecks/enable 0
+2026.07.10 02:00:39.079   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:39.079   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:39.079   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:39.079   set /dev12192/qachannels/*/spectroscopy/envelope/enable 1
+2026.07.10 02:00:39.114 Node log from the data server with id 'zi_server':
+2026.07.10 02:00:39.114   get /dev12192/sgchannels/0/busy -
+2026.07.10 02:00:39.114   get /dev12192/qachannels/0/busy -
+2026.07.10 02:00:39.114   set /dev12192/sgchannels/0/output/on 1
+2026.07.10 02:00:39.114   set /dev12192/sgchannels/0/output/range 10.0
+2026.07.10 02:00:39.114   set /dev12192/sgchannels/0/awg/single 1
+2026.07.10 02:00:39.114   set /dev12192/sgchannels/0/awg/modulation/enable 1
+2026.07.10 02:00:39.114   set /dev12192/sgchannels/0/marker/source 0
+2026.07.10 02:00:39.114   set /dev12192/sgchannels/0/trigger/delay 0.0
+2026.07.10 02:00:39.114   set /dev12192/sgchannels/0/output/rflfpath 1
+2026.07.10 02:00:39.114   set /dev12192/qachannels/0/output/on 1
+2026.07.10 02:00:39.114   set /dev12192/qachannels/0/output/range -20.0
+2026.07.10 02:00:39.114   set /dev12192/qachannels/0/generator/single 1
+2026.07.10 02:00:39.114   set /dev12192/qachannels/0/input/rflfpath 1
+2026.07.10 02:00:39.114   set /dev12192/qachannels/0/input/on 1
+2026.07.10 02:00:39.115   set /dev12192/qachannels/0/input/range -35.0
+2026.07.10 02:00:39.115   set /dev12192/sgchannels/0/sines/0/oscselect 0
+2026.07.10 02:00:39.115   set /dev12192/sgchannels/0/sines/0/harmonic 1
+2026.07.10 02:00:39.115   set /dev12192/sgchannels/0/sines/0/phaseshift 0
+2026.07.10 02:00:39.115   set /dev12192/raw/error/clear 1
+2026.07.10 02:00:39.115   get /dev12192/sgchannels/0/output/overrangecount -
+2026.07.10 02:00:39.115   get /dev12192/sgchannels/1/output/overrangecount -
+2026.07.10 02:00:39.115   get /dev12192/sgchannels/2/output/overrangecount -
+2026.07.10 02:00:39.115   get /dev12192/sgchannels/3/output/overrangecount -
+2026.07.10 02:00:39.115   get /dev12192/sgchannels/4/output/overrangecount -
+2026.07.10 02:00:39.115   get /dev12192/sgchannels/5/output/overrangecount -
+2026.07.10 02:00:39.115   get /dev12192/qachannels/0/output/overrangecount -
+2026.07.10 02:00:39.115   get /dev12192/qachannels/0/input/overrangecount -
+2026.07.10 02:00:39.115   set /dev12192/sgchannels/0/oscs/0/freq -325173566.4786179
+2026.07.10 02:00:39.115   set /dev12192/system/internaltrigger/enable 0
+2026.07.10 02:00:39.115   set /dev12192/system/internaltrigger/repetitions 1
+2026.07.10 02:00:39.115   set /dev12192/sgchannels/0/awg/auxtriggers/0/slope 1
+2026.07.10 02:00:39.115   set /dev12192/sgchannels/0/awg/auxtriggers/0/channel 8
+2026.07.10 02:00:39.115   set /dev12192/qachannels/0/markers/0/source 32
+2026.07.10 02:00:39.115   set /dev12192/qachannels/0/markers/1/source 36
+2026.07.10 02:00:39.115   set /dev12192/qachannels/0/generator/auxtriggers/0/channel 8
+2026.07.10 02:00:39.115   set /dev12192/sgchannels/0/oscs/0/freq -325173566.4786179
+2026.07.10 02:00:39.115   set /dev12192/synthesizers/1/centerfreq 3800000000.0
+2026.07.10 02:00:39.115   set /dev12192/qachannels/0/centerfreq 6200000000.0
+2026.07.10 02:00:39.115   set /dev12192/qachannels/0/generator/delay 0.0
+2026.07.10 02:00:39.115   set /dev12192/qachannels/0/readout/integration/delay 5.42e-07
+2026.07.10 02:00:39.115   set /dev12192/sgchannels/0/output/delay 0.0
+2026.07.10 02:00:39.115   set /dev12192/qachannels/0/mode 1
+2026.07.10 02:00:39.115   set /dev12192/qachannels/0/readout/multistate/qudits/*/enable 0
+2026.07.10 02:00:39.116   set /dev12192/sgchannels/0/awg/elf/data vector (?? B)
+2026.07.10 02:00:39.116   set /dev12192/sgchannels/0/awg/waveform/waves/0 vector (?? B)
+2026.07.10 02:00:39.116   set /dev12192/sgchannels/0/awg/waveform/waves/1 vector (?? B)
+2026.07.10 02:00:39.116   set /dev12192/sgchannels/0/awg/waveform/waves/2 vector (?? B)
+2026.07.10 02:00:39.116   set /dev12192/sgchannels/0/awg/waveform/waves/3 vector (?? B)
+2026.07.10 02:00:39.116   set /dev12192/sgchannels/0/awg/waveform/waves/4 vector (?? B)
+2026.07.10 02:00:39.116   set /dev12192/sgchannels/0/awg/commandtable/data vector (?? B)
+2026.07.10 02:00:39.116   set /dev12192/qachannels/0/readout/multistate/enable 1
+2026.07.10 02:00:39.116   set /dev12192/qachannels/0/readout/multistate/zsync/packed 1
+2026.07.10 02:00:39.116   set /dev12192/qachannels/0/readout/multistate/qudits/0/numstates 2
+2026.07.10 02:00:39.116   set /dev12192/qachannels/0/readout/multistate/qudits/0/enable 1
+2026.07.10 02:00:39.116   set /dev12192/qachannels/0/readout/multistate/qudits/0/assignmentvec vector (?? B)
+2026.07.10 02:00:39.116   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:39.116   set /dev12192/qachannels/0/readout/result/source 1
+2026.07.10 02:00:39.116   set /dev12192/qachannels/0/readout/result/length 101
+2026.07.10 02:00:39.116   set /dev12192/qachannels/0/readout/result/averages 4096
+2026.07.10 02:00:39.116   set /dev12192/qachannels/0/readout/result/mode 0
+2026.07.10 02:00:39.116   set /dev12192/qachannels/0/readout/multistate/qudits/0/thresholds/0/value 0.0
+2026.07.10 02:00:39.116   set /dev12192/qachannels/0/readout/result/enable 1
+2026.07.10 02:00:39.116   set /dev12192/qachannels/0/spectroscopy/result/enable 0
+2026.07.10 02:00:39.116   set /dev12192/scopes/0/enable 0
+2026.07.10 02:00:39.116   set /dev12192/qachannels/0/generator/elf/data vector (?? B)
+2026.07.10 02:00:39.116   set /dev12192/qachannels/0/generator/clearwave 1
+2026.07.10 02:00:39.116   set /dev12192/qachannels/0/generator/waveforms/0/wave <unexpected type>
+2026.07.10 02:00:39.116   set /dev12192/qachannels/0/spectroscopy/envelope/enable 0
+2026.07.10 02:00:39.116   set /dev12192/qachannels/0/readout/multistate/qudits/0/weights/0/wave vector (?? B)
+2026.07.10 02:00:39.116   set /dev12192/qachannels/0/readout/integration/length 800
+2026.07.10 02:00:39.117   set /dev12192/system/internaltrigger/synchronization/enable 0
+2026.07.10 02:00:39.117   set /dev12192/system/synchronization/source 0
+2026.07.10 02:00:39.117   set /dev12192/sgchannels/0/awg/enable 1
+2026.07.10 02:00:39.117   set /dev12192/qachannels/0/generator/enable 1
+2026.07.10 02:00:39.117   set /dev12192/system/internaltrigger/enable 1
+2026.07.10 02:00:39.117   set /dev12192/raw/system/awg/runtimechecks/enable 0
+2026.07.10 02:00:39.117   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:39.117   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:39.117   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:39.117   set /dev12192/qachannels/*/spectroscopy/envelope/enable 1
+2026.07.10 02:00:39.158 Node log from the data server with id 'zi_server':
+2026.07.10 02:00:39.158   get /dev12192/sgchannels/0/busy -
+2026.07.10 02:00:39.158   get /dev12192/qachannels/0/busy -
+2026.07.10 02:00:39.158   set /dev12192/sgchannels/0/output/on 1
+2026.07.10 02:00:39.158   set /dev12192/sgchannels/0/output/range 10.0
+2026.07.10 02:00:39.158   set /dev12192/sgchannels/0/awg/single 1
+2026.07.10 02:00:39.158   set /dev12192/sgchannels/0/awg/modulation/enable 1
+2026.07.10 02:00:39.158   set /dev12192/sgchannels/0/marker/source 0
+2026.07.10 02:00:39.158   set /dev12192/sgchannels/0/trigger/delay 0.0
+2026.07.10 02:00:39.158   set /dev12192/sgchannels/0/output/rflfpath 1
+2026.07.10 02:00:39.158   set /dev12192/qachannels/0/output/on 1
+2026.07.10 02:00:39.158   set /dev12192/qachannels/0/output/range -20.0
+2026.07.10 02:00:39.158   set /dev12192/qachannels/0/generator/single 1
+2026.07.10 02:00:39.158   set /dev12192/qachannels/0/input/rflfpath 1
+2026.07.10 02:00:39.158   set /dev12192/qachannels/0/input/on 1
+2026.07.10 02:00:39.158   set /dev12192/qachannels/0/input/range -35.0
+2026.07.10 02:00:39.158   set /dev12192/sgchannels/0/sines/0/oscselect 0
+2026.07.10 02:00:39.158   set /dev12192/sgchannels/0/sines/0/harmonic 1
+2026.07.10 02:00:39.158   set /dev12192/sgchannels/0/sines/0/phaseshift 0
+2026.07.10 02:00:39.159   set /dev12192/raw/error/clear 1
+2026.07.10 02:00:39.159   get /dev12192/sgchannels/0/output/overrangecount -
+2026.07.10 02:00:39.159   get /dev12192/sgchannels/1/output/overrangecount -
+2026.07.10 02:00:39.159   get /dev12192/sgchannels/2/output/overrangecount -
+2026.07.10 02:00:39.159   get /dev12192/sgchannels/3/output/overrangecount -
+2026.07.10 02:00:39.159   get /dev12192/sgchannels/4/output/overrangecount -
+2026.07.10 02:00:39.159   get /dev12192/sgchannels/5/output/overrangecount -
+2026.07.10 02:00:39.159   get /dev12192/qachannels/0/output/overrangecount -
+2026.07.10 02:00:39.159   get /dev12192/qachannels/0/input/overrangecount -
+2026.07.10 02:00:39.159   set /dev12192/sgchannels/0/oscs/0/freq -324973566.4786179
+2026.07.10 02:00:39.159   set /dev12192/system/internaltrigger/enable 0
+2026.07.10 02:00:39.159   set /dev12192/system/internaltrigger/repetitions 1
+2026.07.10 02:00:39.159   set /dev12192/sgchannels/0/awg/auxtriggers/0/slope 1
+2026.07.10 02:00:39.159   set /dev12192/sgchannels/0/awg/auxtriggers/0/channel 8
+2026.07.10 02:00:39.159   set /dev12192/qachannels/0/markers/0/source 32
+2026.07.10 02:00:39.159   set /dev12192/qachannels/0/markers/1/source 36
+2026.07.10 02:00:39.159   set /dev12192/qachannels/0/generator/auxtriggers/0/channel 8
+2026.07.10 02:00:39.159   set /dev12192/sgchannels/0/oscs/0/freq -324973566.4786179
+2026.07.10 02:00:39.159   set /dev12192/synthesizers/1/centerfreq 3800000000.0
+2026.07.10 02:00:39.159   set /dev12192/qachannels/0/centerfreq 6200000000.0
+2026.07.10 02:00:39.159   set /dev12192/qachannels/0/generator/delay 0.0
+2026.07.10 02:00:39.159   set /dev12192/qachannels/0/readout/integration/delay 5.42e-07
+2026.07.10 02:00:39.159   set /dev12192/sgchannels/0/output/delay 0.0
+2026.07.10 02:00:39.159   set /dev12192/qachannels/0/mode 1
+2026.07.10 02:00:39.159   set /dev12192/qachannels/0/readout/multistate/qudits/*/enable 0
+2026.07.10 02:00:39.159   set /dev12192/sgchannels/0/awg/elf/data vector (?? B)
+2026.07.10 02:00:39.159   set /dev12192/sgchannels/0/awg/waveform/waves/0 vector (?? B)
+2026.07.10 02:00:39.160   set /dev12192/sgchannels/0/awg/waveform/waves/1 vector (?? B)
+2026.07.10 02:00:39.160   set /dev12192/sgchannels/0/awg/waveform/waves/2 vector (?? B)
+2026.07.10 02:00:39.160   set /dev12192/sgchannels/0/awg/waveform/waves/3 vector (?? B)
+2026.07.10 02:00:39.160   set /dev12192/sgchannels/0/awg/waveform/waves/4 vector (?? B)
+2026.07.10 02:00:39.160   set /dev12192/sgchannels/0/awg/commandtable/data vector (?? B)
+2026.07.10 02:00:39.160   set /dev12192/qachannels/0/readout/multistate/enable 1
+2026.07.10 02:00:39.160   set /dev12192/qachannels/0/readout/multistate/zsync/packed 1
+2026.07.10 02:00:39.160   set /dev12192/qachannels/0/readout/multistate/qudits/0/numstates 2
+2026.07.10 02:00:39.160   set /dev12192/qachannels/0/readout/multistate/qudits/0/enable 1
+2026.07.10 02:00:39.160   set /dev12192/qachannels/0/readout/multistate/qudits/0/assignmentvec vector (?? B)
+2026.07.10 02:00:39.160   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:39.160   set /dev12192/qachannels/0/readout/result/source 1
+2026.07.10 02:00:39.160   set /dev12192/qachannels/0/readout/result/length 101
+2026.07.10 02:00:39.160   set /dev12192/qachannels/0/readout/result/averages 4096
+2026.07.10 02:00:39.160   set /dev12192/qachannels/0/readout/result/mode 0
+2026.07.10 02:00:39.160   set /dev12192/qachannels/0/readout/multistate/qudits/0/thresholds/0/value 0.0
+2026.07.10 02:00:39.160   set /dev12192/qachannels/0/readout/result/enable 1
+2026.07.10 02:00:39.160   set /dev12192/qachannels/0/spectroscopy/result/enable 0
+2026.07.10 02:00:39.160   set /dev12192/scopes/0/enable 0
+2026.07.10 02:00:39.160   set /dev12192/qachannels/0/generator/elf/data vector (?? B)
+2026.07.10 02:00:39.160   set /dev12192/qachannels/0/generator/clearwave 1
+2026.07.10 02:00:39.160   set /dev12192/qachannels/0/generator/waveforms/0/wave <unexpected type>
+2026.07.10 02:00:39.160   set /dev12192/qachannels/0/spectroscopy/envelope/enable 0
+2026.07.10 02:00:39.160   set /dev12192/qachannels/0/readout/multistate/qudits/0/weights/0/wave vector (?? B)
+2026.07.10 02:00:39.160   set /dev12192/qachannels/0/readout/integration/length 800
+2026.07.10 02:00:39.160   set /dev12192/system/internaltrigger/synchronization/enable 0
+2026.07.10 02:00:39.160   set /dev12192/system/synchronization/source 0
+2026.07.10 02:00:39.160   set /dev12192/sgchannels/0/awg/enable 1
+2026.07.10 02:00:39.160   set /dev12192/qachannels/0/generator/enable 1
+2026.07.10 02:00:39.161   set /dev12192/system/internaltrigger/enable 1
+2026.07.10 02:00:39.161   set /dev12192/raw/system/awg/runtimechecks/enable 0
+2026.07.10 02:00:39.161   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:39.161   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:39.161   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:39.161   set /dev12192/qachannels/*/spectroscopy/envelope/enable 1
+2026.07.10 02:00:39.194 Node log from the data server with id 'zi_server':
+2026.07.10 02:00:39.195   get /dev12192/sgchannels/0/busy -
+2026.07.10 02:00:39.195   get /dev12192/qachannels/0/busy -
+2026.07.10 02:00:39.195   set /dev12192/sgchannels/0/output/on 1
+2026.07.10 02:00:39.195   set /dev12192/sgchannels/0/output/range 10.0
+2026.07.10 02:00:39.195   set /dev12192/sgchannels/0/awg/single 1
+2026.07.10 02:00:39.195   set /dev12192/sgchannels/0/awg/modulation/enable 1
+2026.07.10 02:00:39.195   set /dev12192/sgchannels/0/marker/source 0
+2026.07.10 02:00:39.195   set /dev12192/sgchannels/0/trigger/delay 0.0
+2026.07.10 02:00:39.195   set /dev12192/sgchannels/0/output/rflfpath 1
+2026.07.10 02:00:39.195   set /dev12192/qachannels/0/output/on 1
+2026.07.10 02:00:39.195   set /dev12192/qachannels/0/output/range -20.0
+2026.07.10 02:00:39.195   set /dev12192/qachannels/0/generator/single 1
+2026.07.10 02:00:39.195   set /dev12192/qachannels/0/input/rflfpath 1
+2026.07.10 02:00:39.195   set /dev12192/qachannels/0/input/on 1
+2026.07.10 02:00:39.195   set /dev12192/qachannels/0/input/range -35.0
+2026.07.10 02:00:39.195   set /dev12192/sgchannels/0/sines/0/oscselect 0
+2026.07.10 02:00:39.195   set /dev12192/sgchannels/0/sines/0/harmonic 1
+2026.07.10 02:00:39.195   set /dev12192/sgchannels/0/sines/0/phaseshift 0
+2026.07.10 02:00:39.195   set /dev12192/raw/error/clear 1
+2026.07.10 02:00:39.195   get /dev12192/sgchannels/0/output/overrangecount -
+2026.07.10 02:00:39.195   get /dev12192/sgchannels/1/output/overrangecount -
+2026.07.10 02:00:39.195   get /dev12192/sgchannels/2/output/overrangecount -
+2026.07.10 02:00:39.195   get /dev12192/sgchannels/3/output/overrangecount -
+2026.07.10 02:00:39.195   get /dev12192/sgchannels/4/output/overrangecount -
+2026.07.10 02:00:39.195   get /dev12192/sgchannels/5/output/overrangecount -
+2026.07.10 02:00:39.195   get /dev12192/qachannels/0/output/overrangecount -
+2026.07.10 02:00:39.195   get /dev12192/qachannels/0/input/overrangecount -
+2026.07.10 02:00:39.195   set /dev12192/sgchannels/0/oscs/0/freq -324773566.4786179
+2026.07.10 02:00:39.195   set /dev12192/system/internaltrigger/enable 0
+2026.07.10 02:00:39.196   set /dev12192/system/internaltrigger/repetitions 1
+2026.07.10 02:00:39.196   set /dev12192/sgchannels/0/awg/auxtriggers/0/slope 1
+2026.07.10 02:00:39.196   set /dev12192/sgchannels/0/awg/auxtriggers/0/channel 8
+2026.07.10 02:00:39.196   set /dev12192/qachannels/0/markers/0/source 32
+2026.07.10 02:00:39.196   set /dev12192/qachannels/0/markers/1/source 36
+2026.07.10 02:00:39.196   set /dev12192/qachannels/0/generator/auxtriggers/0/channel 8
+2026.07.10 02:00:39.196   set /dev12192/sgchannels/0/oscs/0/freq -324773566.4786179
+2026.07.10 02:00:39.196   set /dev12192/synthesizers/1/centerfreq 3800000000.0
+2026.07.10 02:00:39.196   set /dev12192/qachannels/0/centerfreq 6200000000.0
+2026.07.10 02:00:39.196   set /dev12192/qachannels/0/generator/delay 0.0
+2026.07.10 02:00:39.196   set /dev12192/qachannels/0/readout/integration/delay 5.42e-07
+2026.07.10 02:00:39.196   set /dev12192/sgchannels/0/output/delay 0.0
+2026.07.10 02:00:39.196   set /dev12192/qachannels/0/mode 1
+2026.07.10 02:00:39.196   set /dev12192/qachannels/0/readout/multistate/qudits/*/enable 0
+2026.07.10 02:00:39.196   set /dev12192/sgchannels/0/awg/elf/data vector (?? B)
+2026.07.10 02:00:39.196   set /dev12192/sgchannels/0/awg/waveform/waves/0 vector (?? B)
+2026.07.10 02:00:39.196   set /dev12192/sgchannels/0/awg/waveform/waves/1 vector (?? B)
+2026.07.10 02:00:39.196   set /dev12192/sgchannels/0/awg/waveform/waves/2 vector (?? B)
+2026.07.10 02:00:39.196   set /dev12192/sgchannels/0/awg/waveform/waves/3 vector (?? B)
+2026.07.10 02:00:39.196   set /dev12192/sgchannels/0/awg/waveform/waves/4 vector (?? B)
+2026.07.10 02:00:39.196   set /dev12192/sgchannels/0/awg/commandtable/data vector (?? B)
+2026.07.10 02:00:39.196   set /dev12192/qachannels/0/readout/multistate/enable 1
+2026.07.10 02:00:39.196   set /dev12192/qachannels/0/readout/multistate/zsync/packed 1
+2026.07.10 02:00:39.196   set /dev12192/qachannels/0/readout/multistate/qudits/0/numstates 2
+2026.07.10 02:00:39.196   set /dev12192/qachannels/0/readout/multistate/qudits/0/enable 1
+2026.07.10 02:00:39.196   set /dev12192/qachannels/0/readout/multistate/qudits/0/assignmentvec vector (?? B)
+2026.07.10 02:00:39.196   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:39.196   set /dev12192/qachannels/0/readout/result/source 1
+2026.07.10 02:00:39.197   set /dev12192/qachannels/0/readout/result/length 101
+2026.07.10 02:00:39.197   set /dev12192/qachannels/0/readout/result/averages 4096
+2026.07.10 02:00:39.197   set /dev12192/qachannels/0/readout/result/mode 0
+2026.07.10 02:00:39.197   set /dev12192/qachannels/0/readout/multistate/qudits/0/thresholds/0/value 0.0
+2026.07.10 02:00:39.197   set /dev12192/qachannels/0/readout/result/enable 1
+2026.07.10 02:00:39.197   set /dev12192/qachannels/0/spectroscopy/result/enable 0
+2026.07.10 02:00:39.197   set /dev12192/scopes/0/enable 0
+2026.07.10 02:00:39.197   set /dev12192/qachannels/0/generator/elf/data vector (?? B)
+2026.07.10 02:00:39.197   set /dev12192/qachannels/0/generator/clearwave 1
+2026.07.10 02:00:39.197   set /dev12192/qachannels/0/generator/waveforms/0/wave <unexpected type>
+2026.07.10 02:00:39.197   set /dev12192/qachannels/0/spectroscopy/envelope/enable 0
+2026.07.10 02:00:39.197   set /dev12192/qachannels/0/readout/multistate/qudits/0/weights/0/wave vector (?? B)
+2026.07.10 02:00:39.197   set /dev12192/qachannels/0/readout/integration/length 800
+2026.07.10 02:00:39.197   set /dev12192/system/internaltrigger/synchronization/enable 0
+2026.07.10 02:00:39.197   set /dev12192/system/synchronization/source 0
+2026.07.10 02:00:39.197   set /dev12192/sgchannels/0/awg/enable 1
+2026.07.10 02:00:39.197   set /dev12192/qachannels/0/generator/enable 1
+2026.07.10 02:00:39.197   set /dev12192/system/internaltrigger/enable 1
+2026.07.10 02:00:39.197   set /dev12192/raw/system/awg/runtimechecks/enable 0
+2026.07.10 02:00:39.197   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:39.197   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:39.197   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:39.197   set /dev12192/qachannels/*/spectroscopy/envelope/enable 1
+2026.07.10 02:00:39.232 Node log from the data server with id 'zi_server':
+2026.07.10 02:00:39.232   get /dev12192/sgchannels/0/busy -
+2026.07.10 02:00:39.232   get /dev12192/qachannels/0/busy -
+2026.07.10 02:00:39.232   set /dev12192/sgchannels/0/output/on 1
+2026.07.10 02:00:39.232   set /dev12192/sgchannels/0/output/range 10.0
+2026.07.10 02:00:39.232   set /dev12192/sgchannels/0/awg/single 1
+2026.07.10 02:00:39.232   set /dev12192/sgchannels/0/awg/modulation/enable 1
+2026.07.10 02:00:39.232   set /dev12192/sgchannels/0/marker/source 0
+2026.07.10 02:00:39.232   set /dev12192/sgchannels/0/trigger/delay 0.0
+2026.07.10 02:00:39.232   set /dev12192/sgchannels/0/output/rflfpath 1
+2026.07.10 02:00:39.232   set /dev12192/qachannels/0/output/on 1
+2026.07.10 02:00:39.232   set /dev12192/qachannels/0/output/range -20.0
+2026.07.10 02:00:39.232   set /dev12192/qachannels/0/generator/single 1
+2026.07.10 02:00:39.232   set /dev12192/qachannels/0/input/rflfpath 1
+2026.07.10 02:00:39.232   set /dev12192/qachannels/0/input/on 1
+2026.07.10 02:00:39.232   set /dev12192/qachannels/0/input/range -35.0
+2026.07.10 02:00:39.232   set /dev12192/sgchannels/0/sines/0/oscselect 0
+2026.07.10 02:00:39.232   set /dev12192/sgchannels/0/sines/0/harmonic 1
+2026.07.10 02:00:39.232   set /dev12192/sgchannels/0/sines/0/phaseshift 0
+2026.07.10 02:00:39.232   set /dev12192/raw/error/clear 1
+2026.07.10 02:00:39.232   get /dev12192/sgchannels/0/output/overrangecount -
+2026.07.10 02:00:39.232   get /dev12192/sgchannels/1/output/overrangecount -
+2026.07.10 02:00:39.232   get /dev12192/sgchannels/2/output/overrangecount -
+2026.07.10 02:00:39.232   get /dev12192/sgchannels/3/output/overrangecount -
+2026.07.10 02:00:39.232   get /dev12192/sgchannels/4/output/overrangecount -
+2026.07.10 02:00:39.232   get /dev12192/sgchannels/5/output/overrangecount -
+2026.07.10 02:00:39.232   get /dev12192/qachannels/0/output/overrangecount -
+2026.07.10 02:00:39.232   get /dev12192/qachannels/0/input/overrangecount -
+2026.07.10 02:00:39.232   set /dev12192/sgchannels/0/oscs/0/freq -324573566.4786179
+2026.07.10 02:00:39.233   set /dev12192/system/internaltrigger/enable 0
+2026.07.10 02:00:39.233   set /dev12192/system/internaltrigger/repetitions 1
+2026.07.10 02:00:39.233   set /dev12192/sgchannels/0/awg/auxtriggers/0/slope 1
+2026.07.10 02:00:39.233   set /dev12192/sgchannels/0/awg/auxtriggers/0/channel 8
+2026.07.10 02:00:39.233   set /dev12192/qachannels/0/markers/0/source 32
+2026.07.10 02:00:39.233   set /dev12192/qachannels/0/markers/1/source 36
+2026.07.10 02:00:39.233   set /dev12192/qachannels/0/generator/auxtriggers/0/channel 8
+2026.07.10 02:00:39.233   set /dev12192/sgchannels/0/oscs/0/freq -324573566.4786179
+2026.07.10 02:00:39.233   set /dev12192/synthesizers/1/centerfreq 3800000000.0
+2026.07.10 02:00:39.233   set /dev12192/qachannels/0/centerfreq 6200000000.0
+2026.07.10 02:00:39.233   set /dev12192/qachannels/0/generator/delay 0.0
+2026.07.10 02:00:39.233   set /dev12192/qachannels/0/readout/integration/delay 5.42e-07
+2026.07.10 02:00:39.233   set /dev12192/sgchannels/0/output/delay 0.0
+2026.07.10 02:00:39.233   set /dev12192/qachannels/0/mode 1
+2026.07.10 02:00:39.233   set /dev12192/qachannels/0/readout/multistate/qudits/*/enable 0
+2026.07.10 02:00:39.233   set /dev12192/sgchannels/0/awg/elf/data vector (?? B)
+2026.07.10 02:00:39.233   set /dev12192/sgchannels/0/awg/waveform/waves/0 vector (?? B)
+2026.07.10 02:00:39.233   set /dev12192/sgchannels/0/awg/waveform/waves/1 vector (?? B)
+2026.07.10 02:00:39.233   set /dev12192/sgchannels/0/awg/waveform/waves/2 vector (?? B)
+2026.07.10 02:00:39.233   set /dev12192/sgchannels/0/awg/waveform/waves/3 vector (?? B)
+2026.07.10 02:00:39.233   set /dev12192/sgchannels/0/awg/waveform/waves/4 vector (?? B)
+2026.07.10 02:00:39.233   set /dev12192/sgchannels/0/awg/commandtable/data vector (?? B)
+2026.07.10 02:00:39.233   set /dev12192/qachannels/0/readout/multistate/enable 1
+2026.07.10 02:00:39.233   set /dev12192/qachannels/0/readout/multistate/zsync/packed 1
+2026.07.10 02:00:39.233   set /dev12192/qachannels/0/readout/multistate/qudits/0/numstates 2
+2026.07.10 02:00:39.233   set /dev12192/qachannels/0/readout/multistate/qudits/0/enable 1
+2026.07.10 02:00:39.233   set /dev12192/qachannels/0/readout/multistate/qudits/0/assignmentvec vector (?? B)
+2026.07.10 02:00:39.233   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:39.233   set /dev12192/qachannels/0/readout/result/source 1
+2026.07.10 02:00:39.234   set /dev12192/qachannels/0/readout/result/length 101
+2026.07.10 02:00:39.234   set /dev12192/qachannels/0/readout/result/averages 4096
+2026.07.10 02:00:39.234   set /dev12192/qachannels/0/readout/result/mode 0
+2026.07.10 02:00:39.234   set /dev12192/qachannels/0/readout/multistate/qudits/0/thresholds/0/value 0.0
+2026.07.10 02:00:39.234   set /dev12192/qachannels/0/readout/result/enable 1
+2026.07.10 02:00:39.234   set /dev12192/qachannels/0/spectroscopy/result/enable 0
+2026.07.10 02:00:39.234   set /dev12192/scopes/0/enable 0
+2026.07.10 02:00:39.234   set /dev12192/qachannels/0/generator/elf/data vector (?? B)
+2026.07.10 02:00:39.234   set /dev12192/qachannels/0/generator/clearwave 1
+2026.07.10 02:00:39.234   set /dev12192/qachannels/0/generator/waveforms/0/wave <unexpected type>
+2026.07.10 02:00:39.234   set /dev12192/qachannels/0/spectroscopy/envelope/enable 0
+2026.07.10 02:00:39.234   set /dev12192/qachannels/0/readout/multistate/qudits/0/weights/0/wave vector (?? B)
+2026.07.10 02:00:39.234   set /dev12192/qachannels/0/readout/integration/length 800
+2026.07.10 02:00:39.234   set /dev12192/system/internaltrigger/synchronization/enable 0
+2026.07.10 02:00:39.234   set /dev12192/system/synchronization/source 0
+2026.07.10 02:00:39.234   set /dev12192/sgchannels/0/awg/enable 1
+2026.07.10 02:00:39.234   set /dev12192/qachannels/0/generator/enable 1
+2026.07.10 02:00:39.234   set /dev12192/system/internaltrigger/enable 1
+2026.07.10 02:00:39.234   set /dev12192/raw/system/awg/runtimechecks/enable 0
+2026.07.10 02:00:39.234   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:39.234   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:39.234   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:39.234   set /dev12192/qachannels/*/spectroscopy/envelope/enable 1
+2026.07.10 02:00:39.272 Node log from the data server with id 'zi_server':
+2026.07.10 02:00:39.272   get /dev12192/sgchannels/0/busy -
+2026.07.10 02:00:39.272   get /dev12192/qachannels/0/busy -
+2026.07.10 02:00:39.272   set /dev12192/sgchannels/0/output/on 1
+2026.07.10 02:00:39.272   set /dev12192/sgchannels/0/output/range 10.0
+2026.07.10 02:00:39.272   set /dev12192/sgchannels/0/awg/single 1
+2026.07.10 02:00:39.272   set /dev12192/sgchannels/0/awg/modulation/enable 1
+2026.07.10 02:00:39.272   set /dev12192/sgchannels/0/marker/source 0
+2026.07.10 02:00:39.272   set /dev12192/sgchannels/0/trigger/delay 0.0
+2026.07.10 02:00:39.272   set /dev12192/sgchannels/0/output/rflfpath 1
+2026.07.10 02:00:39.272   set /dev12192/qachannels/0/output/on 1
+2026.07.10 02:00:39.272   set /dev12192/qachannels/0/output/range -20.0
+2026.07.10 02:00:39.272   set /dev12192/qachannels/0/generator/single 1
+2026.07.10 02:00:39.272   set /dev12192/qachannels/0/input/rflfpath 1
+2026.07.10 02:00:39.272   set /dev12192/qachannels/0/input/on 1
+2026.07.10 02:00:39.272   set /dev12192/qachannels/0/input/range -35.0
+2026.07.10 02:00:39.272   set /dev12192/sgchannels/0/sines/0/oscselect 0
+2026.07.10 02:00:39.272   set /dev12192/sgchannels/0/sines/0/harmonic 1
+2026.07.10 02:00:39.272   set /dev12192/sgchannels/0/sines/0/phaseshift 0
+2026.07.10 02:00:39.272   set /dev12192/raw/error/clear 1
+2026.07.10 02:00:39.272   get /dev12192/sgchannels/0/output/overrangecount -
+2026.07.10 02:00:39.272   get /dev12192/sgchannels/1/output/overrangecount -
+2026.07.10 02:00:39.272   get /dev12192/sgchannels/2/output/overrangecount -
+2026.07.10 02:00:39.272   get /dev12192/sgchannels/3/output/overrangecount -
+2026.07.10 02:00:39.272   get /dev12192/sgchannels/4/output/overrangecount -
+2026.07.10 02:00:39.272   get /dev12192/sgchannels/5/output/overrangecount -
+2026.07.10 02:00:39.273   get /dev12192/qachannels/0/output/overrangecount -
+2026.07.10 02:00:39.273   get /dev12192/qachannels/0/input/overrangecount -
+2026.07.10 02:00:39.273   set /dev12192/sgchannels/0/oscs/0/freq -324373566.4786179
+2026.07.10 02:00:39.273   set /dev12192/system/internaltrigger/enable 0
+2026.07.10 02:00:39.273   set /dev12192/system/internaltrigger/repetitions 1
+2026.07.10 02:00:39.273   set /dev12192/sgchannels/0/awg/auxtriggers/0/slope 1
+2026.07.10 02:00:39.273   set /dev12192/sgchannels/0/awg/auxtriggers/0/channel 8
+2026.07.10 02:00:39.273   set /dev12192/qachannels/0/markers/0/source 32
+2026.07.10 02:00:39.273   set /dev12192/qachannels/0/markers/1/source 36
+2026.07.10 02:00:39.273   set /dev12192/qachannels/0/generator/auxtriggers/0/channel 8
+2026.07.10 02:00:39.273   set /dev12192/sgchannels/0/oscs/0/freq -324373566.4786179
+2026.07.10 02:00:39.273   set /dev12192/synthesizers/1/centerfreq 3800000000.0
+2026.07.10 02:00:39.273   set /dev12192/qachannels/0/centerfreq 6200000000.0
+2026.07.10 02:00:39.273   set /dev12192/qachannels/0/generator/delay 0.0
+2026.07.10 02:00:39.273   set /dev12192/qachannels/0/readout/integration/delay 5.42e-07
+2026.07.10 02:00:39.273   set /dev12192/sgchannels/0/output/delay 0.0
+2026.07.10 02:00:39.273   set /dev12192/qachannels/0/mode 1
+2026.07.10 02:00:39.273   set /dev12192/qachannels/0/readout/multistate/qudits/*/enable 0
+2026.07.10 02:00:39.273   set /dev12192/sgchannels/0/awg/elf/data vector (?? B)
+2026.07.10 02:00:39.273   set /dev12192/sgchannels/0/awg/waveform/waves/0 vector (?? B)
+2026.07.10 02:00:39.273   set /dev12192/sgchannels/0/awg/waveform/waves/1 vector (?? B)
+2026.07.10 02:00:39.273   set /dev12192/sgchannels/0/awg/waveform/waves/2 vector (?? B)
+2026.07.10 02:00:39.273   set /dev12192/sgchannels/0/awg/waveform/waves/3 vector (?? B)
+2026.07.10 02:00:39.273   set /dev12192/sgchannels/0/awg/waveform/waves/4 vector (?? B)
+2026.07.10 02:00:39.273   set /dev12192/sgchannels/0/awg/commandtable/data vector (?? B)
+2026.07.10 02:00:39.273   set /dev12192/qachannels/0/readout/multistate/enable 1
+2026.07.10 02:00:39.273   set /dev12192/qachannels/0/readout/multistate/zsync/packed 1
+2026.07.10 02:00:39.273   set /dev12192/qachannels/0/readout/multistate/qudits/0/numstates 2
+2026.07.10 02:00:39.274   set /dev12192/qachannels/0/readout/multistate/qudits/0/enable 1
+2026.07.10 02:00:39.274   set /dev12192/qachannels/0/readout/multistate/qudits/0/assignmentvec vector (?? B)
+2026.07.10 02:00:39.274   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:39.274   set /dev12192/qachannels/0/readout/result/source 1
+2026.07.10 02:00:39.274   set /dev12192/qachannels/0/readout/result/length 101
+2026.07.10 02:00:39.274   set /dev12192/qachannels/0/readout/result/averages 4096
+2026.07.10 02:00:39.274   set /dev12192/qachannels/0/readout/result/mode 0
+2026.07.10 02:00:39.274   set /dev12192/qachannels/0/readout/multistate/qudits/0/thresholds/0/value 0.0
+2026.07.10 02:00:39.274   set /dev12192/qachannels/0/readout/result/enable 1
+2026.07.10 02:00:39.274   set /dev12192/qachannels/0/spectroscopy/result/enable 0
+2026.07.10 02:00:39.274   set /dev12192/scopes/0/enable 0
+2026.07.10 02:00:39.274   set /dev12192/qachannels/0/generator/elf/data vector (?? B)
+2026.07.10 02:00:39.274   set /dev12192/qachannels/0/generator/clearwave 1
+2026.07.10 02:00:39.274   set /dev12192/qachannels/0/generator/waveforms/0/wave <unexpected type>
+2026.07.10 02:00:39.274   set /dev12192/qachannels/0/spectroscopy/envelope/enable 0
+2026.07.10 02:00:39.274   set /dev12192/qachannels/0/readout/multistate/qudits/0/weights/0/wave vector (?? B)
+2026.07.10 02:00:39.274   set /dev12192/qachannels/0/readout/integration/length 800
+2026.07.10 02:00:39.274   set /dev12192/system/internaltrigger/synchronization/enable 0
+2026.07.10 02:00:39.274   set /dev12192/system/synchronization/source 0
+2026.07.10 02:00:39.274   set /dev12192/sgchannels/0/awg/enable 1
+2026.07.10 02:00:39.274   set /dev12192/qachannels/0/generator/enable 1
+2026.07.10 02:00:39.274   set /dev12192/system/internaltrigger/enable 1
+2026.07.10 02:00:39.274   set /dev12192/raw/system/awg/runtimechecks/enable 0
+2026.07.10 02:00:39.274   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:39.274   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:39.274   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:39.274   set /dev12192/qachannels/*/spectroscopy/envelope/enable 1
+2026.07.10 02:00:39.309 Node log from the data server with id 'zi_server':
+2026.07.10 02:00:39.310   get /dev12192/sgchannels/0/busy -
+2026.07.10 02:00:39.310   get /dev12192/qachannels/0/busy -
+2026.07.10 02:00:39.310   set /dev12192/sgchannels/0/output/on 1
+2026.07.10 02:00:39.310   set /dev12192/sgchannels/0/output/range 10.0
+2026.07.10 02:00:39.310   set /dev12192/sgchannels/0/awg/single 1
+2026.07.10 02:00:39.310   set /dev12192/sgchannels/0/awg/modulation/enable 1
+2026.07.10 02:00:39.310   set /dev12192/sgchannels/0/marker/source 0
+2026.07.10 02:00:39.310   set /dev12192/sgchannels/0/trigger/delay 0.0
+2026.07.10 02:00:39.310   set /dev12192/sgchannels/0/output/rflfpath 1
+2026.07.10 02:00:39.310   set /dev12192/qachannels/0/output/on 1
+2026.07.10 02:00:39.310   set /dev12192/qachannels/0/output/range -20.0
+2026.07.10 02:00:39.310   set /dev12192/qachannels/0/generator/single 1
+2026.07.10 02:00:39.310   set /dev12192/qachannels/0/input/rflfpath 1
+2026.07.10 02:00:39.310   set /dev12192/qachannels/0/input/on 1
+2026.07.10 02:00:39.310   set /dev12192/qachannels/0/input/range -35.0
+2026.07.10 02:00:39.310   set /dev12192/sgchannels/0/sines/0/oscselect 0
+2026.07.10 02:00:39.310   set /dev12192/sgchannels/0/sines/0/harmonic 1
+2026.07.10 02:00:39.310   set /dev12192/sgchannels/0/sines/0/phaseshift 0
+2026.07.10 02:00:39.310   set /dev12192/raw/error/clear 1
+2026.07.10 02:00:39.310   get /dev12192/sgchannels/0/output/overrangecount -
+2026.07.10 02:00:39.310   get /dev12192/sgchannels/1/output/overrangecount -
+2026.07.10 02:00:39.310   get /dev12192/sgchannels/2/output/overrangecount -
+2026.07.10 02:00:39.310   get /dev12192/sgchannels/3/output/overrangecount -
+2026.07.10 02:00:39.310   get /dev12192/sgchannels/4/output/overrangecount -
+2026.07.10 02:00:39.310   get /dev12192/sgchannels/5/output/overrangecount -
+2026.07.10 02:00:39.311   get /dev12192/qachannels/0/output/overrangecount -
+2026.07.10 02:00:39.311   get /dev12192/qachannels/0/input/overrangecount -
+2026.07.10 02:00:39.311   set /dev12192/sgchannels/0/oscs/0/freq -324173566.4786179
+2026.07.10 02:00:39.311   set /dev12192/system/internaltrigger/enable 0
+2026.07.10 02:00:39.311   set /dev12192/system/internaltrigger/repetitions 1
+2026.07.10 02:00:39.311   set /dev12192/sgchannels/0/awg/auxtriggers/0/slope 1
+2026.07.10 02:00:39.311   set /dev12192/sgchannels/0/awg/auxtriggers/0/channel 8
+2026.07.10 02:00:39.311   set /dev12192/qachannels/0/markers/0/source 32
+2026.07.10 02:00:39.311   set /dev12192/qachannels/0/markers/1/source 36
+2026.07.10 02:00:39.311   set /dev12192/qachannels/0/generator/auxtriggers/0/channel 8
+2026.07.10 02:00:39.311   set /dev12192/sgchannels/0/oscs/0/freq -324173566.4786179
+2026.07.10 02:00:39.311   set /dev12192/synthesizers/1/centerfreq 3800000000.0
+2026.07.10 02:00:39.311   set /dev12192/qachannels/0/centerfreq 6200000000.0
+2026.07.10 02:00:39.311   set /dev12192/qachannels/0/generator/delay 0.0
+2026.07.10 02:00:39.311   set /dev12192/qachannels/0/readout/integration/delay 5.42e-07
+2026.07.10 02:00:39.311   set /dev12192/sgchannels/0/output/delay 0.0
+2026.07.10 02:00:39.311   set /dev12192/qachannels/0/mode 1
+2026.07.10 02:00:39.311   set /dev12192/qachannels/0/readout/multistate/qudits/*/enable 0
+2026.07.10 02:00:39.311   set /dev12192/sgchannels/0/awg/elf/data vector (?? B)
+2026.07.10 02:00:39.311   set /dev12192/sgchannels/0/awg/waveform/waves/0 vector (?? B)
+2026.07.10 02:00:39.311   set /dev12192/sgchannels/0/awg/waveform/waves/1 vector (?? B)
+2026.07.10 02:00:39.311   set /dev12192/sgchannels/0/awg/waveform/waves/2 vector (?? B)
+2026.07.10 02:00:39.311   set /dev12192/sgchannels/0/awg/waveform/waves/3 vector (?? B)
+2026.07.10 02:00:39.311   set /dev12192/sgchannels/0/awg/waveform/waves/4 vector (?? B)
+2026.07.10 02:00:39.311   set /dev12192/sgchannels/0/awg/commandtable/data vector (?? B)
+2026.07.10 02:00:39.311   set /dev12192/qachannels/0/readout/multistate/enable 1
+2026.07.10 02:00:39.311   set /dev12192/qachannels/0/readout/multistate/zsync/packed 1
+2026.07.10 02:00:39.311   set /dev12192/qachannels/0/readout/multistate/qudits/0/numstates 2
+2026.07.10 02:00:39.311   set /dev12192/qachannels/0/readout/multistate/qudits/0/enable 1
+2026.07.10 02:00:39.312   set /dev12192/qachannels/0/readout/multistate/qudits/0/assignmentvec vector (?? B)
+2026.07.10 02:00:39.312   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:39.312   set /dev12192/qachannels/0/readout/result/source 1
+2026.07.10 02:00:39.312   set /dev12192/qachannels/0/readout/result/length 101
+2026.07.10 02:00:39.312   set /dev12192/qachannels/0/readout/result/averages 4096
+2026.07.10 02:00:39.312   set /dev12192/qachannels/0/readout/result/mode 0
+2026.07.10 02:00:39.312   set /dev12192/qachannels/0/readout/multistate/qudits/0/thresholds/0/value 0.0
+2026.07.10 02:00:39.312   set /dev12192/qachannels/0/readout/result/enable 1
+2026.07.10 02:00:39.312   set /dev12192/qachannels/0/spectroscopy/result/enable 0
+2026.07.10 02:00:39.312   set /dev12192/scopes/0/enable 0
+2026.07.10 02:00:39.312   set /dev12192/qachannels/0/generator/elf/data vector (?? B)
+2026.07.10 02:00:39.312   set /dev12192/qachannels/0/generator/clearwave 1
+2026.07.10 02:00:39.312   set /dev12192/qachannels/0/generator/waveforms/0/wave <unexpected type>
+2026.07.10 02:00:39.312   set /dev12192/qachannels/0/spectroscopy/envelope/enable 0
+2026.07.10 02:00:39.312   set /dev12192/qachannels/0/readout/multistate/qudits/0/weights/0/wave vector (?? B)
+2026.07.10 02:00:39.312   set /dev12192/qachannels/0/readout/integration/length 800
+2026.07.10 02:00:39.312   set /dev12192/system/internaltrigger/synchronization/enable 0
+2026.07.10 02:00:39.312   set /dev12192/system/synchronization/source 0
+2026.07.10 02:00:39.312   set /dev12192/sgchannels/0/awg/enable 1
+2026.07.10 02:00:39.312   set /dev12192/qachannels/0/generator/enable 1
+2026.07.10 02:00:39.312   set /dev12192/system/internaltrigger/enable 1
+2026.07.10 02:00:39.312   set /dev12192/raw/system/awg/runtimechecks/enable 0
+2026.07.10 02:00:39.312   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:39.312   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:39.312   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:39.312   set /dev12192/qachannels/*/spectroscopy/envelope/enable 1
+2026.07.10 02:00:39.347 Node log from the data server with id 'zi_server':
+2026.07.10 02:00:39.347   get /dev12192/sgchannels/0/busy -
+2026.07.10 02:00:39.347   get /dev12192/qachannels/0/busy -
+2026.07.10 02:00:39.347   set /dev12192/sgchannels/0/output/on 1
+2026.07.10 02:00:39.347   set /dev12192/sgchannels/0/output/range 10.0
+2026.07.10 02:00:39.347   set /dev12192/sgchannels/0/awg/single 1
+2026.07.10 02:00:39.347   set /dev12192/sgchannels/0/awg/modulation/enable 1
+2026.07.10 02:00:39.347   set /dev12192/sgchannels/0/marker/source 0
+2026.07.10 02:00:39.347   set /dev12192/sgchannels/0/trigger/delay 0.0
+2026.07.10 02:00:39.347   set /dev12192/sgchannels/0/output/rflfpath 1
+2026.07.10 02:00:39.347   set /dev12192/qachannels/0/output/on 1
+2026.07.10 02:00:39.347   set /dev12192/qachannels/0/output/range -20.0
+2026.07.10 02:00:39.347   set /dev12192/qachannels/0/generator/single 1
+2026.07.10 02:00:39.347   set /dev12192/qachannels/0/input/rflfpath 1
+2026.07.10 02:00:39.347   set /dev12192/qachannels/0/input/on 1
+2026.07.10 02:00:39.347   set /dev12192/qachannels/0/input/range -35.0
+2026.07.10 02:00:39.347   set /dev12192/sgchannels/0/sines/0/oscselect 0
+2026.07.10 02:00:39.348   set /dev12192/sgchannels/0/sines/0/harmonic 1
+2026.07.10 02:00:39.348   set /dev12192/sgchannels/0/sines/0/phaseshift 0
+2026.07.10 02:00:39.348   set /dev12192/raw/error/clear 1
+2026.07.10 02:00:39.348   get /dev12192/sgchannels/0/output/overrangecount -
+2026.07.10 02:00:39.348   get /dev12192/sgchannels/1/output/overrangecount -
+2026.07.10 02:00:39.348   get /dev12192/sgchannels/2/output/overrangecount -
+2026.07.10 02:00:39.348   get /dev12192/sgchannels/3/output/overrangecount -
+2026.07.10 02:00:39.348   get /dev12192/sgchannels/4/output/overrangecount -
+2026.07.10 02:00:39.348   get /dev12192/sgchannels/5/output/overrangecount -
+2026.07.10 02:00:39.348   get /dev12192/qachannels/0/output/overrangecount -
+2026.07.10 02:00:39.348   get /dev12192/qachannels/0/input/overrangecount -
+2026.07.10 02:00:39.348   set /dev12192/sgchannels/0/oscs/0/freq -323973566.4786179
+2026.07.10 02:00:39.348   set /dev12192/system/internaltrigger/enable 0
+2026.07.10 02:00:39.348   set /dev12192/system/internaltrigger/repetitions 1
+2026.07.10 02:00:39.348   set /dev12192/sgchannels/0/awg/auxtriggers/0/slope 1
+2026.07.10 02:00:39.348   set /dev12192/sgchannels/0/awg/auxtriggers/0/channel 8
+2026.07.10 02:00:39.348   set /dev12192/qachannels/0/markers/0/source 32
+2026.07.10 02:00:39.348   set /dev12192/qachannels/0/markers/1/source 36
+2026.07.10 02:00:39.348   set /dev12192/qachannels/0/generator/auxtriggers/0/channel 8
+2026.07.10 02:00:39.348   set /dev12192/sgchannels/0/oscs/0/freq -323973566.4786179
+2026.07.10 02:00:39.348   set /dev12192/synthesizers/1/centerfreq 3800000000.0
+2026.07.10 02:00:39.348   set /dev12192/qachannels/0/centerfreq 6200000000.0
+2026.07.10 02:00:39.348   set /dev12192/qachannels/0/generator/delay 0.0
+2026.07.10 02:00:39.348   set /dev12192/qachannels/0/readout/integration/delay 5.42e-07
+2026.07.10 02:00:39.348   set /dev12192/sgchannels/0/output/delay 0.0
+2026.07.10 02:00:39.348   set /dev12192/qachannels/0/mode 1
+2026.07.10 02:00:39.348   set /dev12192/qachannels/0/readout/multistate/qudits/*/enable 0
+2026.07.10 02:00:39.348   set /dev12192/sgchannels/0/awg/elf/data vector (?? B)
+2026.07.10 02:00:39.348   set /dev12192/sgchannels/0/awg/waveform/waves/0 vector (?? B)
+2026.07.10 02:00:39.349   set /dev12192/sgchannels/0/awg/waveform/waves/1 vector (?? B)
+2026.07.10 02:00:39.349   set /dev12192/sgchannels/0/awg/waveform/waves/2 vector (?? B)
+2026.07.10 02:00:39.349   set /dev12192/sgchannels/0/awg/waveform/waves/3 vector (?? B)
+2026.07.10 02:00:39.349   set /dev12192/sgchannels/0/awg/waveform/waves/4 vector (?? B)
+2026.07.10 02:00:39.349   set /dev12192/sgchannels/0/awg/commandtable/data vector (?? B)
+2026.07.10 02:00:39.349   set /dev12192/qachannels/0/readout/multistate/enable 1
+2026.07.10 02:00:39.349   set /dev12192/qachannels/0/readout/multistate/zsync/packed 1
+2026.07.10 02:00:39.349   set /dev12192/qachannels/0/readout/multistate/qudits/0/numstates 2
+2026.07.10 02:00:39.349   set /dev12192/qachannels/0/readout/multistate/qudits/0/enable 1
+2026.07.10 02:00:39.349   set /dev12192/qachannels/0/readout/multistate/qudits/0/assignmentvec vector (?? B)
+2026.07.10 02:00:39.349   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:39.349   set /dev12192/qachannels/0/readout/result/source 1
+2026.07.10 02:00:39.349   set /dev12192/qachannels/0/readout/result/length 101
+2026.07.10 02:00:39.349   set /dev12192/qachannels/0/readout/result/averages 4096
+2026.07.10 02:00:39.349   set /dev12192/qachannels/0/readout/result/mode 0
+2026.07.10 02:00:39.349   set /dev12192/qachannels/0/readout/multistate/qudits/0/thresholds/0/value 0.0
+2026.07.10 02:00:39.349   set /dev12192/qachannels/0/readout/result/enable 1
+2026.07.10 02:00:39.349   set /dev12192/qachannels/0/spectroscopy/result/enable 0
+2026.07.10 02:00:39.349   set /dev12192/scopes/0/enable 0
+2026.07.10 02:00:39.349   set /dev12192/qachannels/0/generator/elf/data vector (?? B)
+2026.07.10 02:00:39.349   set /dev12192/qachannels/0/generator/clearwave 1
+2026.07.10 02:00:39.349   set /dev12192/qachannels/0/generator/waveforms/0/wave <unexpected type>
+2026.07.10 02:00:39.349   set /dev12192/qachannels/0/spectroscopy/envelope/enable 0
+2026.07.10 02:00:39.349   set /dev12192/qachannels/0/readout/multistate/qudits/0/weights/0/wave vector (?? B)
+2026.07.10 02:00:39.349   set /dev12192/qachannels/0/readout/integration/length 800
+2026.07.10 02:00:39.349   set /dev12192/system/internaltrigger/synchronization/enable 0
+2026.07.10 02:00:39.349   set /dev12192/system/synchronization/source 0
+2026.07.10 02:00:39.349   set /dev12192/sgchannels/0/awg/enable 1
+2026.07.10 02:00:39.350   set /dev12192/qachannels/0/generator/enable 1
+2026.07.10 02:00:39.350   set /dev12192/system/internaltrigger/enable 1
+2026.07.10 02:00:39.350   set /dev12192/raw/system/awg/runtimechecks/enable 0
+2026.07.10 02:00:39.350   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:00:39.350   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:39.350   get /dev12192/raw/error/json/errors -
+2026.07.10 02:00:39.350   set /dev12192/qachannels/*/spectroscopy/envelope/enable 1
+2026.07.10 02:01:11.756 Node log from the data server with id 'zi_server':
+2026.07.10 02:01:11.756   get /dev12192/sgchannels/0/busy -
+2026.07.10 02:01:11.756   get /dev12192/qachannels/0/busy -
+2026.07.10 02:01:11.756   set /dev12192/sgchannels/0/output/on 1
+2026.07.10 02:01:11.756   set /dev12192/sgchannels/0/output/range 10.0
+2026.07.10 02:01:11.756   set /dev12192/sgchannels/0/awg/single 1
+2026.07.10 02:01:11.756   set /dev12192/sgchannels/0/awg/modulation/enable 1
+2026.07.10 02:01:11.756   set /dev12192/sgchannels/0/marker/source 0
+2026.07.10 02:01:11.756   set /dev12192/sgchannels/0/trigger/delay 0.0
+2026.07.10 02:01:11.756   set /dev12192/sgchannels/0/output/rflfpath 1
+2026.07.10 02:01:11.756   set /dev12192/qachannels/0/output/on 1
+2026.07.10 02:01:11.756   set /dev12192/qachannels/0/output/range -20.0
+2026.07.10 02:01:11.756   set /dev12192/qachannels/0/generator/single 1
+2026.07.10 02:01:11.756   set /dev12192/qachannels/0/input/rflfpath 1
+2026.07.10 02:01:11.756   set /dev12192/qachannels/0/input/on 1
+2026.07.10 02:01:11.756   set /dev12192/qachannels/0/input/range -35.0
+2026.07.10 02:01:11.756   set /dev12192/sgchannels/0/sines/0/oscselect 0
+2026.07.10 02:01:11.756   set /dev12192/sgchannels/0/sines/0/harmonic 1
+2026.07.10 02:01:11.756   set /dev12192/sgchannels/0/sines/0/phaseshift 0
+2026.07.10 02:01:11.756   set /dev12192/raw/error/clear 1
+2026.07.10 02:01:11.757   get /dev12192/sgchannels/0/output/overrangecount -
+2026.07.10 02:01:11.757   get /dev12192/sgchannels/1/output/overrangecount -
+2026.07.10 02:01:11.757   get /dev12192/sgchannels/2/output/overrangecount -
+2026.07.10 02:01:11.757   get /dev12192/sgchannels/3/output/overrangecount -
+2026.07.10 02:01:11.757   get /dev12192/sgchannels/4/output/overrangecount -
+2026.07.10 02:01:11.757   get /dev12192/sgchannels/5/output/overrangecount -
+2026.07.10 02:01:11.757   get /dev12192/qachannels/0/output/overrangecount -
+2026.07.10 02:01:11.757   get /dev12192/qachannels/0/input/overrangecount -
+2026.07.10 02:01:11.757   set /dev12192/sgchannels/0/oscs/0/freq -326456636.0998788
+2026.07.10 02:01:11.757   set /dev12192/system/internaltrigger/enable 0
+2026.07.10 02:01:11.757   set /dev12192/system/internaltrigger/repetitions 1
+2026.07.10 02:01:11.757   set /dev12192/sgchannels/0/awg/auxtriggers/0/slope 1
+2026.07.10 02:01:11.757   set /dev12192/sgchannels/0/awg/auxtriggers/0/channel 8
+2026.07.10 02:01:11.757   set /dev12192/qachannels/0/markers/0/source 32
+2026.07.10 02:01:11.757   set /dev12192/qachannels/0/markers/1/source 36
+2026.07.10 02:01:11.757   set /dev12192/qachannels/0/generator/auxtriggers/0/channel 8
+2026.07.10 02:01:11.757   set /dev12192/sgchannels/0/oscs/0/freq -326456636.0998788
+2026.07.10 02:01:11.757   set /dev12192/synthesizers/1/centerfreq 3800000000.0
+2026.07.10 02:01:11.757   set /dev12192/qachannels/0/centerfreq 6200000000.0
+2026.07.10 02:01:11.757   set /dev12192/qachannels/0/generator/delay 0.0
+2026.07.10 02:01:11.757   set /dev12192/qachannels/0/readout/integration/delay 5.42e-07
+2026.07.10 02:01:11.757   set /dev12192/sgchannels/0/output/delay 0.0
+2026.07.10 02:01:11.757   set /dev12192/qachannels/0/mode 1
+2026.07.10 02:01:11.757   set /dev12192/qachannels/0/readout/multistate/qudits/*/enable 0
+2026.07.10 02:01:11.757   set /dev12192/sgchannels/0/awg/elf/data vector (?? B)
+2026.07.10 02:01:11.757   set /dev12192/sgchannels/0/awg/waveform/waves/0 vector (?? B)
+2026.07.10 02:01:11.757   set /dev12192/sgchannels/0/awg/waveform/waves/1 vector (?? B)
+2026.07.10 02:01:11.757   set /dev12192/sgchannels/0/awg/waveform/waves/2 vector (?? B)
+2026.07.10 02:01:11.757   set /dev12192/sgchannels/0/awg/waveform/waves/3 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/4 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/5 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/6 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/7 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/8 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/9 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/10 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/11 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/12 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/13 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/14 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/15 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/16 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/17 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/18 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/19 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/20 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/21 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/22 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/23 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/24 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/25 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/26 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/27 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/28 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/29 vector (?? B)
+2026.07.10 02:01:11.758   set /dev12192/sgchannels/0/awg/waveform/waves/30 vector (?? B)
+2026.07.10 02:01:11.759   set /dev12192/sgchannels/0/awg/waveform/waves/31 vector (?? B)
+2026.07.10 02:01:11.759   set /dev12192/sgchannels/0/awg/waveform/waves/32 vector (?? B)
+2026.07.10 02:01:11.759   set /dev12192/sgchannels/0/awg/waveform/waves/33 vector (?? B)
+2026.07.10 02:01:11.759   set /dev12192/sgchannels/0/awg/waveform/waves/34 vector (?? B)
+2026.07.10 02:01:11.759   set /dev12192/sgchannels/0/awg/waveform/waves/35 vector (?? B)
+2026.07.10 02:01:11.759   set /dev12192/sgchannels/0/awg/waveform/waves/36 vector (?? B)
+2026.07.10 02:01:11.759   set /dev12192/sgchannels/0/awg/waveform/waves/37 vector (?? B)
+2026.07.10 02:01:11.759   set /dev12192/sgchannels/0/awg/waveform/waves/38 vector (?? B)
+2026.07.10 02:01:11.759   set /dev12192/sgchannels/0/awg/waveform/waves/39 vector (?? B)
+2026.07.10 02:01:11.759   set /dev12192/sgchannels/0/awg/waveform/waves/40 vector (?? B)
+2026.07.10 02:01:11.759   set /dev12192/sgchannels/0/awg/waveform/waves/41 vector (?? B)
+2026.07.10 02:01:11.759   set /dev12192/sgchannels/0/awg/waveform/waves/42 vector (?? B)
+2026.07.10 02:01:11.759   set /dev12192/sgchannels/0/awg/waveform/waves/43 vector (?? B)
+2026.07.10 02:01:11.759   set /dev12192/sgchannels/0/awg/waveform/waves/44 vector (?? B)
+2026.07.10 02:01:11.759   set /dev12192/sgchannels/0/awg/waveform/waves/45 vector (?? B)
+2026.07.10 02:01:11.759   set /dev12192/sgchannels/0/awg/waveform/waves/46 vector (?? B)
+2026.07.10 02:01:11.759   set /dev12192/sgchannels/0/awg/waveform/waves/47 vector (?? B)
+2026.07.10 02:01:11.759   set /dev12192/sgchannels/0/awg/waveform/waves/48 vector (?? B)
+2026.07.10 02:01:11.759   set /dev12192/sgchannels/0/awg/waveform/waves/49 vector (?? B)
+2026.07.10 02:01:11.759   set /dev12192/sgchannels/0/awg/waveform/waves/50 vector (?? B)
+2026.07.10 02:01:11.759   set /dev12192/sgchannels/0/awg/waveform/waves/51 vector (?? B)
+2026.07.10 02:01:11.759   set /dev12192/sgchannels/0/awg/waveform/waves/52 vector (?? B)
+2026.07.10 02:01:11.759   set /dev12192/sgchannels/0/awg/commandtable/data vector (?? B)
+2026.07.10 02:01:11.759   set /dev12192/qachannels/0/readout/multistate/enable 1
+2026.07.10 02:01:11.759   set /dev12192/qachannels/0/readout/multistate/zsync/packed 1
+2026.07.10 02:01:11.759   set /dev12192/qachannels/0/readout/multistate/qudits/0/numstates 2
+2026.07.10 02:01:11.759   set /dev12192/qachannels/0/readout/multistate/qudits/0/enable 1
+2026.07.10 02:01:11.760   set /dev12192/qachannels/0/readout/multistate/qudits/0/assignmentvec vector (?? B)
+2026.07.10 02:01:11.760   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:01:11.760   set /dev12192/qachannels/0/readout/result/source 1
+2026.07.10 02:01:11.760   set /dev12192/qachannels/0/readout/result/length 151
+2026.07.10 02:01:11.760   set /dev12192/qachannels/0/readout/result/averages 4096
+2026.07.10 02:01:11.760   set /dev12192/qachannels/0/readout/result/mode 0
+2026.07.10 02:01:11.760   set /dev12192/qachannels/0/readout/multistate/qudits/0/thresholds/0/value 0.0
+2026.07.10 02:01:11.760   set /dev12192/qachannels/0/readout/result/enable 1
+2026.07.10 02:01:11.760   set /dev12192/qachannels/0/spectroscopy/result/enable 0
+2026.07.10 02:01:11.760   set /dev12192/scopes/0/enable 0
+2026.07.10 02:01:11.760   set /dev12192/qachannels/0/generator/elf/data vector (?? B)
+2026.07.10 02:01:11.760   set /dev12192/qachannels/0/generator/clearwave 1
+2026.07.10 02:01:11.760   set /dev12192/qachannels/0/generator/waveforms/0/wave <unexpected type>
+2026.07.10 02:01:11.760   set /dev12192/qachannels/0/spectroscopy/envelope/enable 0
+2026.07.10 02:01:11.760   set /dev12192/qachannels/0/readout/multistate/qudits/0/weights/0/wave vector (?? B)
+2026.07.10 02:01:11.760   set /dev12192/qachannels/0/readout/integration/length 800
+2026.07.10 02:01:11.760   set /dev12192/system/internaltrigger/synchronization/enable 0
+2026.07.10 02:01:11.760   set /dev12192/system/synchronization/source 0
+2026.07.10 02:01:11.760   set /dev12192/sgchannels/0/awg/enable 1
+2026.07.10 02:01:11.760   set /dev12192/qachannels/0/generator/enable 1
+2026.07.10 02:01:11.760   set /dev12192/system/internaltrigger/enable 1
+2026.07.10 02:01:11.760   set /dev12192/raw/system/awg/runtimechecks/enable 0
+2026.07.10 02:01:11.760   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:01:11.760   get /dev12192/raw/error/json/errors -
+2026.07.10 02:01:11.760   get /dev12192/raw/error/json/errors -
+2026.07.10 02:01:11.760   set /dev12192/qachannels/*/spectroscopy/envelope/enable 1
+2026.07.10 02:01:41.640 Node log from the data server with id 'zi_server':
+2026.07.10 02:01:41.640   get /dev12192/sgchannels/0/busy -
+2026.07.10 02:01:41.640   get /dev12192/qachannels/0/busy -
+2026.07.10 02:01:41.640   set /dev12192/sgchannels/0/output/on 1
+2026.07.10 02:01:41.640   set /dev12192/sgchannels/0/output/range 10.0
+2026.07.10 02:01:41.640   set /dev12192/sgchannels/0/awg/single 1
+2026.07.10 02:01:41.640   set /dev12192/sgchannels/0/awg/modulation/enable 1
+2026.07.10 02:01:41.640   set /dev12192/sgchannels/0/marker/source 0
+2026.07.10 02:01:41.640   set /dev12192/sgchannels/0/trigger/delay 0.0
+2026.07.10 02:01:41.640   set /dev12192/sgchannels/0/output/rflfpath 1
+2026.07.10 02:01:41.640   set /dev12192/qachannels/0/output/on 1
+2026.07.10 02:01:41.641   set /dev12192/qachannels/0/output/range -20.0
+2026.07.10 02:01:41.641   set /dev12192/qachannels/0/generator/single 1
+2026.07.10 02:01:41.641   set /dev12192/qachannels/0/input/rflfpath 1
+2026.07.10 02:01:41.641   set /dev12192/qachannels/0/input/on 1
+2026.07.10 02:01:41.641   set /dev12192/qachannels/0/input/range -35.0
+2026.07.10 02:01:41.641   set /dev12192/sgchannels/0/sines/0/oscselect 0
+2026.07.10 02:01:41.641   set /dev12192/sgchannels/0/sines/0/harmonic 1
+2026.07.10 02:01:41.641   set /dev12192/sgchannels/0/sines/0/phaseshift 0
+2026.07.10 02:01:41.641   set /dev12192/raw/error/clear 1
+2026.07.10 02:01:41.641   get /dev12192/sgchannels/0/output/overrangecount -
+2026.07.10 02:01:41.641   get /dev12192/sgchannels/1/output/overrangecount -
+2026.07.10 02:01:41.641   get /dev12192/sgchannels/2/output/overrangecount -
+2026.07.10 02:01:41.641   get /dev12192/sgchannels/3/output/overrangecount -
+2026.07.10 02:01:41.641   get /dev12192/sgchannels/4/output/overrangecount -
+2026.07.10 02:01:41.641   get /dev12192/sgchannels/5/output/overrangecount -
+2026.07.10 02:01:41.641   get /dev12192/qachannels/0/output/overrangecount -
+2026.07.10 02:01:41.641   get /dev12192/qachannels/0/input/overrangecount -
+2026.07.10 02:01:41.641   set /dev12192/sgchannels/0/oscs/0/freq -326456636.0998788
+2026.07.10 02:01:41.641   set /dev12192/system/internaltrigger/enable 0
+2026.07.10 02:01:41.641   set /dev12192/system/internaltrigger/repetitions 1
+2026.07.10 02:01:41.641   set /dev12192/sgchannels/0/awg/auxtriggers/0/slope 1
+2026.07.10 02:01:41.641   set /dev12192/sgchannels/0/awg/auxtriggers/0/channel 8
+2026.07.10 02:01:41.641   set /dev12192/qachannels/0/markers/0/source 32
+2026.07.10 02:01:41.641   set /dev12192/qachannels/0/markers/1/source 36
+2026.07.10 02:01:41.641   set /dev12192/qachannels/0/generator/auxtriggers/0/channel 8
+2026.07.10 02:01:41.641   set /dev12192/sgchannels/0/oscs/0/freq -326456636.0998788
+2026.07.10 02:01:41.641   set /dev12192/synthesizers/1/centerfreq 3800000000.0
+2026.07.10 02:01:41.641   set /dev12192/qachannels/0/centerfreq 6200000000.0
+2026.07.10 02:01:41.642   set /dev12192/qachannels/0/generator/delay 0.0
+2026.07.10 02:01:41.642   set /dev12192/qachannels/0/readout/integration/delay 5.42e-07
+2026.07.10 02:01:41.642   set /dev12192/sgchannels/0/output/delay 0.0
+2026.07.10 02:01:41.642   set /dev12192/qachannels/0/mode 1
+2026.07.10 02:01:41.642   set /dev12192/qachannels/0/readout/multistate/qudits/*/enable 0
+2026.07.10 02:01:41.642   set /dev12192/sgchannels/0/awg/elf/data vector (?? B)
+2026.07.10 02:01:41.642   set /dev12192/sgchannels/0/awg/waveform/waves/0 vector (?? B)
+2026.07.10 02:01:41.642   set /dev12192/sgchannels/0/awg/waveform/waves/1 vector (?? B)
+2026.07.10 02:01:41.642   set /dev12192/sgchannels/0/awg/waveform/waves/2 vector (?? B)
+2026.07.10 02:01:41.642   set /dev12192/sgchannels/0/awg/commandtable/data vector (?? B)
+2026.07.10 02:01:41.642   set /dev12192/qachannels/0/readout/multistate/enable 1
+2026.07.10 02:01:41.642   set /dev12192/qachannels/0/readout/multistate/zsync/packed 1
+2026.07.10 02:01:41.642   set /dev12192/qachannels/0/readout/multistate/qudits/0/numstates 2
+2026.07.10 02:01:41.642   set /dev12192/qachannels/0/readout/multistate/qudits/0/enable 1
+2026.07.10 02:01:41.642   set /dev12192/qachannels/0/readout/multistate/qudits/0/assignmentvec vector (?? B)
+2026.07.10 02:01:41.642   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:01:41.642   set /dev12192/qachannels/0/readout/result/source 1
+2026.07.10 02:01:41.642   set /dev12192/qachannels/0/readout/result/length 10
+2026.07.10 02:01:41.642   set /dev12192/qachannels/0/readout/result/averages 4096
+2026.07.10 02:01:41.642   set /dev12192/qachannels/0/readout/result/mode 0
+2026.07.10 02:01:41.642   set /dev12192/qachannels/0/readout/multistate/qudits/0/thresholds/0/value 0.0
+2026.07.10 02:01:41.642   set /dev12192/qachannels/0/readout/result/enable 1
+2026.07.10 02:01:41.642   set /dev12192/qachannels/0/spectroscopy/result/enable 0
+2026.07.10 02:01:41.642   set /dev12192/scopes/0/enable 0
+2026.07.10 02:01:41.642   set /dev12192/qachannels/0/generator/elf/data vector (?? B)
+2026.07.10 02:01:41.642   set /dev12192/qachannels/0/generator/clearwave 1
+2026.07.10 02:01:41.643   set /dev12192/qachannels/0/generator/waveforms/0/wave <unexpected type>
+2026.07.10 02:01:41.643   set /dev12192/qachannels/0/spectroscopy/envelope/enable 0
+2026.07.10 02:01:41.643   set /dev12192/qachannels/0/readout/multistate/qudits/0/weights/0/wave vector (?? B)
+2026.07.10 02:01:41.643   set /dev12192/qachannels/0/readout/integration/length 800
+2026.07.10 02:01:41.643   set /dev12192/system/internaltrigger/synchronization/enable 0
+2026.07.10 02:01:41.643   set /dev12192/system/synchronization/source 0
+2026.07.10 02:01:41.643   set /dev12192/sgchannels/0/awg/enable 1
+2026.07.10 02:01:41.643   set /dev12192/qachannels/0/generator/enable 1
+2026.07.10 02:01:41.643   set /dev12192/system/internaltrigger/enable 1
+2026.07.10 02:01:41.643   set /dev12192/raw/system/awg/runtimechecks/enable 0
+2026.07.10 02:01:41.643   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:01:41.643   get /dev12192/raw/error/json/errors -
+2026.07.10 02:01:41.643   get /dev12192/raw/error/json/errors -
+2026.07.10 02:01:41.643   set /dev12192/qachannels/*/spectroscopy/envelope/enable 1
+2026.07.10 02:01:53.186 Node log from the data server with id 'zi_server':
+2026.07.10 02:01:53.187   get /dev12192/sgchannels/0/busy -
+2026.07.10 02:01:53.187   get /dev12192/qachannels/0/busy -
+2026.07.10 02:01:53.187   set /dev12192/sgchannels/0/output/on 1
+2026.07.10 02:01:53.187   set /dev12192/sgchannels/0/output/range 10.0
+2026.07.10 02:01:53.187   set /dev12192/sgchannels/0/awg/single 1
+2026.07.10 02:01:53.187   set /dev12192/sgchannels/0/awg/modulation/enable 1
+2026.07.10 02:01:53.187   set /dev12192/sgchannels/0/marker/source 0
+2026.07.10 02:01:53.187   set /dev12192/sgchannels/0/trigger/delay 0.0
+2026.07.10 02:01:53.187   set /dev12192/sgchannels/0/output/rflfpath 1
+2026.07.10 02:01:53.187   set /dev12192/qachannels/0/output/on 1
+2026.07.10 02:01:53.187   set /dev12192/qachannels/0/output/range -20.0
+2026.07.10 02:01:53.187   set /dev12192/qachannels/0/generator/single 1
+2026.07.10 02:01:53.187   set /dev12192/qachannels/0/input/rflfpath 1
+2026.07.10 02:01:53.187   set /dev12192/qachannels/0/input/on 1
+2026.07.10 02:01:53.187   set /dev12192/qachannels/0/input/range -35.0
+2026.07.10 02:01:53.187   set /dev12192/sgchannels/0/sines/0/oscselect 0
+2026.07.10 02:01:53.187   set /dev12192/sgchannels/0/sines/0/harmonic 1
+2026.07.10 02:01:53.187   set /dev12192/sgchannels/0/sines/0/phaseshift 0
+2026.07.10 02:01:53.187   set /dev12192/raw/error/clear 1
+2026.07.10 02:01:53.187   get /dev12192/sgchannels/0/output/overrangecount -
+2026.07.10 02:01:53.187   get /dev12192/sgchannels/1/output/overrangecount -
+2026.07.10 02:01:53.188   get /dev12192/sgchannels/2/output/overrangecount -
+2026.07.10 02:01:53.188   get /dev12192/sgchannels/3/output/overrangecount -
+2026.07.10 02:01:53.188   get /dev12192/sgchannels/4/output/overrangecount -
+2026.07.10 02:01:53.188   get /dev12192/sgchannels/5/output/overrangecount -
+2026.07.10 02:01:53.188   get /dev12192/qachannels/0/output/overrangecount -
+2026.07.10 02:01:53.188   get /dev12192/qachannels/0/input/overrangecount -
+2026.07.10 02:01:53.188   set /dev12192/sgchannels/0/oscs/0/freq -326456636.0998788
+2026.07.10 02:01:53.188   set /dev12192/system/internaltrigger/enable 0
+2026.07.10 02:01:53.188   set /dev12192/system/internaltrigger/repetitions 1
+2026.07.10 02:01:53.188   set /dev12192/sgchannels/0/awg/auxtriggers/0/slope 1
+2026.07.10 02:01:53.188   set /dev12192/sgchannels/0/awg/auxtriggers/0/channel 8
+2026.07.10 02:01:53.188   set /dev12192/qachannels/0/markers/0/source 32
+2026.07.10 02:01:53.188   set /dev12192/qachannels/0/markers/1/source 36
+2026.07.10 02:01:53.188   set /dev12192/qachannels/0/generator/auxtriggers/0/channel 8
+2026.07.10 02:01:53.188   set /dev12192/sgchannels/0/oscs/0/freq -326456636.0998788
+2026.07.10 02:01:53.188   set /dev12192/synthesizers/1/centerfreq 3800000000.0
+2026.07.10 02:01:53.188   set /dev12192/qachannels/0/centerfreq 6200000000.0
+2026.07.10 02:01:53.188   set /dev12192/qachannels/0/generator/delay 0.0
+2026.07.10 02:01:53.188   set /dev12192/qachannels/0/readout/integration/delay 5.42e-07
+2026.07.10 02:01:53.188   set /dev12192/sgchannels/0/output/delay 0.0
+2026.07.10 02:01:53.188   set /dev12192/qachannels/0/mode 1
+2026.07.10 02:01:53.188   set /dev12192/qachannels/0/readout/multistate/qudits/*/enable 0
+2026.07.10 02:01:53.188   set /dev12192/sgchannels/0/awg/elf/data vector (?? B)
+2026.07.10 02:01:53.188   set /dev12192/sgchannels/0/awg/waveform/waves/0 vector (?? B)
+2026.07.10 02:01:53.188   set /dev12192/sgchannels/0/awg/waveform/waves/1 vector (?? B)
+2026.07.10 02:01:53.188   set /dev12192/sgchannels/0/awg/waveform/waves/2 vector (?? B)
+2026.07.10 02:01:53.188   set /dev12192/sgchannels/0/awg/waveform/waves/3 vector (?? B)
+2026.07.10 02:01:53.189   set /dev12192/sgchannels/0/awg/commandtable/data vector (?? B)
+2026.07.10 02:01:53.189   set /dev12192/qachannels/0/readout/multistate/enable 1
+2026.07.10 02:01:53.189   set /dev12192/qachannels/0/readout/multistate/zsync/packed 1
+2026.07.10 02:01:53.189   set /dev12192/qachannels/0/readout/multistate/qudits/0/numstates 2
+2026.07.10 02:01:53.189   set /dev12192/qachannels/0/readout/multistate/qudits/0/enable 1
+2026.07.10 02:01:53.189   set /dev12192/qachannels/0/readout/multistate/qudits/0/assignmentvec vector (?? B)
+2026.07.10 02:01:53.189   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:01:53.189   set /dev12192/qachannels/0/readout/result/source 1
+2026.07.10 02:01:53.189   set /dev12192/qachannels/0/readout/result/length 18
+2026.07.10 02:01:53.189   set /dev12192/qachannels/0/readout/result/averages 4096
+2026.07.10 02:01:53.189   set /dev12192/qachannels/0/readout/result/mode 0
+2026.07.10 02:01:53.189   set /dev12192/qachannels/0/readout/multistate/qudits/0/thresholds/0/value 0.0
+2026.07.10 02:01:53.189   set /dev12192/qachannels/0/readout/result/enable 1
+2026.07.10 02:01:53.189   set /dev12192/qachannels/0/spectroscopy/result/enable 0
+2026.07.10 02:01:53.189   set /dev12192/scopes/0/enable 0
+2026.07.10 02:01:53.189   set /dev12192/qachannels/0/generator/elf/data vector (?? B)
+2026.07.10 02:01:53.189   set /dev12192/qachannels/0/generator/clearwave 1
+2026.07.10 02:01:53.189   set /dev12192/qachannels/0/generator/waveforms/0/wave <unexpected type>
+2026.07.10 02:01:53.189   set /dev12192/qachannels/0/spectroscopy/envelope/enable 0
+2026.07.10 02:01:53.189   set /dev12192/qachannels/0/readout/multistate/qudits/0/weights/0/wave vector (?? B)
+2026.07.10 02:01:53.189   set /dev12192/qachannels/0/readout/integration/length 800
+2026.07.10 02:01:53.189   set /dev12192/system/internaltrigger/synchronization/enable 0
+2026.07.10 02:01:53.189   set /dev12192/system/synchronization/source 0
+2026.07.10 02:01:53.190   set /dev12192/sgchannels/0/awg/enable 1
+2026.07.10 02:01:53.190   set /dev12192/qachannels/0/generator/enable 1
+2026.07.10 02:01:53.190   set /dev12192/system/internaltrigger/enable 1
+2026.07.10 02:01:53.190   set /dev12192/raw/system/awg/runtimechecks/enable 0
+2026.07.10 02:01:53.190   set /dev12192/qachannels/0/readout/result/enable 0
+2026.07.10 02:01:53.190   get /dev12192/raw/error/json/errors -
+2026.07.10 02:01:53.190   get /dev12192/raw/error/json/errors -
+2026.07.10 02:01:53.190   set /dev12192/qachannels/*/spectroscopy/envelope/enable 1
