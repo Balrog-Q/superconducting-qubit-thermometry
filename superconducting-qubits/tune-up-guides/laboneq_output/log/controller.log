@@ -1,0 +1,192 @@
+2026.06.26 14:39:23.344 | laboneq.laboneq_logging                       | INFO   Logging initialized from [Default inline config in laboneq.laboneq_logging] logdir is /Users/khatran/Desktop/pico-thermometry/tune-up-guides/laboneq_output/log
+2026.06.26 14:39:23.345 | laboneq.controller.controller                 | INFO   VERSION: laboneq 26.4.0
+2026.06.26 14:39:23.346 | laboneq.controller.devices.device_collection  | INFO   Connecting to data server at localhost:8004
+2026.06.26 14:39:23.347 | laboneq.controller.devices.async_support      | INFO   Connected to Zurich Instruments LabOne Data Server version 26.04.1.6 at localhost:8004
+2026.06.26 14:39:23.349 | laboneq.controller.devices.device_collection  | INFO   Configuring the device setup
+2026.06.26 14:39:23.375 | laboneq.controller.devices.device_collection  | INFO   The device setup is configured
+2026.06.26 14:39:23.459 | laboneq.compiler.workflow.compiler            | INFO   Starting LabOne Q Compiler run...
+2026.06.26 14:39:23.465 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/drive' to Hardware
+2026.06.26 14:39:23.465 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/drive_ef' to Hardware
+2026.06.26 14:39:23.466 | laboneq.compiler.workflow.realtime_compiler   | INFO   Schedule completed. [0.001 s]
+2026.06.26 14:39:23.475 | laboneq.compiler.workflow.realtime_compiler   | INFO   Code generation completed for all AWGs. [0.008 s]
+2026.06.26 14:39:23.475 | laboneq.compiler.workflow.neartime_execution  | INFO   Completed compilation step 1 of 1. [0.010 s]
+2026.06.26 14:39:23.479 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:23.479 | laboneq.compiler.workflow.reporter            | INFO    [1m [0m[1mDevice           [0m[1m [0m [1m [0m[1mAWG[0m[1m [0m [1m [0m[1mSeqC LOC[0m[1m [0m [1m [0m[1mCT entries[0m[1m [0m [1m [0m[1mWaveforms[0m[1m [0m [1m [0m[1mSamples[0m[1m [0m 
+2026.06.26 14:39:23.479 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:23.479 | laboneq.compiler.workflow.reporter            | INFO     SHFQC_DEV12001        0         21            0           1      8000  
+2026.06.26 14:39:23.479 | laboneq.compiler.workflow.reporter            | INFO     SHFQC_DEV12001_sg     0          9            1           0         0  
+2026.06.26 14:39:23.480 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:23.480 | laboneq.compiler.workflow.reporter            | INFO    [1m [0m[1mTOTAL            [0m[1m [0m [1m [0m[1m   [0m[1m [0m [1m [0m[1m      30[0m[1m [0m [1m [0m[1m         1[0m[1m [0m [1m [0m[1m         [0m[1m [0m [1m [0m[1m   8000[0m[1m [0m 
+2026.06.26 14:39:23.480 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:23.495 | laboneq.compiler.workflow.compiler            | INFO   Finished LabOne Q Compiler run.
+2026.06.26 14:39:23.497 | laboneq.controller.controller                 | INFO   Starting near-time execution...
+2026.06.26 14:39:23.510 | laboneq.controller.controller                 | INFO   Finished near-time execution.
+2026.06.26 14:39:23.559 | laboneq.compiler.workflow.compiler            | INFO   Starting LabOne Q Compiler run...
+2026.06.26 14:39:23.560 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/acquire' to Software
+2026.06.26 14:39:23.560 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/drive' to Hardware
+2026.06.26 14:39:23.560 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/drive_ef' to Hardware
+2026.06.26 14:39:23.561 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/measure' to Software
+2026.06.26 14:39:23.561 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q1/acquire' to Software
+2026.06.26 14:39:23.561 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q1/drive' to Hardware
+2026.06.26 14:39:23.561 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q1/drive_ef' to Hardware
+2026.06.26 14:39:23.562 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q1/measure' to Software
+2026.06.26 14:39:23.562 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q2/acquire' to Software
+2026.06.26 14:39:23.562 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q2/drive' to Hardware
+2026.06.26 14:39:23.562 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q2/drive_ef' to Hardware
+2026.06.26 14:39:23.562 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q2/measure' to Software
+2026.06.26 14:39:23.566 | laboneq.compiler.workflow.realtime_compiler   | INFO   Schedule completed. [0.003 s]
+2026.06.26 14:39:23.576 | laboneq.compiler.workflow.realtime_compiler   | INFO   Code generation completed for all AWGs. [0.010 s]
+2026.06.26 14:39:23.576 | laboneq.compiler.workflow.neartime_execution  | INFO   Completed compilation step 1 of 1. [0.014 s]
+2026.06.26 14:39:23.578 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:23.578 | laboneq.compiler.workflow.reporter            | INFO    [1m [0m[1mDevice           [0m[1m [0m [1m [0m[1mAWG[0m[1m [0m [1m [0m[1mSeqC LOC[0m[1m [0m [1m [0m[1mCT entries[0m[1m [0m [1m [0m[1mWaveforms[0m[1m [0m [1m [0m[1mSamples[0m[1m [0m 
+2026.06.26 14:39:23.579 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:23.579 | laboneq.compiler.workflow.reporter            | INFO     SHFQC_DEV12001        0         10            0           3     24000  
+2026.06.26 14:39:23.579 | laboneq.compiler.workflow.reporter            | INFO     SHFQC_DEV12001_sg     0         25            2           1        64  
+2026.06.26 14:39:23.579 | laboneq.compiler.workflow.reporter            | INFO     SHFQC_DEV12001_sg     1         25            2           1        64  
+2026.06.26 14:39:23.579 | laboneq.compiler.workflow.reporter            | INFO     SHFQC_DEV12001_sg     2         25            2           1        64  
+2026.06.26 14:39:23.579 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:23.580 | laboneq.compiler.workflow.reporter            | INFO    [1m [0m[1mTOTAL            [0m[1m [0m [1m [0m[1m   [0m[1m [0m [1m [0m[1m      85[0m[1m [0m [1m [0m[1m         6[0m[1m [0m [1m [0m[1m         [0m[1m [0m [1m [0m[1m  24192[0m[1m [0m 
+2026.06.26 14:39:23.580 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:23.586 | laboneq.compiler.workflow.compiler            | INFO   Finished LabOne Q Compiler run.
+2026.06.26 14:39:23.588 | laboneq.controller.controller                 | INFO   Starting near-time execution...
+2026.06.26 14:39:23.592 | laboneq.controller.controller                 | INFO   Estimated RT execution time: 6.66 s.
+2026.06.26 14:39:23.603 | laboneq.controller.controller                 | INFO   Finished near-time execution.
+2026.06.26 14:39:23.658 | laboneq.compiler.workflow.compiler            | INFO   Starting LabOne Q Compiler run...
+2026.06.26 14:39:23.659 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/acquire' to Software
+2026.06.26 14:39:23.659 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/drive' to Hardware
+2026.06.26 14:39:23.660 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/drive_ef' to Hardware
+2026.06.26 14:39:23.660 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/measure' to Software
+2026.06.26 14:39:23.660 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q1/acquire' to Software
+2026.06.26 14:39:23.660 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q1/drive' to Hardware
+2026.06.26 14:39:23.661 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q1/drive_ef' to Hardware
+2026.06.26 14:39:23.661 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q1/measure' to Software
+2026.06.26 14:39:23.661 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q2/acquire' to Software
+2026.06.26 14:39:23.661 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q2/drive' to Hardware
+2026.06.26 14:39:23.661 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q2/drive_ef' to Hardware
+2026.06.26 14:39:23.661 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q2/measure' to Software
+2026.06.26 14:39:23.662 | laboneq.compiler.workflow.realtime_compiler   | INFO   Schedule completed. [0.000 s]
+2026.06.26 14:39:23.666 | laboneq.compiler.workflow.realtime_compiler   | INFO   Code generation completed for all AWGs. [0.003 s]
+2026.06.26 14:39:23.666 | laboneq.compiler.workflow.neartime_execution  | INFO   Completed compilation step 1 of 1. [0.004 s]
+2026.06.26 14:39:23.668 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:23.668 | laboneq.compiler.workflow.reporter            | INFO    [1m [0m[1mDevice           [0m[1m [0m [1m [0m[1mAWG[0m[1m [0m [1m [0m[1mSeqC LOC[0m[1m [0m [1m [0m[1mCT entries[0m[1m [0m [1m [0m[1mWaveforms[0m[1m [0m [1m [0m[1mSamples[0m[1m [0m 
+2026.06.26 14:39:23.668 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:23.668 | laboneq.compiler.workflow.reporter            | INFO     SHFQC_DEV12001        0         17            0           3     24000  
+2026.06.26 14:39:23.669 | laboneq.compiler.workflow.reporter            | INFO     SHFQC_DEV12001_sg     0         57           22           2       448  
+2026.06.26 14:39:23.669 | laboneq.compiler.workflow.reporter            | INFO     SHFQC_DEV12001_sg     1         57           22           2       448  
+2026.06.26 14:39:23.669 | laboneq.compiler.workflow.reporter            | INFO     SHFQC_DEV12001_sg     2         57           22           2       448  
+2026.06.26 14:39:23.669 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:23.670 | laboneq.compiler.workflow.reporter            | INFO    [1m [0m[1mTOTAL            [0m[1m [0m [1m [0m[1m   [0m[1m [0m [1m [0m[1m     188[0m[1m [0m [1m [0m[1m        66[0m[1m [0m [1m [0m[1m         [0m[1m [0m [1m [0m[1m  25344[0m[1m [0m 
+2026.06.26 14:39:23.670 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:23.673 | laboneq.compiler.workflow.compiler            | INFO   Finished LabOne Q Compiler run.
+2026.06.26 14:39:23.675 | laboneq.controller.controller                 | INFO   Starting near-time execution...
+2026.06.26 14:39:23.689 | laboneq.controller.controller                 | INFO   Finished near-time execution.
+2026.06.26 14:39:24.172 | laboneq.compiler.workflow.compiler            | INFO   Starting LabOne Q Compiler run...
+2026.06.26 14:39:24.173 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/acquire' to Software
+2026.06.26 14:39:24.173 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/drive' to Hardware
+2026.06.26 14:39:24.173 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/drive_ef' to Hardware
+2026.06.26 14:39:24.174 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/measure' to Software
+2026.06.26 14:39:24.174 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q2/acquire' to Software
+2026.06.26 14:39:24.174 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q2/drive' to Hardware
+2026.06.26 14:39:24.175 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q2/drive_ef' to Hardware
+2026.06.26 14:39:24.175 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q2/measure' to Software
+2026.06.26 14:39:24.176 | laboneq.compiler.workflow.realtime_compiler   | INFO   Schedule completed. [0.001 s]
+2026.06.26 14:39:24.180 | laboneq.compiler.workflow.realtime_compiler   | INFO   Code generation completed for all AWGs. [0.003 s]
+2026.06.26 14:39:24.182 | laboneq.compiler.workflow.neartime_execution  | INFO   Completed compilation step 1 of 1. [0.007 s]
+2026.06.26 14:39:24.183 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:24.184 | laboneq.compiler.workflow.reporter            | INFO    [1m [0m[1mDevice           [0m[1m [0m [1m [0m[1mAWG[0m[1m [0m [1m [0m[1mSeqC LOC[0m[1m [0m [1m [0m[1mCT entries[0m[1m [0m [1m [0m[1mWaveforms[0m[1m [0m [1m [0m[1mSamples[0m[1m [0m 
+2026.06.26 14:39:24.184 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:24.184 | laboneq.compiler.workflow.reporter            | INFO     SHFQC_DEV12001        0        162            0           2     16000  
+2026.06.26 14:39:24.184 | laboneq.compiler.workflow.reporter            | INFO     SHFQC_DEV12001_sg     0        220           54           3       864  
+2026.06.26 14:39:24.185 | laboneq.compiler.workflow.reporter            | INFO     SHFQC_DEV12001_sg     2        220           54           3       864  
+2026.06.26 14:39:24.185 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:24.185 | laboneq.compiler.workflow.reporter            | INFO    [1m [0m[1mTOTAL            [0m[1m [0m [1m [0m[1m   [0m[1m [0m [1m [0m[1m     602[0m[1m [0m [1m [0m[1m       108[0m[1m [0m [1m [0m[1m         [0m[1m [0m [1m [0m[1m  17728[0m[1m [0m 
+2026.06.26 14:39:24.185 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:24.190 | laboneq.compiler.workflow.compiler            | INFO   Finished LabOne Q Compiler run.
+2026.06.26 14:39:24.192 | laboneq.controller.controller                 | INFO   Starting near-time execution...
+2026.06.26 14:39:24.196 | laboneq.controller.controller                 | INFO   Estimated RT execution time: 11.49 s.
+2026.06.26 14:39:24.207 | laboneq.controller.controller                 | INFO   Finished near-time execution.
+2026.06.26 14:39:24.436 | laboneq.compiler.workflow.compiler            | INFO   Starting LabOne Q Compiler run...
+2026.06.26 14:39:24.437 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/acquire' to Software
+2026.06.26 14:39:24.437 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/drive' to Hardware
+2026.06.26 14:39:24.438 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/drive_ef' to Hardware
+2026.06.26 14:39:24.438 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/measure' to Software
+2026.06.26 14:39:24.438 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q1/acquire' to Software
+2026.06.26 14:39:24.439 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q1/drive' to Hardware
+2026.06.26 14:39:24.439 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q1/drive_ef' to Hardware
+2026.06.26 14:39:24.439 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q1/measure' to Software
+2026.06.26 14:39:24.439 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q2/acquire' to Software
+2026.06.26 14:39:24.439 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q2/drive' to Hardware
+2026.06.26 14:39:24.439 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q2/drive_ef' to Hardware
+2026.06.26 14:39:24.440 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q2/measure' to Software
+2026.06.26 14:39:24.441 | laboneq.compiler.workflow.realtime_compiler   | INFO   Schedule completed. [0.001 s]
+2026.06.26 14:39:24.452 | laboneq.compiler.workflow.realtime_compiler   | INFO   Code generation completed for all AWGs. [0.011 s]
+2026.06.26 14:39:24.453 | laboneq.compiler.workflow.neartime_execution  | INFO   Completed compilation step 1 of 1. [0.012 s]
+2026.06.26 14:39:24.454 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:24.455 | laboneq.compiler.workflow.reporter            | INFO    [1m [0m[1mDevice           [0m[1m [0m [1m [0m[1mAWG[0m[1m [0m [1m [0m[1mSeqC LOC[0m[1m [0m [1m [0m[1mCT entries[0m[1m [0m [1m [0m[1mWaveforms[0m[1m [0m [1m [0m[1mSamples[0m[1m [0m 
+2026.06.26 14:39:24.455 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:24.455 | laboneq.compiler.workflow.reporter            | INFO     SHFQC_DEV12001        0         25            0           3     24000  
+2026.06.26 14:39:24.455 | laboneq.compiler.workflow.reporter            | INFO     SHFQC_DEV12001_sg     0        177           35          34     13952  
+2026.06.26 14:39:24.455 | laboneq.compiler.workflow.reporter            | INFO     SHFQC_DEV12001_sg     1        177           35          34     13952  
+2026.06.26 14:39:24.456 | laboneq.compiler.workflow.reporter            | INFO     SHFQC_DEV12001_sg     2        177           35          34     13952  
+2026.06.26 14:39:24.456 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:24.456 | laboneq.compiler.workflow.reporter            | INFO    [1m [0m[1mTOTAL            [0m[1m [0m [1m [0m[1m   [0m[1m [0m [1m [0m[1m     556[0m[1m [0m [1m [0m[1m       105[0m[1m [0m [1m [0m[1m         [0m[1m [0m [1m [0m[1m  65856[0m[1m [0m 
+2026.06.26 14:39:24.456 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:24.462 | laboneq.compiler.workflow.compiler            | INFO   Finished LabOne Q Compiler run.
+2026.06.26 14:39:24.464 | laboneq.controller.controller                 | INFO   Starting near-time execution...
+2026.06.26 14:39:24.470 | laboneq.controller.controller                 | INFO   Estimated RT execution time: 7.24 s.
+2026.06.26 14:39:24.481 | laboneq.controller.controller                 | INFO   Finished near-time execution.
+2026.06.26 14:39:24.543 | laboneq.compiler.workflow.compiler            | INFO   Starting LabOne Q Compiler run...
+2026.06.26 14:39:24.544 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/acquire' to Software
+2026.06.26 14:39:24.544 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/drive' to Hardware
+2026.06.26 14:39:24.545 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/drive_ef' to Hardware
+2026.06.26 14:39:24.545 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/measure' to Software
+2026.06.26 14:39:24.545 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q1/acquire' to Software
+2026.06.26 14:39:24.546 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q1/drive' to Hardware
+2026.06.26 14:39:24.546 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q1/drive_ef' to Hardware
+2026.06.26 14:39:24.546 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q1/measure' to Software
+2026.06.26 14:39:24.546 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q2/acquire' to Software
+2026.06.26 14:39:24.546 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q2/drive' to Hardware
+2026.06.26 14:39:24.547 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q2/drive_ef' to Hardware
+2026.06.26 14:39:24.547 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q2/measure' to Software
+2026.06.26 14:39:24.548 | laboneq.compiler.workflow.realtime_compiler   | INFO   Schedule completed. [0.001 s]
+2026.06.26 14:39:24.554 | laboneq.compiler.workflow.realtime_compiler   | INFO   Code generation completed for all AWGs. [0.006 s]
+2026.06.26 14:39:24.555 | laboneq.compiler.workflow.neartime_execution  | INFO   Completed compilation step 1 of 1. [0.007 s]
+2026.06.26 14:39:24.557 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:24.557 | laboneq.compiler.workflow.reporter            | INFO    [1m [0m[1mDevice           [0m[1m [0m [1m [0m[1mAWG[0m[1m [0m [1m [0m[1mSeqC LOC[0m[1m [0m [1m [0m[1mCT entries[0m[1m [0m [1m [0m[1mWaveforms[0m[1m [0m [1m [0m[1mSamples[0m[1m [0m 
+2026.06.26 14:39:24.557 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:24.557 | laboneq.compiler.workflow.reporter            | INFO     SHFQC_DEV12001        0        159            0           3     24000  
+2026.06.26 14:39:24.558 | laboneq.compiler.workflow.reporter            | INFO     SHFQC_DEV12001_sg     0        177           17          16      3680  
+2026.06.26 14:39:24.558 | laboneq.compiler.workflow.reporter            | INFO     SHFQC_DEV12001_sg     1        177           17          16      3680  
+2026.06.26 14:39:24.558 | laboneq.compiler.workflow.reporter            | INFO     SHFQC_DEV12001_sg     2        177           17          16      3680  
+2026.06.26 14:39:24.558 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:24.559 | laboneq.compiler.workflow.reporter            | INFO    [1m [0m[1mTOTAL            [0m[1m [0m [1m [0m[1m   [0m[1m [0m [1m [0m[1m     690[0m[1m [0m [1m [0m[1m        51[0m[1m [0m [1m [0m[1m         [0m[1m [0m [1m [0m[1m  35040[0m[1m [0m 
+2026.06.26 14:39:24.559 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:24.564 | laboneq.compiler.workflow.compiler            | INFO   Finished LabOne Q Compiler run.
+2026.06.26 14:39:24.566 | laboneq.controller.controller                 | INFO   Starting near-time execution...
+2026.06.26 14:39:24.571 | laboneq.controller.controller                 | INFO   Estimated RT execution time: 13.32 s.
+2026.06.26 14:39:24.582 | laboneq.controller.controller                 | INFO   Finished near-time execution.
+2026.06.26 14:39:24.634 | laboneq.compiler.workflow.compiler            | INFO   Starting LabOne Q Compiler run...
+2026.06.26 14:39:24.635 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/acquire' to Software
+2026.06.26 14:39:24.636 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/drive' to Hardware
+2026.06.26 14:39:24.636 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/drive_ef' to Hardware
+2026.06.26 14:39:24.636 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q0/measure' to Software
+2026.06.26 14:39:24.637 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q2/acquire' to Software
+2026.06.26 14:39:24.637 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q2/drive' to Hardware
+2026.06.26 14:39:24.637 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q2/drive_ef' to Hardware
+2026.06.26 14:39:24.637 | laboneq.rust.laboneq_compiler_py.setup_processor.processor | INFO   Resolved modulation type of oscillator on signal: 'q2/measure' to Software
+2026.06.26 14:39:24.638 | laboneq.compiler.workflow.realtime_compiler   | INFO   Schedule completed. [0.001 s]
+2026.06.26 14:39:24.644 | laboneq.compiler.workflow.realtime_compiler   | INFO   Code generation completed for all AWGs. [0.005 s]
+2026.06.26 14:39:24.645 | laboneq.compiler.workflow.neartime_execution  | INFO   Completed compilation step 1 of 1. [0.007 s]
+2026.06.26 14:39:24.646 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:24.647 | laboneq.compiler.workflow.reporter            | INFO    [1m [0m[1mDevice           [0m[1m [0m [1m [0m[1mAWG[0m[1m [0m [1m [0m[1mSeqC LOC[0m[1m [0m [1m [0m[1mCT entries[0m[1m [0m [1m [0m[1mWaveforms[0m[1m [0m [1m [0m[1mSamples[0m[1m [0m 
+2026.06.26 14:39:24.647 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:24.647 | laboneq.compiler.workflow.reporter            | INFO     SHFQC_DEV12001        0        159            0           2     16000  
+2026.06.26 14:39:24.647 | laboneq.compiler.workflow.reporter            | INFO     SHFQC_DEV12001_sg     0        380           27          25      6112  
+2026.06.26 14:39:24.647 | laboneq.compiler.workflow.reporter            | INFO     SHFQC_DEV12001_sg     2        380           27          25      6112  
+2026.06.26 14:39:24.648 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:24.648 | laboneq.compiler.workflow.reporter            | INFO    [1m [0m[1mTOTAL            [0m[1m [0m [1m [0m[1m   [0m[1m [0m [1m [0m[1m     919[0m[1m [0m [1m [0m[1m        54[0m[1m [0m [1m [0m[1m         [0m[1m [0m [1m [0m[1m  28224[0m[1m [0m 
+2026.06.26 14:39:24.648 | laboneq.compiler.workflow.reporter            | INFO    ─────────────────────────────────────────────────────────────────────── 
+2026.06.26 14:39:24.658 | laboneq.compiler.workflow.compiler            | INFO   Finished LabOne Q Compiler run.
+2026.06.26 14:39:24.659 | laboneq.controller.controller                 | INFO   Starting near-time execution...
+2026.06.26 14:39:24.663 | laboneq.controller.controller                 | INFO   Estimated RT execution time: 13.32 s.
+2026.06.26 14:39:24.674 | laboneq.controller.controller                 | INFO   Finished near-time execution.
