@@ -1,5 +1,6 @@
 # Superconducting Qubit Thermometry
 
+
 Experimental control and data-analysis code for **thermometry based on a superconducting transmon qubit**.
 The project uses a Zurich Instruments SHFQC and the LabOne Q SDK to run calibration sequences, qubit characterisation experiments, and three-level population measurements that extract the effective temperature of the qubit's electromagnetic environment.
 
@@ -13,7 +14,6 @@ The main deliverables are:
 - **`qmeas/`** — a lightweight package for sample/parameter bookkeeping (on-disk layout, named parameter sets, JSON save/load).
 - **`scresonators_custom.py`** — a dependency-free resonator (single-tone spectroscopy) fitting module used to extract `f0`, `Qi`, and `Qc`.
 - **`S3_Q2_Cooldown_2.ipynb`** — a Jupyter notebook that walks through an entire cooldown measurement campaign (sample S3, qubit Q2, cooldown #2). `S3_Q2_Cooldown_2_update.ipynb` is a trimmed, updated variant of the same campaign.
-- **`slicing_code/`** — the same workflow split into smaller, topic-focused notebooks (imports, spectroscopy, control-pulse setup, readout optimisation, single-shot).
 - **`Q1_Qi_Fits_Nb.ipynb`** — a standalone notebook for internal quality-factor (`Qi`) fitting of resonators on sample qubit Q1.
 
 ## Project Structure
@@ -56,12 +56,6 @@ superconducting-qubit-thermometry/
 │   ├── qsample.py                  #   QSample: on-disk sample/structure layout
 │   └── qparameters.py              #   QBaseParameters / QLinkedParameters
 ├── scresonators/                   # Vendored upstream scresonators-fit package
-├── slicing_code/                   # Modular notebook breakdown (git-ignored)
-│   ├── 1-imports_&_init.ipynb
-│   ├── 2-spectroscopy.ipynb
-│   ├── 3-control_pulse_setup.ipynb
-│   ├── 4_readout_optimization.ipynb
-│   └── 5-single_shot_0_&_1_measurements.ipynb
 ├── BlueFTC/                        # Third-party BlueFors temp-controller driver (git-ignored)
 ├── requirements.txt
 ├── QUICKSTART.md
