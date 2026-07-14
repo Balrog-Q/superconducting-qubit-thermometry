@@ -1,0 +1,32 @@
+[package]
+name = "laboneq-qccs-backend"
+authors.workspace = true
+description.workspace = true
+documentation.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+rust-version.workspace = true
+version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+smallvec = { workspace = true }
+indexmap = { workspace = true }
+pyo3 = { workspace = true }
+
+laboneq-compiler-py = { workspace = true }
+laboneq-common = { workspace = true }
+laboneq-dsl = { workspace = true }
+laboneq-ir = { workspace = true }
+laboneq-error = { workspace = true }
+laboneq-units = { workspace = true }
+laboneq-py-utils = { workspace = true }
+codegenerator-py = { workspace = true }
+laboneq-log = { workspace = true }
+
+[dev-dependencies]
+laboneq-common = { workspace = true, features = ["test_utils"] }
+approx = { workspace = true }

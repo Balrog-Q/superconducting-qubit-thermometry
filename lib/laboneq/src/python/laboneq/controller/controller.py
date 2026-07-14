@@ -1,0 +1,555 @@
+# Copyright 2019 Zurich Instruments AG
+# SPDX-License-Identifier: Apache-2.0
+
+from __future__ import annotations
+
+import asyncio
+import logging
+import time
+import traceback
+from dataclasses import dataclass
+from enum import Enum
+from typing import TYPE_CHECKING, Any, Callable
+
+from laboneq import __version__
+from laboneq.controller.constants import CONNECT_CHECK_HOLDOFF
+from laboneq.controller.devices.async_support import _gather
+from laboneq.controller.devices.device_collection import DeviceCollection
+from laboneq.controller.devices.device_utils import zhinst_core_version
+from laboneq.controller.devices.device_zi import DeviceBase, DeviceZI
+from laboneq.controller.near_time_replacement import (
+    NearTimeReplacements,
+    process_replacements,
+)
+from laboneq.controller.near_time_runner import NearTimeRunner
+from laboneq.controller.recipe_processor import (
+    pre_process_compiled,
+    validate_scheduled_experiment,
+)
+from laboneq.controller.results import ResultsBuilder
+from laboneq.controller.runtime_context_impl import LegacySessionData
+from laboneq.controller.utilities.exception import LabOneQControllerException
+from laboneq.controller.versioning import (
+    RECOMMENDED_MINIMUM_LABONE_VERSION,
+    LabOneVersion,
+    SetupCaps,
+)
+from laboneq.core.exceptions import AbortExecution
+from laboneq.core.utilities.async_helpers import AsyncWorker, EventLoopMixIn
+
+if TYPE_CHECKING:
+    from numpy import typing as npt
+
+    from laboneq.controller.devices.device_utils import NodeCollector
+    from laboneq.controller.recipe_processor import (
+        RecipeData,
+    )
+    from laboneq.controller.utilities.sweep_params_tracker import SweepParamsTracker
+    from laboneq.data.execution_payload import TargetSetup
+    from laboneq.data.experiment_results import ExperimentResults
+    from laboneq.data.recipe import NtStepKey
+    from laboneq.data.scheduled_experiment import (
+        ScheduledExperiment,
+    )
+    from laboneq.data.setup_descriptions import SetupDescription
+    from laboneq.dsl.experiment.pulse import Pulse
+
+
+_logger = logging.getLogger(__name__)
+
+
+@dataclass
+class ControllerSubmission:
+    scheduled_experiment: ScheduledExperiment
+    completion_future: asyncio.Future[ResultsBuilder]
+    temp_run_future: asyncio.Future[None]  # TODO(2K): Temporary
+    results_builder: ResultsBuilder
+
+
+class SubmissionStatus(Enum):
+    """The status of an experiment submission."""
+
+    QUEUED = "queued"
+    RUNNING = "running"
+    COMPLETED = "completed"
+    FAILED = "failed"
+
+
+@dataclass
+class ExecutionContext:
+    submission: ControllerSubmission
+    recipe_data: RecipeData
+
+
+@dataclass
+class NtStepResultContext:
+    nt_step: NtStepKey | None
+    nt_step_result_completed: asyncio.Future[None]
+    execution_context: ExecutionContext
+
+
+class Controller(EventLoopMixIn):
+    def __init__(
+        self,
+        target_setup: TargetSetup,
+        ignore_version_mismatch: bool,
+        neartime_callbacks: dict[str, Callable],
+    ):
+        self._ignore_version_mismatch = ignore_version_mismatch
+        self._do_emulation = True
+
+        _zhinst_core_version = LabOneVersion.from_version_string(zhinst_core_version())
+        self._check_zhinst_core_version_support(_zhinst_core_version)
+        self._setup_caps = SetupCaps(client_version=_zhinst_core_version)
+
+        self._devices = DeviceCollection(
+            target_setup=target_setup,
+            ignore_version_mismatch=ignore_version_mismatch,
+            setup_caps=self._setup_caps,
+        )
+
+        self._last_connect_check_ts: float | None = None
+
+        self._neartime_replacements: NearTimeReplacements = NearTimeReplacements()
+        self._neartime_callbacks: dict[str, Callable[..., Any]] = (
+            {} if neartime_callbacks is None else neartime_callbacks
+        )
+        # TODO: Remove _legacy_session_data tests once the RuntimeContext endpoints are removed
+        self._legacy_session_data = LegacySessionData(None, None, None, None, None)
+
+        self._experiment_runner = AsyncWorker(run_one=self._run_one_experiment)
+        self._result_collector = AsyncWorker(run_one=self._collect_nt_step_results)
+
+        _logger.debug("Controller debug logging is on")
+        _logger.info("VERSION: laboneq %s", __version__)
+
+    @property
+    def neartime_callbacks(self) -> dict[str, Callable]:
+        return self._neartime_callbacks
+
+    def _check_zhinst_core_version_support(self, version: LabOneVersion):
+        if version < RECOMMENDED_MINIMUM_LABONE_VERSION:
+            err_msg = (
+                f"'zhinst.core' version '{version}' is not supported. "
+                f"We recommend {RECOMMENDED_MINIMUM_LABONE_VERSION.show(omit_build=True)}."
+            )
+            raise LabOneQControllerException(err_msg)
+
+    @property
+    def setup_caps(self) -> SetupCaps:
+        return self._setup_caps
+
+    @property
+    def devices(self) -> dict[str, DeviceZI]:
+        return self._devices.devices
+
+    @property
+    def setup_description(self) -> SetupDescription | None:
+        """Setup description from connected device, if any."""
+        return self._devices.setup_description
+
+    async def _prepare_nt_step(
+        self,
+        recipe_data: RecipeData,
+        sweep_params_tracker: SweepParamsTracker,
+        user_set_nodes: NodeCollector,
+        nt_step: NtStepKey,
+    ):
+        # Trigger
+        await self._devices.for_each(DeviceBase.configure_trigger, recipe_data)
+
+        # NT Sweep parameters
+        for param, value in sweep_params_tracker.updated_params():
+            recipe_data.attribute_value_tracker.update(param, value)
+        await self._devices.for_each(
+            DeviceBase.set_nt_step_nodes, recipe_data, user_set_nodes
+        )
+        recipe_data.attribute_value_tracker.reset_updated()
+        sweep_params_tracker.clear_for_next_step()
+        user_set_nodes.clear()
+
+        # Feedback
+        await self._devices.for_each(DeviceBase.configure_feedback, recipe_data)
+
+        process_replacements(
+            self._neartime_replacements,
+            recipe_data,
+            self._devices,
+            nt_step,
+        )
+
+        # AWG / pipeliner upload
+        await self._devices.for_each(
+            DeviceZI.prepare_artifacts,
+            recipe_data=recipe_data,
+            nt_step=nt_step,
+        )
+
+    async def _after_nt_step(self):
+        await self._devices.for_each(DeviceBase.update_warning_nodes)
+        device_errors = await self._devices.fetch_device_errors()
+        if device_errors is not None:
+            raise LabOneQControllerException(device_errors)
+
+    async def _wait_execution_to_stop(self, execution_context: ExecutionContext):
+        target_devs = [
+            device for _, device in self._devices.all if isinstance(device, DeviceBase)
+        ]
+        if len(target_devs) == 0:
+            return
+
+        recipe_data = execution_context.recipe_data
+        water_results = await _gather(
+            *(
+                device.make_waiter_for_execution_done(recipe_data=recipe_data)
+                for device in target_devs
+            )
+        )
+        wait_times, response_waiters = zip(*water_results)
+
+        min_wait_time = max(wait_times)
+        if min_wait_time > 5:  # Only inform about RT executions taking longer than 5s
+            _logger.info("Estimated RT execution time: %.2f s.", min_wait_time)
+
+        await _gather(
+            *(
+                device.emit_start_trigger(recipe_data=recipe_data)
+                for device in target_devs
+            )
+        )
+        await _gather(
+            *(
+                device.wait_for_execution_done(
+                    response_waiter=response_waiter,
+                    min_wait_time=min_wait_time,
+                )
+                for device, response_waiter in zip(target_devs, response_waiters)
+            )
+        )
+
+    # TODO(2K): use timeout passed to connect
+    async def _execute_one_step(
+        self,
+        *,
+        execution_context: ExecutionContext,
+        sweep_params_tracker: SweepParamsTracker,
+        user_set_nodes: NodeCollector,
+        nt_step: NtStepKey,
+        timeout_s=5.0,
+    ) -> asyncio.Future[None]:
+        recipe_data = execution_context.recipe_data
+
+        await self._prepare_nt_step(
+            recipe_data=recipe_data,
+            sweep_params_tracker=sweep_params_tracker,
+            user_set_nodes=user_set_nodes,
+            nt_step=nt_step,
+        )
+
+        rt_execution_info = recipe_data.rt_execution_info
+
+        nt_step_result_completed = asyncio.get_running_loop().create_future()
+        nt_step_result_context = NtStepResultContext(
+            nt_step=nt_step,
+            nt_step_result_completed=nt_step_result_completed,
+            execution_context=execution_context,
+        )
+
+        try:
+            await self._devices.for_each(
+                DeviceBase.wait_for_channels_ready,
+                recipe_data=recipe_data,
+                timeout_s=timeout_s,
+            )
+
+            await self._devices.for_each(
+                DeviceBase.setup_one_step_execution,
+                recipe_data=recipe_data,
+                nt_step=nt_step,
+                with_pipeliner=rt_execution_info.is_chunked,
+            )
+
+            # This call must happen after the setup_one_step_execution,
+            # as result futures are created there.
+            await self._result_collector.submit(nt_step_result_context)
+
+            await self._devices.for_each(
+                DeviceBase.wait_for_execution_ready,
+                recipe_data=recipe_data,
+                timeout_s=timeout_s,
+            )
+            await self._wait_execution_to_stop(execution_context=execution_context)
+            await self._devices.for_each(
+                DeviceBase.teardown_one_step_execution,
+                recipe_data=recipe_data,
+            )
+        except (asyncio.TimeoutError, TimeoutError, LabOneQControllerException) as e:
+            if not isinstance(e, LabOneQControllerException):
+                e = LabOneQControllerException(
+                    "Timeout during execution of a near-time step",
+                    cause=e,
+                )
+            # TODO(2K): introduce "hard" controller exceptions
+            execution_context.submission.results_builder.add_execution_error(
+                (
+                    list(nt_step.indices),
+                    execution_context.recipe_data.rt_execution_info.uid,
+                    "".join(traceback.format_exception(e)),
+                )
+            )
+        await self._after_nt_step()
+        return nt_step_result_completed
+
+    def connect(
+        self,
+        do_emulation: bool = True,
+        reset_devices: bool = False,
+        disable_runtime_checks: bool = True,
+        timeout_s: float | None = None,
+    ):
+        self._event_loop.run(
+            self._connect_async,
+            do_emulation=do_emulation,
+            reset_devices=reset_devices,
+            disable_runtime_checks=disable_runtime_checks,
+            timeout_s=timeout_s,
+        )
+
+    async def _connect_async(
+        self,
+        do_emulation: bool = True,
+        reset_devices: bool = False,
+        disable_runtime_checks: bool = True,
+        timeout_s: float | None = None,
+    ):
+        # Remember settings for later implicit connect check
+        self._do_emulation = do_emulation
+        self._devices.set_timeout(timeout_s)
+        now = time.monotonic()
+        if (
+            self._last_connect_check_ts is None
+            or now - self._last_connect_check_ts > CONNECT_CHECK_HOLDOFF
+        ):
+            await self._devices.connect(
+                do_emulation=self._do_emulation,
+                reset_devices=reset_devices,
+                disable_runtime_checks=disable_runtime_checks,
+            )
+        self._last_connect_check_ts = now
+        async with self._devices.capture_logs():
+            await self._devices.for_each(DeviceBase.reset_to_idle)
+
+    def disable_outputs(
+        self,
+        device_uids: list[str] | None = None,
+        logical_signals: list[str] | None = None,
+        unused_only: bool = False,
+    ):
+        self._event_loop.run(
+            self._disable_outputs_async, device_uids, logical_signals, unused_only
+        )
+
+    async def _disable_outputs_async(
+        self,
+        device_uids: list[str] | None = None,
+        logical_signals: list[str] | None = None,
+        unused_only: bool = False,
+    ):
+        await self._devices.disable_outputs(device_uids, logical_signals, unused_only)
+
+    def disconnect(self):
+        self.stop_workers()
+        self._event_loop.run(self._disconnect_async)
+        self.stop()
+
+    async def _disconnect_async(self):
+        _logger.info("Disconnecting from all devices and servers...")
+        await self._devices.disconnect()
+        self._last_connect_check_ts = None
+        _logger.info("Successfully disconnected from all devices and servers.")
+
+    def submit_compiled(
+        self, scheduled_experiment: ScheduledExperiment
+    ) -> ControllerSubmission:
+        return self._event_loop.run(
+            self._submit_compiled_async,
+            scheduled_experiment=scheduled_experiment,
+        )
+
+    def wait_submission(self, submission: ControllerSubmission):
+        self._event_loop.run(self._wait_submission_async, submission=submission)
+
+    def stop_workers(self):
+        self._event_loop.run(self.stop_workers_async)
+
+    def start(self):
+        self._event_loop.start()
+
+    def stop(self):
+        self._event_loop.stop()
+
+    def submission_results(self, submission: ControllerSubmission) -> ExperimentResults:
+        return submission.results_builder.results
+
+    def submission_status(self, submission: ControllerSubmission) -> SubmissionStatus:
+        if not submission.completion_future.done():
+            # TODO(2K): Implement RUNNING status
+            return SubmissionStatus.QUEUED
+        if len(self.submission_results(submission).execution_errors) > 0:
+            return SubmissionStatus.FAILED
+        return SubmissionStatus.COMPLETED
+
+    async def _submit_compiled_async(
+        self,
+        scheduled_experiment: ScheduledExperiment,
+    ) -> ControllerSubmission:
+        validate_scheduled_experiment(
+            scheduled_experiment, self._devices, self._neartime_callbacks
+        )
+        submission = ControllerSubmission(
+            scheduled_experiment=scheduled_experiment,
+            completion_future=asyncio.get_running_loop().create_future(),
+            temp_run_future=asyncio.get_running_loop().create_future(),
+            results_builder=ResultsBuilder.from_scheduled_experiment(
+                scheduled_experiment
+            ),
+        )
+        await self._experiment_runner.submit(submission)
+        return submission
+
+    async def _wait_submission_async(self, submission: ControllerSubmission):
+        await submission.completion_future
+        await submission.temp_run_future  # TODO(2K): Temporary
+
+    async def stop_workers_async(self):
+        await self._experiment_runner.stop()
+        await self._result_collector.stop()
+
+    async def _run_one_experiment(self, submission: ControllerSubmission):
+        try:
+            await self._execute_compiled_async(submission=submission)
+        except BaseException as e:
+            # completion_future maybe cancelled by SIGINT handler, avoid InvalidStateError in that case
+            if not submission.completion_future.done():
+                submission.completion_future.set_exception(e)
+
+    async def _execute_compiled_async(self, submission: ControllerSubmission):
+        recipe_data = pre_process_compiled(
+            submission.scheduled_experiment, self._devices
+        )
+
+        execution_context = ExecutionContext(
+            submission=submission,
+            recipe_data=recipe_data,
+        )
+
+        async with self._devices.capture_logs():
+            try:
+                await self._devices.for_each(
+                    DeviceBase.on_experiment_begin, recipe_data=recipe_data
+                )
+                await self._devices.for_each(
+                    DeviceBase.initialize_oscillators, recipe_data
+                )
+
+                # Ensure no side effects from the previous execution in the same session
+                self._neartime_replacements.clear()
+
+                _logger.info("Starting near-time execution...")
+                try:
+                    await NearTimeRunner(
+                        controller=self,
+                        execution_context=execution_context,
+                        do_emulation=self._do_emulation,
+                        legacy_session_data=self._legacy_session_data,
+                    ).run(recipe_data.execution)
+                except AbortExecution:
+                    # eat the exception
+                    pass
+
+                # In case of an exception in the preceding flow, we skip this finalization step,
+                # as the `completion_future` will be set with the exception, that should take precedence.
+                nt_step_result_context = NtStepResultContext(
+                    nt_step=None,  # Finalize the execution
+                    nt_step_result_completed=asyncio.get_running_loop().create_future(),
+                    execution_context=execution_context,
+                )
+                await self._result_collector.submit(nt_step_result_context)
+                # TODO(2K): Waiting for the results here is a temporary workaround, as the
+                # result collector has to finish before we unsubscribe in `on_experiment_end` in
+                # the `finally` clause. For the future, result nodes subscription lifecycle should
+                # be outside the experiment execution.
+                await nt_step_result_context.execution_context.submission.completion_future
+
+                _logger.info("Finished near-time execution.")
+            except LabOneQControllerException:
+                # Report device errors if any - it maybe useful to diagnose the original exception
+                device_errors = await self._devices.fetch_device_errors()
+                if device_errors is not None:
+                    _logger.warning(device_errors)
+                raise
+            finally:
+                # Ensure that the experiment run time is not included in the idle timeout for the connection check.
+                self._last_connect_check_ts = time.monotonic()
+                await self._devices.for_each(DeviceBase.on_experiment_end)
+                # TODO(2K): This is another workaround to ensure that the on_experiment_end
+                # is called before the test run completes and the nodes touched in `on_experiment_end`
+                # are still captured.
+                execution_context.submission.temp_run_future.set_result(None)
+
+    def register_pulse_replacement(
+        self,
+        pulse_uid: str,
+        replacement: npt.ArrayLike | Pulse,
+    ):
+        self._neartime_replacements.add_pulse_replacement(pulse_uid, replacement)
+
+    def register_phase_increment_replacement(
+        self, parameter_uid: str, new_value: int | float
+    ):
+        self._neartime_replacements.add_phase_increment_replacement(
+            parameter_uid, new_value
+        )
+
+    async def _collect_nt_step_results(
+        self, nt_step_result_context: NtStepResultContext
+    ):
+        try:
+            if nt_step_result_context.nt_step is None:
+                # Indicates end of the near-time execution.
+                # Resolve the overall submission future with the results.
+                nt_step_result_context.execution_context.submission.completion_future.set_result(
+                    nt_step_result_context.execution_context.submission.results_builder
+                )
+            else:
+                await self._read_one_step_results(
+                    recipe_data=nt_step_result_context.execution_context.recipe_data,
+                    results_builder=nt_step_result_context.execution_context.submission.results_builder,
+                    nt_step=nt_step_result_context.nt_step,
+                )
+        except Exception as exc:
+            if not nt_step_result_context.execution_context.submission.completion_future.done():
+                wrapper = RuntimeError("operation failed")
+                wrapper.__cause__ = exc
+                nt_step_result_context.execution_context.submission.completion_future.set_exception(
+                    wrapper
+                )
+        # Indicate that the results for this step are ready.
+        nt_step_result_context.nt_step_result_completed.set_result(None)
+
+    async def _read_one_step_results(
+        self,
+        recipe_data: RecipeData,
+        results_builder: ResultsBuilder,
+        nt_step: NtStepKey,
+    ):
+        await self._devices.for_each(
+            DeviceZI.read_results,
+            recipe_data=recipe_data,
+            nt_step=nt_step,
+            results_builder=results_builder,
+        )
+
+    # TODO: Remove _legacy_session_data tests once the RuntimeContext endpoints are removed
+    def set_legacy_session_data(self, legacy_session_data: LegacySessionData):
+        self._legacy_session_data = legacy_session_data

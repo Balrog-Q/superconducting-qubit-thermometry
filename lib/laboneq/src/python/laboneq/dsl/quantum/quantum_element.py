@@ -1,0 +1,446 @@
+# Copyright 2022 Zurich Instruments AG
+# SPDX-License-Identifier: Apache-2.0
+
+from __future__ import annotations
+
+from collections import defaultdict
+from typing import TYPE_CHECKING, Any, ClassVar, Dict, List, Union
+
+import attrs
+from typing_extensions import deprecated
+
+from laboneq.core.path import remove_logical_signal_prefix
+from laboneq.core.utilities.dsl_dataclass_decorator import classformatter
+from laboneq.dsl.calibration import Calibration
+from laboneq.dsl.device.io_units import LogicalSignal
+from laboneq.dsl.experiment import ExperimentSignal
+
+if TYPE_CHECKING:
+    import os
+
+    from laboneq.dsl.device import DeviceSetup, LogicalSignalGroup
+
+
+@classformatter
+@attrs.define(kw_only=True)
+class QuantumParameters:
+    """Calibration parameters for a [QuantumElement][laboneq.dsl.quantum.quantum_element.QuantumElement].
+
+    Attributes:
+        custom: A dictionary of custom parameters with attribute-style access.
+
+    !!! note
+        For reliable serialization, the objects in the `custom` dictionary and the
+        attributes added by subclasses need to be supported by the LabOne Q serializer.
+        Examples of supported types include:
+        - Python types: list, dict, tuple, int, float, bool, str
+        - NumPy types: np.integer, np.ndarray
+        - `QuantumParameter` objects
+        For more information on the currently supported objects for serialization,
+        please see the [serializers documentation](https://docs.zhinst.com/labone_q_user_manual/core/functionality_and_concepts/09_serialization/tutorials/00_serialization.html).
+    """
+
+    custom: dict[str, object] = attrs.field(
+        factory=dict, converter=lambda value: AttrDict(value)
+    )
+
+    def copy(self):
+        """Returns a copy of the parameters."""
+        return self.replace()
+
+    def replace(self, **changes: dict[str, object]) -> QuantumParameters:
+        """Return a new set of parameters with changes applied.
+
+        Arguments:
+            changes:
+                Parameter changes to apply passed as keyword arguments.
+                Dotted key names such as `a.b.c` update nested parameters
+                or items within parameter values that are dictionaries.
+
+        Returns:
+            A new parameters instance.
+        """
+        invalid_params = self._get_invalid_param_paths(**changes)
+        if invalid_params:
+            raise ValueError(
+                f"Update parameters do not match the qubit "
+                f"parameters: {invalid_params}",
+            )
+
+        return self._nested_evolve(self, **changes)
+
+    def _get_invalid_param_paths(self, **changes) -> list[str]:
+        invalid_params = []
+        for param_path in changes:
+            keys = param_path.split(".")
+            obj = self
+            for key in keys:
+                if isinstance(obj, dict):
+                    if key not in obj:
+                        invalid_params.append(param_path)
+                        break
+                    obj = obj[key]
+                elif not hasattr(obj, key):
+                    invalid_params.append(param_path)
+                    break
+                else:
+                    obj = getattr(obj, key)
+        return invalid_params
+
+    @classmethod
+    def _dict_evolve(cls, d, **changes) -> dict[str, object]:
+        return {**d, **changes}
+
+    @classmethod
+    def _nested_evolve(cls, obj, **changes) -> dict | QuantumParameters:
+        obj_changes = {}
+        nested_changes: defaultdict[str, dict[str, Any]] = defaultdict(dict)
+
+        # separate object and nested changes
+        for path, value in changes.items():
+            key, _, sub_path = path.partition(".")
+            if sub_path:
+                nested_changes[key][sub_path] = value
+            else:
+                obj_changes[key] = value
+
+        # apply nested changes:
+        for key, value in nested_changes.items():
+            sub_obj = obj[key] if isinstance(obj, dict) else getattr(obj, key)
+            obj_changes[key] = cls._nested_evolve(sub_obj, **value)
+
+        if isinstance(obj, dict):
+            return cls._dict_evolve(obj, **obj_changes)
+        return attrs.evolve(obj, **obj_changes)
+
+
+def _signals_converter(signals: dict[str, str | LogicalSignal] | None, self_):
+    """Convert signals to a mapping from experiment signal names to logical signals."""
+    if signals is None:
+        return {}
+    alias = self_.SIGNAL_ALIASES
+    return {
+        alias.get(k, k): v.path if isinstance(v, LogicalSignal) else v
+        for k, v in signals.items()
+    }
+
+
+def _parameters_converter(parameters: dict[str, Any] | QuantumParameters | None, self_):
+    """Convert parameters to the required QuantumParameters type."""
+    if parameters is None:
+        return self_.PARAMETERS_TYPE()
+    if isinstance(parameters, dict):
+        return self_.PARAMETERS_TYPE(**parameters)
+    return parameters
+
+
+class AttrDict(dict):
+    """A dictionary with attribute-style access."""
+
+    def __init__(self, custom: dict[str, object]):
+        super().__init__(custom)
+        if existing_attributes := set(super().__dir__()) & set(custom.keys()):
+            raise ValueError(
+                f"The following group names shadow existing attributes of "
+                f"{self.__class__.__name__}: {', '.join(existing_attributes)}."
+            )
+        for key, value in custom.items():
+            setattr(self, key, value)
+
+    def __dir__(self) -> list[str]:
+        return list(self.keys()) + list(super().__dir__())
+
+    def __setattr__(self, key: str, value: object):
+        self[key] = value
+
+    def __getattr__(self, key: str):
+        try:
+            return self[key]
+        except KeyError as err:
+            raise AttributeError(
+                f"The {type(self).__name__} object has no attribute `{key}`."
+            ) from err
+
+    def __delattr__(self, key):
+        try:
+            del self[key]
+        except KeyError as err:
+            raise AttributeError(
+                f"The {type(self).__name__} object has no attribute `{key}`."
+            ) from err
+
+
+@classformatter
+@attrs.define
+class QuantumElement:
+    """A quantum element within a quantum device.
+
+    For example, a qubit or a coupler.
+
+    Attributes:
+        PARAMETERS_TYPE:
+            (class attribute) The type of the parameters used. Should be a sub-class of QuantumParameters.
+        REQUIRED_SIGNALS:
+            (class attribute) A tuple of experiment signal names that must be provided.
+        OPTIONAL_SIGNALS:
+            (class attribute) A tuple of optional signal names. Optional signals are used by the class
+            but not required.
+        SIGNAL_ALIASES:
+            (class attribute) A mapping from alternative names for signals to their canonical names.
+            Signal names are translated to canonical signal names when a
+            quantum element is instantiated.
+
+            This attribute is provided as a means to provide backwards
+            compatibility with existing device configurations when signal naming
+            conventions change.
+        uid:
+            A unique identifier for the quantum element. E.g. `q0`.
+        signals:
+            A mapping for experiment signal names to logical signal paths.
+        parameters:
+            Parameter values for the quantum element. For example, qubit
+            frequency, drive pulse lengths.
+    """
+
+    # Class attributes: These should have ClassVar type hints and not regular type
+    #                   hints, otherwise attrs will treat them as instance attributes.
+
+    PARAMETERS_TYPE: ClassVar[type[QuantumParameters]] = QuantumParameters
+
+    REQUIRED_SIGNALS: ClassVar[tuple[str, ...]] = ()
+
+    OPTIONAL_SIGNALS: ClassVar[tuple[str, ...]] = ()
+
+    SIGNAL_ALIASES: ClassVar[dict[str, str]] = {}
+
+    # Instance attributes: These should have regular type hints and preferably be
+    #                      assigned to `attrs.field(...)`.
+
+    uid: str = attrs.field()
+    signals: Dict[str, str] = attrs.field(
+        converter=attrs.Converter(_signals_converter, takes_self=True),
+        default=None,
+    )
+    parameters: QuantumParameters = attrs.field(
+        converter=attrs.Converter(_parameters_converter, takes_self=True),
+        default=None,
+    )
+
+    @signals.validator
+    def _validate_signals(self, attribute: attrs.Attribute, value: dict[str, str]):
+        invalid_signals = {
+            k: v
+            for k, v in value.items()
+            if not isinstance(k, str) or not isinstance(v, str)
+        }
+        if invalid_signals:
+            raise ValueError(
+                f"Signals must map experiment signal names to logical signal paths."
+                f" The following entries are not strings: {invalid_signals!r}"
+            )
+
+        missing_signals = [k for k in self.REQUIRED_SIGNALS if k not in value]
+        if missing_signals:
+            raise ValueError(
+                f"The following required signals are absent: {missing_signals!r}"
+            )
+
+        allowed_signals = set(self.REQUIRED_SIGNALS + self.OPTIONAL_SIGNALS)
+        unknown_signals = [k for k in value if k not in allowed_signals]
+        if unknown_signals:
+            raise ValueError(
+                f"The following unknown signals are present: {unknown_signals!r}."
+            )
+
+    @parameters.validator
+    def _validate_parameters(
+        self, attribute: attrs.Attribute, value: QuantumParameters
+    ):
+        if not isinstance(value, self.PARAMETERS_TYPE):
+            raise ValueError(
+                f"The parameters must be an instance of {self.PARAMETERS_TYPE!r}"
+            )
+
+    def __rich_repr__(self):
+        yield "uid", self.uid
+        yield "signals", self.signals
+        yield "parameters", self.parameters
+
+    @classmethod
+    def from_logical_signal_group(
+        cls,
+        uid: str,
+        lsg: LogicalSignalGroup,
+        parameters: QuantumParameters | dict[str, Any] | None = None,
+    ) -> QuantumElement:
+        """Create a quantum element from a logical signal group.
+
+        Arguments:
+            uid:
+                A unique identifier for the quantum element. E.g. `q0`.
+            lsg:
+                The logical signal group containing the quantum elements
+                signals.
+            parameters:
+                A dictionary of quantum element parameters or an instance of
+                QuantumParameters.
+
+        Returns:
+            A quantum element.
+
+        !!! note
+            The logical signal group prefix, `/logical_signal_group/`,
+            will be removed from any signal paths if it is present.
+        """
+        signals = {
+            name: remove_logical_signal_prefix(signal.path)
+            for name, signal in lsg.logical_signals.items()
+        }
+        return cls(uid=uid, signals=signals, parameters=parameters)
+
+    @classmethod
+    def from_device_setup(
+        cls,
+        device_setup: DeviceSetup,
+        qubit_uids: list[str] | None = None,
+        parameters: dict[str, QuantumParameters | dict[str, Any]] | None = None,
+    ) -> list[QuantumElement]:
+        """Create a list of quantum elements from a device setup.
+
+        Arguments:
+            device_setup:
+                The device setup to create the quantum elements from.
+            qubit_uids:
+                The set of logical signal group uids to create qubits from, or
+                `None` to create qubits from all logical signal groups.
+            parameters:
+                A dictionary mapping quantum element UIDs to the parameters for
+                that quantum element. Parameters may be specified either as
+                a dictionary of parameter names and values, or as instances of
+                the appropriate sub-class of `QuantumParameters`.
+
+        Returns:
+            A list of quantum elements.
+
+        !!! version-changed "Changed in version 2.46.0"
+
+            The `parameters` argument was added.
+
+            In earlier versions, parameters needed to be set separately
+            after the quantum elements were created.
+        """
+        if qubit_uids is not None:
+            qubit_uids = set(qubit_uids)
+        else:
+            qubit_uids = device_setup.logical_signal_groups.keys()
+        if parameters is None:
+            parameters = {}
+        return [
+            cls.from_logical_signal_group(
+                uid, lsg, parameters=parameters.get(uid, None)
+            )
+            for uid, lsg in device_setup.logical_signal_groups.items()
+            if uid in qubit_uids
+        ]
+
+    def calibration(self) -> Calibration:
+        """Return the calibration for this quantum element.
+
+        Calibration for each experiment signal is generated from the quantum element
+        parameters.
+
+        Returns:
+            The experiment calibration.
+        """
+        return Calibration({})
+
+    def experiment_signals(
+        self,
+    ) -> List[ExperimentSignal]:
+        """Return the list of the experiment signals for this quantum element.
+
+        Returns:
+            A list of experiment signals.
+        """
+        return [ExperimentSignal(uid=k, map_to=k) for k in self.signals.values()]
+
+    def copy(self):
+        """Returns a copy of the qubit."""
+        return self.replace()
+
+    def replace(self, **parameter_changes: dict[str, object]) -> QuantumElement:
+        """Return a new quantum element with the parameter changes applied.
+
+        Arguments:
+            parameter_changes:
+                Parameter changes to apply passed as keyword arguments.
+
+        Returns:
+            A new quantum element with the parameter changes applied.
+        """
+        params = self.parameters.replace(**parameter_changes)
+        return attrs.evolve(self, parameters=params)
+
+    def update(self, **parameter_changes: dict[str, object]):
+        """Update this quantum element with supplied parameter changes.
+
+        Arguments:
+            parameter_changes:
+                Parameter changes to apply passed as keyword arguments.
+
+        !!! note
+            The `parameters` attribute of this quantum element is replaced
+            with a *new* parameter instance.
+        """
+        params = self.parameters.replace(**parameter_changes)
+        self.parameters = params
+
+    @classmethod
+    def create_parameters(cls, **parameters: dict[str, object]) -> QuantumParameters:
+        """Create a new instance of parameters for this qubit class.
+
+        Arguments:
+            parameters:
+                Parameter values for the new parameter instance.
+
+        Returns:
+            A new parameter instance.
+        """
+        return cls.PARAMETERS_TYPE(**parameters)
+
+    @classmethod
+    @deprecated(
+        "The .load method is deprecated. Use `q = laboneq.serializers.load(filename)` instead.",
+        category=FutureWarning,
+    )
+    def load(cls, filename: Union[str, bytes, os.PathLike]) -> "QuantumElement":
+        """
+        Loads a QuantumElement object from a JSON file.
+
+        Args:
+            filename: The name of the JSON file to load the QuantumElement object from.
+
+        !!! version-changed "Deprecated in version 2.43.0."
+            Use `q = laboneq.serializers.load(filename)` instead.
+        """
+        from laboneq import serializers
+
+        return serializers.load(filename)
+
+    @deprecated(
+        "The .save method is deprecated. Use `laboneq.serializers.save(q, filename)` instead.",
+        category=FutureWarning,
+    )
+    def save(self, filename: Union[str, bytes, os.PathLike]):
+        """
+        Save a QuantumElement object to a JSON file.
+
+        Args:
+            filename: The name of the JSON file to save the QuantumElement object.
+
+        !!! version-changed "Deprecated in version 2.43.0."
+            Use `laboneq.serializers.save(q, filename)` instead.
+        """
+        from laboneq import serializers
+
+        serializers.save(self, filename)

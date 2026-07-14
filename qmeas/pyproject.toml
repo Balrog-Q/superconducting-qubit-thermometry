@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qmeas"
+version = "0.0.1"
+authors = [
+    {name = "Elias Ankerhold", email = "elias.ankerhold@aalto.fi"},
+]
+description = "Package to simplify Qubit measurements based on Zurich Instruments LabOneQ software"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering",
+    "License :: OSI Approved :: GPL-3.0-only",
+]
+dependencies = [
+]

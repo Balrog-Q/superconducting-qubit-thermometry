@@ -1,0 +1,98 @@
+# Copyright 2023 Zurich Instruments AG
+# SPDX-License-Identifier: Apache-2.0
+
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from enum import Enum, auto
+from typing import TYPE_CHECKING
+
+from laboneq.data import EnumReprMixin
+
+if TYPE_CHECKING:
+    from numpy.typing import ArrayLike
+
+    from laboneq.data.setup_description import ReferenceClockSource
+
+# Added when SHFQC is split into virtual SHFSG & SHFQA
+# SHFQC(uid="shfqc") --> SHFSG(uid="shfqc_sg"), SHFQA(uid="shfqc")
+VIRTUAL_SHFSG_UID_SUFFIX = "_sg"
+
+
+#
+# Enums
+#
+class TargetDeviceType(EnumReprMixin, Enum):
+    UHFQA = auto()
+    HDAWG = auto()
+    SHFQA = auto()
+    SHFSG = auto()
+    SHFPPC = auto()
+    PQSC = auto()
+    QHUB = auto()
+    NONQC = auto()
+    ZQCS = auto()
+
+
+#
+# Data Classes
+#
+@dataclass
+class TargetServer:
+    uid: str = None
+    host: str = None
+    port: int = None
+
+
+class TargetChannelType(EnumReprMixin, Enum):
+    UNKNOWN = auto()
+    IQ = auto()
+    RF = auto()
+
+
+@dataclass
+class TargetChannelCalibration:
+    channel_type: TargetChannelType
+    ports: list[str]
+    voltage_offset: float | None
+
+
+@dataclass
+class TargetDevice:
+    uid: str
+    server: TargetServer
+    device_serial: str
+    device_type: TargetDeviceType
+    device_options: str | None
+    interface: str
+    has_signals: bool
+    connected_outputs: dict[str, list[int]]
+    internal_connections: list[str] = field(default_factory=list)
+    calibrations: list[TargetChannelCalibration] | None = None
+    is_qc: bool = False
+    qc_with_qa: bool = False
+    qc_with_sg: bool = False
+    reference_clock_source: ReferenceClockSource | None = None
+    device_class: int = 0x0
+
+
+@dataclass
+class SourceCode:
+    uid: str = None
+    file_name: str = None  # TODO(2K): This field currently acts as the uid, not requiring a separate file name if the uid is explicit.
+    source_text: str = None
+
+
+@dataclass
+class WaveForm:
+    uid: str = None
+    sampling_rate: float = None
+    length_samples: int = None
+    samples: ArrayLike = None
+
+
+@dataclass
+class TargetSetup:
+    uid: str = None
+    servers: list[TargetServer] = field(default_factory=list)
+    devices: list[TargetDevice] = field(default_factory=list)

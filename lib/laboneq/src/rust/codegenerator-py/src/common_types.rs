@@ -1,0 +1,82 @@
+// Copyright 2025 Zurich Instruments AG
+// SPDX-License-Identifier: Apache-2.0
+
+use codegenerator::ir::compilation_job::{DeviceKind, MixerType, SignalKind};
+use laboneq_dsl::signal_calibration::PortMode;
+use pyo3::prelude::*;
+
+#[allow(clippy::upper_case_acronyms)]
+#[pyclass(name = "SignalType", eq, skip_from_py_object)]
+#[derive(PartialEq, Clone)]
+pub(crate) enum SignalTypePy {
+    IQ,
+    SINGLE,
+    INTEGRATION,
+}
+
+impl SignalTypePy {
+    pub(crate) fn from_signal_kind(signal_kind: &SignalKind) -> Self {
+        match signal_kind {
+            SignalKind::IQ => SignalTypePy::IQ,
+            SignalKind::SINGLE => SignalTypePy::SINGLE,
+            SignalKind::INTEGRATION => SignalTypePy::INTEGRATION,
+        }
+    }
+}
+
+#[allow(clippy::upper_case_acronyms)]
+#[pyclass(name = "DeviceType", eq, skip_from_py_object)]
+#[derive(PartialEq, Clone)]
+pub(crate) enum DeviceTypePy {
+    HDAWG,
+    SHFQA,
+    SHFSG,
+    UHFQA,
+}
+
+impl DeviceTypePy {
+    pub(crate) fn from_device_kind(device_kind: &DeviceKind) -> Self {
+        match device_kind {
+            DeviceKind::HDAWG => DeviceTypePy::HDAWG,
+            DeviceKind::SHFQA => DeviceTypePy::SHFQA,
+            DeviceKind::SHFSG => DeviceTypePy::SHFSG,
+            DeviceKind::UHFQA => DeviceTypePy::UHFQA,
+        }
+    }
+}
+
+#[allow(clippy::upper_case_acronyms)]
+#[pyclass(name = "MixerType", eq, skip_from_py_object)]
+#[derive(PartialEq, Clone)]
+pub(crate) enum MixerTypePy {
+    /// Mixer performs full complex modulation
+    IQ,
+    /// Mixer only performs envelope modulation (UHFQA-style)
+    #[pyo3(name = "UHFQA_ENVELOPE")]
+    UhfqaEnvelope,
+}
+
+impl From<MixerType> for MixerTypePy {
+    fn from(mixer_type: MixerType) -> Self {
+        match mixer_type {
+            MixerType::IQ => MixerTypePy::IQ,
+            MixerType::UhfqaEnvelope => MixerTypePy::UhfqaEnvelope,
+        }
+    }
+}
+
+#[pyclass(name = "PortMode", eq, hash, frozen, skip_from_py_object)]
+#[derive(PartialEq, Clone, Hash)]
+pub(crate) enum PortModePy {
+    RF,
+    LF,
+}
+
+impl From<PortMode> for PortModePy {
+    fn from(pm: PortMode) -> Self {
+        match pm {
+            PortMode::RF => PortModePy::RF,
+            PortMode::LF => PortModePy::LF,
+        }
+    }
+}

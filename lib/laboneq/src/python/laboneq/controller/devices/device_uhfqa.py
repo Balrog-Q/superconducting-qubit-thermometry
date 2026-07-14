@@ -1,0 +1,385 @@
+# Copyright 2022 Zurich Instruments AG
+# SPDX-License-Identifier: Apache-2.0
+
+from __future__ import annotations
+
+import asyncio
+import logging
+from typing import TYPE_CHECKING, NoReturn
+
+import numpy as np
+
+from laboneq.controller.attribute_value_tracker import (
+    AttributeName,
+)
+from laboneq.controller.devices.async_support import _gather
+from laboneq.controller.devices.device_utils import NodeCollector
+from laboneq.controller.devices.device_zi import (
+    DeviceBase,
+    RawReadoutData,
+    delay_to_rounded_samples,
+)
+from laboneq.controller.devices.node_control import (
+    Command,
+    Response,
+    Setting,
+)
+from laboneq.controller.devices.uhfqa_awg import UHFQAAwg, _check_result
+from laboneq.controller.recipe_processor import (
+    get_initialization_by_device_uid,
+)
+from laboneq.controller.utilities.exception import LabOneQControllerException
+from laboneq.core.types.enums.averaging_mode import AveragingMode
+
+if TYPE_CHECKING:
+    from collections.abc import Iterable
+
+    from laboneq.controller.attribute_value_tracker import (
+        DeviceAttributesView,
+    )
+    from laboneq.controller.devices.core_base import CoreBase
+    from laboneq.controller.devices.node_control import (
+        NodeControlBase,
+    )
+    from laboneq.controller.recipe_processor import (
+        RecipeData,
+        RtExecutionInfo,
+    )
+    from laboneq.data.recipe import IO
+    from laboneq.data.scheduled_experiment import ScheduledExperiment
+
+_logger = logging.getLogger(__name__)
+
+SAMPLE_FREQUENCY_HZ = 1.8e9
+DELAY_NODE_GRANULARITY_SAMPLES = 4
+DELAY_NODE_MAX_SAMPLES = 1020
+
+REFERENCE_CLOCK_SOURCE_INTERNAL = 0
+REFERENCE_CLOCK_SOURCE_EXTERNAL = 1
+
+MAX_AVERAGES_RESULT_LOGGER = 1 << 17
+MAX_AVERAGES_SCOPE = 1 << 15
+
+
+class DeviceUHFQA(DeviceBase):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.dev_type = "UHFQA"
+        self.dev_opts = ["AWG", "DIG", "QA"]
+        self._awg_cores: list[UHFQAAwg] = []
+        self._channels = 2
+        # TODO(2K): This is the number of available integrators.
+        # Determine the actual number of integrators in use based on device setup.
+        self._integrators = 10
+        self._use_internal_clock = True
+
+    def all_cores(self) -> Iterable[CoreBase]:
+        return iter(self._awg_cores)
+
+    def allocated_cores(self, recipe_data: RecipeData) -> Iterable[CoreBase]:
+        for ch in recipe_data.allocated_awgs(self.uid):
+            yield self._awg_cores[ch]
+
+    def _process_dev_opts(self):
+        self._awg_cores = [
+            UHFQAAwg(
+                api=self._api,
+                subscriber=self._subscriber,
+                device_uid=self.uid,
+                serial=self.serial,
+                repr_base=self.dev_repr,
+                integrators=self._integrators,
+            )
+        ]
+
+    def is_desktop(self) -> bool:
+        if len(self._uplinks) == 0:
+            raise LabOneQControllerException(
+                f"{self.dev_repr}: UHFQA cannot be configured as leader, ensure correct DIO "
+                f"connection in the device setup"
+            )
+        if len(self._uplinks) > 1:
+            self._error_ambiguous_upstream()
+        upstream = next(iter(self._uplinks))()
+        if upstream is None:
+            self._error_ambiguous_upstream()
+        return upstream.is_leader() and (
+            upstream.device_qualifier.driver.upper() == "HDAWG"
+        )
+
+    def validate_scheduled_experiment(
+        self,
+        scheduled_experiment: ScheduledExperiment,
+        rt_execution_info: RtExecutionInfo,
+    ):
+        initialization = get_initialization_by_device_uid(
+            scheduled_experiment.recipe, self.uid
+        )
+        if initialization is None:
+            return
+
+        if scheduled_experiment.rt_loop_properties.chunk_count is not None:
+            raise LabOneQControllerException(
+                f"{self.dev_repr}: Chunking is not supported by the device."
+            )
+
+        for output in initialization.outputs:
+            self._warn_for_unsupported_param(
+                output.gains is None, "correction_matrix", output.channel
+            )
+            if output.port_delay is not None:
+                if output.port_delay != 0:
+                    raise LabOneQControllerException(
+                        f"{self.dev_repr}'s output does not support port delay"
+                    )
+                _logger.debug(
+                    "%s's output port delay should be set to None, not 0",
+                    self.dev_repr,
+                )
+            if output.range is not None:
+                self._validate_range(output, is_out=True)
+
+        for dev_input in initialization.inputs or []:
+            if dev_input.range is None:
+                continue
+            self._validate_range(dev_input, is_out=False)
+
+        # Validate average count
+        # TODO(2K): Calculation of this_device_has_acquires duplicates the logic in
+        # _validate_scheduled_experiment + _calculate_awg_configs. Cleanup after improving recipe.
+        recipe = scheduled_experiment.recipe
+        assert recipe is not None
+        this_device_has_acquires = any(
+            init for init in recipe.initializations if len(init.measurements) > 0
+        )
+        averages = rt_execution_info.effective_averages
+        if (
+            this_device_has_acquires
+            and not rt_execution_info.is_raw_acquisition
+            and rt_execution_info.effective_averaging_mode != AveragingMode.SINGLE_SHOT
+        ):
+            if averages > MAX_AVERAGES_RESULT_LOGGER:
+                raise LabOneQControllerException(
+                    f"Number of averages {averages} exceeds the allowed maximum {MAX_AVERAGES_RESULT_LOGGER}"
+                )
+            if averages & (averages - 1):
+                raise LabOneQControllerException(
+                    f"Number of averages {averages} must be a power of 2"
+                )
+        if rt_execution_info.is_raw_acquisition:
+            if averages > MAX_AVERAGES_SCOPE:
+                raise LabOneQControllerException(
+                    f"{self.dev_repr}: Number of averages {averages} exceeds the allowed maximum {MAX_AVERAGES_SCOPE}"
+                )
+            # TODO(2K): Validate this at recipe processing stage (currently in _configure_input_monitor)
+            # if awg_config.raw_acquire_length is None:
+            #     raise LabOneQControllerException(
+            #         f"{self.dev_repr}: Unknown acquire length for RAW acquisition."
+            #     )
+
+    def _validate_range(self, io: IO, is_out: bool):
+        if io.range is None:
+            return
+
+        input_ranges = np.concatenate(
+            [np.arange(0.01, 0.1, 0.01), np.arange(0, 1.6, 0.1)]
+        )
+        output_ranges = np.array([0.15, 1.5], dtype=np.float64)
+        range_list = output_ranges if is_out else input_ranges
+        label = "Output" if is_out else "Input"
+
+        if io.range_unit not in (None, "volt"):
+            raise LabOneQControllerException(
+                f"{label} range of device {self.dev_repr} is specified in "
+                f"units of {io.range_unit}. Units must be 'volt'."
+            )
+
+        if not any(np.isclose([io.range] * len(range_list), range_list)):
+            _logger.warning(
+                "%s: %s channel %d range %.1f is not on the list of allowed ranges: %s. Nearest "
+                "allowed range will be used.",
+                self.dev_repr,
+                label,
+                io.channel,
+                io.range,
+                range_list,
+            )
+
+    def _error_ambiguous_upstream(self) -> NoReturn:
+        raise LabOneQControllerException(
+            f"{self.dev_repr}: Can't determine unambiguously upstream device for UHFQA, ensure "
+            f"correct DIO connection in the device setup"
+        )
+
+    def update_clock_source(self, force_internal: bool | None):
+        # For non-desktop, always use external clock,
+        # for desktop - internal is the default (force_internal is None),
+        # but allow override to external.
+        self._use_internal_clock = self.is_desktop() and (force_internal is not False)
+
+    def clock_source_control_nodes(self) -> list[NodeControlBase]:
+        source = (
+            REFERENCE_CLOCK_SOURCE_INTERNAL
+            if self._use_internal_clock
+            else REFERENCE_CLOCK_SOURCE_EXTERNAL
+        )
+        return [
+            Setting(f"/{self.serial}/system/extclk", source),
+        ]
+
+    def load_factory_preset_control_nodes(self) -> list[NodeControlBase]:
+        return [
+            Command(f"/{self.serial}/system/preset/index", 0),
+            Command(f"/{self.serial}/system/preset/load", 1),
+            Response(f"/{self.serial}/system/preset/busy", 0),
+        ]
+
+    async def _set_nt_step_nodes(
+        self, recipe_data: RecipeData, attributes: DeviceAttributesView
+    ):
+        nc = NodeCollector(base=f"/{self.serial}/")
+
+        for ch in range(self._channels):
+            [scheduler_port_delay, port_delay], updated = attributes.resolve(
+                keys=[
+                    (AttributeName.INPUT_SCHEDULER_PORT_DELAY, ch),
+                    (AttributeName.INPUT_PORT_DELAY, ch),
+                ]
+            )
+            if not updated or scheduler_port_delay is None:
+                continue
+
+            measurement_delay = scheduler_port_delay + (port_delay or 0.0)
+            measurement_delay_rounded = delay_to_rounded_samples(
+                ch_repr=f"{self.dev_repr}:ch{ch}",
+                delay=measurement_delay,
+                sample_frequency_hz=SAMPLE_FREQUENCY_HZ,
+                granularity_samples=DELAY_NODE_GRANULARITY_SAMPLES,
+                max_node_delay_samples=DELAY_NODE_MAX_SAMPLES,
+            )
+
+            nc.add("qas/0/delay", measurement_delay_rounded)
+
+        await self.set_async(nc)
+
+    def _adjust_frequency(self, freq):
+        # To make the phase correct on the UHFQA (q leading i channel by 90 degrees)
+        # we need to flip the sign of the oscillator frequency
+        return freq * -1.0
+
+    async def configure_trigger(self, recipe_data: RecipeData):
+        device_recipe_data = recipe_data.device_settings[self.uid]
+        nc = NodeCollector(base=f"/{self.serial}/")
+
+        # Loop over at least AWG instance to cover the case that the instrument is only used as a
+        # communication proxy. Some of the nodes on the AWG branch are needed to get proper
+        # communication between HDAWG and UHFQA.
+        for awg_index in device_recipe_data.allocated_awgs(default_awg=0):
+            nc.add(f"awgs/{awg_index}/dio/strobe/index", 16)
+            nc.add(f"awgs/{awg_index}/dio/strobe/slope", 0)
+            nc.add(f"awgs/{awg_index}/dio/valid/polarity", 2)
+            nc.add(f"awgs/{awg_index}/dio/valid/index", 16)
+
+        if self.is_desktop():
+            nc.add("dios/0/mode", 0)
+            nc.add("dios/0/drive", 0)
+            nc.add("dios/0/extclk", 0x2)
+            nc.add("awgs/0/auxtriggers/0/channel", 0)
+            nc.add("awgs/0/auxtriggers/0/slope", 1)
+        else:
+            nc.add("dios/0/mode", 4)
+            nc.add("dios/0/drive", 0x3)
+            nc.add("dios/0/extclk", 0x2)
+
+        for trigger_index in (0, 1):
+            nc.add(f"triggers/out/{trigger_index}/delay", 0.0)
+            nc.add(f"triggers/out/{trigger_index}/drive", 1)
+            nc.add(f"triggers/out/{trigger_index}/source", 32 + trigger_index)
+
+        await self.set_async(nc)
+
+    async def on_experiment_begin(self, recipe_data: RecipeData):
+        await _gather(
+            super().on_experiment_begin(recipe_data=recipe_data),
+            *(
+                self._subscriber.subscribe(self._api, node)
+                for core in self._awg_cores
+                for node in core.subscribe_nodes()
+            ),
+        )
+
+    async def on_experiment_end(self):
+        await _gather(
+            super().on_experiment_end(),
+            *(core.stop_result_logger() for core in self._awg_cores),
+        )
+
+    def _ch_repr_monitor(self, ch: int) -> str:
+        return f"{self.dev_repr}:monitor{ch}"
+
+    async def get_measurement_data(
+        self,
+        *,
+        core_index: int,
+        recipe_data: RecipeData,
+        num_results: int,
+        hw_averages: int,
+    ) -> list[RawReadoutData]:
+        return await self._awg_cores[core_index].get_measurement_data(
+            recipe_data=recipe_data,
+            num_results=num_results,
+            hw_averages=hw_averages,
+        )
+
+    def extract_raw_readout(
+        self,
+        *,
+        all_raw_readouts: list[RawReadoutData],
+        integrators: list[int],
+        rt_execution_info: RtExecutionInfo,
+    ) -> RawReadoutData:
+        if len(integrators) == 1:
+            return all_raw_readouts[integrators[0]]
+        if len(integrators) == 2:
+            in_phase = all_raw_readouts[integrators[0]].vector
+            quadrature = all_raw_readouts[integrators[1]].vector
+            return RawReadoutData(
+                np.array(
+                    [complex(real, imag) for real, imag in zip(in_phase, quadrature)]
+                )
+            )
+        raise LabOneQControllerException(
+            f"{self.dev_repr}: Internal error. Readout extraction is only supported for 1 or 2 integrators per signal, provided: {integrators}"
+        )
+
+    async def _get_input_monitor_data(
+        self, ch: int, acquire_length: int, timeout_s: float
+    ):
+        result_path = self._awg_cores[0].nodes.monitor_result_wave[ch]
+        try:
+            monitor_result = await self._subscriber.get_result(
+                result_path, timeout_s=timeout_s
+            )
+            _check_result(
+                node_val=monitor_result.vector,
+                num_results=acquire_length,
+                ch_repr=self._ch_repr_monitor(ch),
+            )
+            # Truncate returned vectors to the expected length -> hotfix for GCE-681
+            return monitor_result.vector[0:acquire_length]
+        except (TimeoutError, asyncio.TimeoutError):
+            _logger.error(
+                f"{self._ch_repr_monitor(ch)}: Failed to receive a result from {result_path} within {timeout_s} seconds."
+            )
+            return np.array([], dtype=np.complex128)
+
+    async def get_raw_data(
+        self, channel: int, acquire_length: int, acquires: int | None, timeout_s: float
+    ) -> RawReadoutData:
+        ch0, ch1 = await _gather(
+            self._get_input_monitor_data(0, acquire_length, timeout_s),
+            self._get_input_monitor_data(1, acquire_length, timeout_s),
+        )
+        return RawReadoutData(
+            np.array([[complex(real, imag) for real, imag in zip(ch0, ch1)]])
+        )

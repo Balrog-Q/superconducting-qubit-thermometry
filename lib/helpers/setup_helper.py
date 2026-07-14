@@ -70,15 +70,15 @@ instruments:
     uid: device_shfqc
 connections:
   device_shfqc:
-    - iq_signal: q0/drive
+    - iq_signal: q0/drive_line
       ports: SGCHANNELS/0/OUTPUT
-    - iq_signal: q0/drive_ef
+    - iq_signal: q0/drive_ef_line
       ports: SGCHANNELS/0/OUTPUT
-    - iq_signal: q0/th_res
+    - iq_signal: q0/th_res_line
       ports: SGCHANNELS/1/OUTPUT
-    - iq_signal: q0/measure
+    - iq_signal: q0/measure_line
       ports: [QACHANNELS/0/OUTPUT]
-    - acquire_signal: q0/acquire
+    - acquire_signal: q0/acquire_line
       ports: [QACHANNELS/0/INPUT]
 """
 
@@ -91,7 +91,7 @@ def define_calibration(parameters, lo_settings):
     my_calibration = Calibration()
     
     # qubit drive line
-    my_calibration["/logical_signal_groups/q0/drive"] = \
+    my_calibration["/logical_signal_groups/q0/drive_line"] = \
         SignalCalibration(
             # each logical signal can have an oscillator associated with it
             oscillator=Oscillator(
@@ -106,7 +106,7 @@ def define_calibration(parameters, lo_settings):
         )
 
     # qubit drive ef line
-    my_calibration["/logical_signal_groups/q0/drive_ef"] = \
+    my_calibration["/logical_signal_groups/q0/drive_ef_line"] = \
         SignalCalibration(
             # each logical signal can have an oscillator associated with it
             oscillator=Oscillator(
@@ -121,7 +121,7 @@ def define_calibration(parameters, lo_settings):
         )
     
     # thermal resonator line
-    my_calibration["/logical_signal_groups/q0/th_res"] = \
+    my_calibration["/logical_signal_groups/q0/th_res_line"] = \
         SignalCalibration(
             # each logical signal can have an oscillator associated with it
             oscillator=Oscillator(
@@ -136,7 +136,7 @@ def define_calibration(parameters, lo_settings):
         )
     
     # readout drive line
-    my_calibration["/logical_signal_groups/q0/measure"] = \
+    my_calibration["/logical_signal_groups/q0/measure_line"] = \
          SignalCalibration(
             oscillator=Oscillator(
                 "q0_measure_osc",
@@ -150,7 +150,7 @@ def define_calibration(parameters, lo_settings):
            range=-25
        )
     # acquisition line
-    my_calibration["/logical_signal_groups/q0/acquire"] = \
+    my_calibration["/logical_signal_groups/q0/acquire_line"] = \
          SignalCalibration(
             oscillator=Oscillator(
                 "q0_acquire_osc",

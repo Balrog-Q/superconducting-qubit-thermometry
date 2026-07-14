@@ -1,0 +1,130 @@
+# Copyright 2026 Zurich Instruments AG
+# SPDX-License-Identifier: Apache-2.0
+
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, Any
+
+from laboneq.controller.api.async_controller_api import AsyncControllerAPI
+from laboneq.controller.api.commons import SubmissionRegistry
+from laboneq.controller.constants import DEFAULT_TIMEOUT_S
+from laboneq.controller.controller import Controller, SubmissionStatus
+from laboneq.dsl.result.results import Results
+from laboneq.implementation.legacy_adapters.device_setup_converter import (
+    convert_device_setup_to_setup,
+)
+from laboneq.implementation.payload_builder.target_setup_generator import (
+    TargetSetupGenerator,
+)
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
+
+    from laboneq.controller.api.commons import SubmissionHandle
+    from laboneq.data.scheduled_experiment import ScheduledExperiment
+    from laboneq.dsl.device.device_setup import DeviceSetup
+
+
+class AsyncLocalController(AsyncControllerAPI):
+    """Asynchronous controller interface."""
+
+    @staticmethod
+    async def create(
+        device_setup: DeviceSetup,
+        ignore_version_mismatch: bool = False,
+        neartime_callbacks: dict[str, Callable[..., Any]] | None = None,
+        do_emulation: bool = True,
+        reset_devices: bool = False,
+        disable_runtime_checks: bool = True,
+        timeout_s: float | None = None,
+    ) -> AsyncLocalController:
+        """Create an instance of the AsyncLocalController."""
+        if timeout_s is None:
+            timeout_s = DEFAULT_TIMEOUT_S
+        setup = convert_device_setup_to_setup(device_setup)
+        target_setup = TargetSetupGenerator.from_setup(setup)
+        if neartime_callbacks is None:
+            neartime_callbacks = {}
+        controller = Controller(
+            target_setup=target_setup,
+            ignore_version_mismatch=ignore_version_mismatch,
+            neartime_callbacks=neartime_callbacks,
+        )
+        await controller._connect_async(
+            do_emulation=do_emulation,
+            reset_devices=reset_devices,
+            disable_runtime_checks=disable_runtime_checks,
+            timeout_s=timeout_s,
+        )
+        return AsyncLocalController(device_setup=device_setup, controller=controller)
+
+    def __init__(
+        self,
+        device_setup: DeviceSetup,
+        controller: Controller,
+    ):
+        self._device_setup = device_setup
+        self._controller = controller
+        self._submissions = SubmissionRegistry()
+
+    async def aclose(self):
+        for handle in self._submissions:
+            await self.cancel_experiment(handle)
+        await self._controller._disconnect_async()
+
+    async def get_default_devicesetup(self) -> DeviceSetup:
+        return self._device_setup
+
+    @property
+    def neartime_callbacks(self) -> dict[str, Callable]:
+        return self._controller.neartime_callbacks
+
+    async def update_neartime_callbacks(self, neartime_callbacks: dict[str, Callable]):
+        """Update the neartime callbacks used by the controller.
+
+        This is only present to support the legacy session, don't use it in new code.
+        """
+        self._controller.neartime_callbacks.update(neartime_callbacks)
+
+    async def submit_experiment(
+        self,
+        scheduled_experiment: ScheduledExperiment,
+        handle: SubmissionHandle | None = None,
+    ) -> SubmissionHandle:
+        handle = self._submissions.ensure_unique_handle(handle)
+        self._submissions.add(
+            handle,
+            await self._controller._submit_compiled_async(
+                scheduled_experiment=scheduled_experiment,
+            ),
+        )
+        return handle
+
+    async def wait_for_experiment(self, handle: SubmissionHandle):
+        await self._controller._wait_submission_async(self._submissions.get(handle))
+
+    async def get_experiment_status(self, handle: SubmissionHandle) -> SubmissionStatus:
+        return self._controller.submission_status(self._submissions.get(handle))
+
+    async def get_experiment(self, handle: SubmissionHandle) -> Results:
+        status = await self.get_experiment_status(handle)
+        if status not in [SubmissionStatus.COMPLETED, SubmissionStatus.FAILED]:
+            await self.wait_for_experiment(handle)
+        experiment_results = self._controller.submission_results(
+            self._submissions.get(handle)
+        )
+        return Results(
+            device_setup=self._device_setup,
+            acquired_results=experiment_results.acquired_results,
+            neartime_callback_results=experiment_results.neartime_callback_results,
+            execution_errors=experiment_results.execution_errors,
+            pipeline_jobs_timestamps=experiment_results.pipeline_jobs_timestamps,
+        )
+
+    async def cancel_experiment(self, handle: SubmissionHandle):
+        # TODO(2K): No mechanism to cancel yet. Implement proper cancellation.
+        await self.wait_for_experiment(handle)
+
+    async def close_submission(self, handle: SubmissionHandle):
+        await self.cancel_experiment(handle)
+        self._submissions.remove(handle)

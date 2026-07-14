@@ -1,0 +1,549 @@
+# Copyright 2024 Zurich Instruments AG
+# SPDX-License-Identifier: Apache-2.0
+
+"""This module defines the QuantumPlatform and QPU classes.
+
+A `QPU` contains the "physics" of a quantum device -- the quantum element parameters
+and definition of operations on quantum elements.
+
+A `QuantumPlatform` contains the `QPU`, and the `DeviceSetup` which describes
+the control hardware used to interface to the device.
+
+By itself a `QPU` provides everything needed to *build* or *design* an
+experiment for a quantum device. The `DeviceSetup` provides the additional
+information needed to *compile* an experiment for specific control hardware.
+
+Together these provide a `QuantumPlatform` -- i.e. everything needed to build,
+compile and run experiments on real devices.
+"""
+
+from __future__ import annotations
+
+import inspect
+from typing import TYPE_CHECKING, Any, Sequence
+
+from typing_extensions import deprecated
+
+from laboneq.core.utilities.dsl_dataclass_decorator import classformatter
+from laboneq.dsl.quantum.qpu_topology import QPUTopology
+from laboneq.dsl.quantum.quantum_element import QuantumElement
+from laboneq.dsl.quantum.quantum_operations import QuantumOperations
+from laboneq.dsl.session import Session
+
+if TYPE_CHECKING:
+    from laboneq.dsl.device import DeviceSetup
+    from laboneq.workflow.typing import QuantumElements
+
+
+@classformatter
+class QuantumPlatform:
+    """A quantum hardware platform.
+
+    A `QuantumPlatform` provides the logical description of a quantum device needed to
+    define experiments (the `QPU`) and the description of the control hardware needed to
+    compile an experiment (the `DeviceSetup`).
+
+    In short, a `QPU` defines the device physics and a `DeviceSetup` defines the control
+    hardware being used.
+
+    Arguments:
+        setup:
+            The `DeviceSetup` describing the control hardware of the device.
+        qpu:
+            The `QPU` describing the parameters and topology of the quantum device
+            and providing the definition of quantum operations on the device.
+    """
+
+    def __init__(
+        self,
+        setup: DeviceSetup,
+        qpu: QPU,
+    ) -> None:
+        """Initialize a new QPU.
+
+        Arguments:
+            setup:
+                The device setup to use when running an experiment.
+            qpu:
+                The QPU to use when building an experiment.
+        """
+        self.setup = setup
+        self.qpu = qpu
+
+    def __repr__(self) -> str:
+        quantum_elements = ", ".join(self.qpu.quantum_element_uids)
+        groups = ", ".join(
+            f"{key}: [{', '.join(q.uid for q in value)}]"
+            for key, value in self.qpu.groups._groups.items()
+        )
+        if isinstance(self.qpu._quantum_operations_input, list):
+            quantum_operations = [
+                qop.__name__ for qop in self.qpu._quantum_operations_input
+            ]
+        else:
+            quantum_operations = type(self.qpu.quantum_operations).__name__
+        return (
+            f"<{type(self).__qualname__}"
+            f" setup={self.setup.uid!r}"
+            f" qpu.quantum_elements=[{quantum_elements}]"
+            f" qpu.groups={{{groups}}}"
+            f" qpu.quantum_operations={quantum_operations}"
+            f" qpu.topology={self.qpu.topology}"
+            f">"
+        )
+
+    def __rich_repr__(self):
+        yield "setup", self.setup.uid
+        yield "qpu", self.qpu
+
+    def session(self, do_emulation: bool = False) -> Session:  # noqa: FBT001 FBT002
+        """Return a new LabOne Q session.
+
+        Arguments:
+            do_emulation:
+                Specifies if the session should connect
+                to an emulator (in the case of 'True'),
+                or the real system (in the case of 'False')
+        """
+        session = Session(self.setup)
+        session.connect(do_emulation=do_emulation)
+        return session
+
+
+@classformatter
+class QPU:
+    """A Quantum Processing Unit (QPU).
+
+    A `QPU` provides the logical description of a quantum device needed to *build*
+    experiments for it. For example, the quantum element parameters and the definition of
+    operations on those quantum elements.
+
+    It does not provide a description of the control hardware needed to *compile* an
+    experiment.
+
+    In short, a `QPU` defines the device physics and a `DeviceSetup` defines the control
+    hardware being used.
+
+    !!! version-changed "Deprecated in version 2.52.0."
+        The argument `qubits` was deprecated and replaced with the argument `quantum_elements`.
+
+    !!! version-added "Added in version 2.60.0"
+        The `quantum_operations` argument may now also be of type
+        `list[type[QuantumOperations]]`. In this case, the list of `QuantumOperations`
+        classes is automatically combined into a single class. If the
+        `QuantumOperations` classes have methods with the same name, these are
+        dispatched based on their simplified type signatures.
+
+    !!! version-changed "Deprecated in version 24.4.0"
+        The `measure_section_length` method is moved to the implementations
+        of `QuantumOperations` for qubit types where this is property meaningful.
+
+    Arguments:
+        quantum_elements: The quantum elements to run the experiments on. By passing a
+            dictionary, quantum elements may be organized into groups, which are
+            accessible as attributes of `self.groups`.
+        quantum_operations: The quantum operations to use when building the experiment.
+            If multiple quantum operations classes are given, these are combined into a
+            single quantum operations class.
+
+    Attributes:
+        groups: The groups of quantum elements on the QPU.
+        topology: The topology information for the QPU.
+
+    Raises:
+        TypeError: If `quantum_operations` has an invalid type.
+    """
+
+    def __init__(
+        self,
+        quantum_elements: QuantumElements | dict[str, QuantumElements],
+        quantum_operations: QuantumOperations
+        | type[QuantumOperations]
+        | list[type[QuantumOperations]],
+    ) -> None:
+        if isinstance(quantum_elements, QuantumElement):
+            self.groups: QuantumElementGroups = QuantumElementGroups({})
+            self.quantum_elements: list[QuantumElement] = [quantum_elements]
+        elif isinstance(quantum_elements, Sequence):
+            for q in quantum_elements:
+                if not isinstance(q, QuantumElement):
+                    raise TypeError(
+                        f"The quantum elements in the sequence have an invalid "
+                        f"type: {type(q)}. Expected type: QuantumElement."
+                    )
+            self.groups = QuantumElementGroups({})
+            self.quantum_elements = list(quantum_elements)
+        elif isinstance(quantum_elements, dict):
+            # Convert dict[str, QuantumElements] -> dict[str, list[QuantumElement]]
+            quantum_elements_dict: dict[str, list[QuantumElement]] = {}
+            for key, value in quantum_elements.items():
+                if isinstance(key, str) and isinstance(value, QuantumElement):
+                    quantum_elements_dict[key] = [value]
+                elif isinstance(key, str) and isinstance(value, Sequence):
+                    for q in value:
+                        if not isinstance(q, QuantumElement):
+                            raise TypeError(
+                                f"The quantum elements in the sequence have an invalid "
+                                f"type: {type(q)}. Expected type: QuantumElement."
+                            )
+                    quantum_elements_dict[key] = list(value)
+                else:
+                    raise TypeError(
+                        f"The quantum elements dictionary items have an invalid"
+                        f" type: ({type(key)}, {type(value)}). "
+                        f"Expected type: (str, QuantumElement | "
+                        f"Sequence[QuantumElement])."
+                    )
+
+            self.groups = QuantumElementGroups(quantum_elements_dict)
+            quantum_elements_list = []
+            for value in quantum_elements_dict.values():
+                quantum_elements_list += value
+            self.quantum_elements = quantum_elements_list
+        else:
+            raise TypeError(
+                f"The quantum elements have an invalid type: "
+                f"{type(quantum_elements)}. "
+                f"Expected type: QuantumElement | Sequence[QuantumElement]]"
+                f" | dict."
+            )
+
+        quantum_elements_uid_list = self.quantum_element_uids
+        if len(quantum_elements_uid_list) != len(set(quantum_elements_uid_list)):
+            raise ValueError("There are multiple quantum elements with the same UID.")
+        self._quantum_element_map: dict[str, QuantumElement] = {
+            q.uid: q for q in self.quantum_elements
+        }
+
+        self._quantum_operations_input = quantum_operations
+        if isinstance(quantum_operations, QuantumOperations):
+            pass
+        elif inspect.isclass(quantum_operations) and issubclass(
+            quantum_operations, QuantumOperations
+        ):
+            quantum_operations = quantum_operations()
+        elif isinstance(quantum_operations, list) and all(
+            [
+                inspect.isclass(op) and issubclass(op, QuantumOperations)
+                for op in quantum_operations
+            ]
+        ):
+
+            class CombinedOperations(*tuple(quantum_operations)):
+                pass
+
+            quantum_operations = CombinedOperations()
+        else:
+            raise TypeError(
+                f"quantum_operations has invalid type: {type(quantum_operations)}. "
+                f"Expected type: QuantumOperations | type[QuantumOperations] | list[type[QuantumOperations]]."
+            )
+
+        quantum_operations.attach_qpu(self)
+
+        self.quantum_operations: QuantumOperations = quantum_operations
+        self.topology: QPUTopology = QPUTopology(self.quantum_elements)
+
+    def __repr__(self) -> str:
+        quantum_elements = ", ".join(self.quantum_element_uids)
+        groups = ", ".join(
+            f"{key}: [{', '.join(q.uid for q in value)}]"
+            for key, value in self.groups._groups.items()
+        )
+        if isinstance(self._quantum_operations_input, list):
+            quantum_operations = [
+                qop.__name__ for qop in self._quantum_operations_input
+            ]
+        else:
+            quantum_operations = type(self.quantum_operations).__name__
+        return (
+            f"<{type(self).__qualname__}"
+            f" quantum_elements=[{quantum_elements}]"
+            f" groups={{{groups}}}"
+            f" quantum_operations={quantum_operations}"
+            f" topology={self.topology}"
+            f">"
+        )
+
+    def __getitem__(
+        self, key: str | list[str] | slice | type[QuantumElement]
+    ) -> QuantumElement | list[QuantumElement]:
+        """Return quantum element(s) in the QPU.
+
+        The QPU item lookup retrieves quantum elements from the QPU. The returned value
+        depends on the type of key supplied.
+
+        If the key is a string, a single quantum element is returned:
+
+        ```python
+        qpu["q0"]  # returns the quantum element with UID "q0"
+        ```
+
+        If the key is a list, a list of quantum elements is returned:
+
+        ```python
+        qpu[["q0", "q1", "q2"]]  # returns the list of quantum elements with given UIDs
+        ```
+
+        If the key is a slice, a list of quantum elements is returned, indexed by the
+        order in which they were added:
+
+        ```python
+        qpu[:3]  # returns the first three quantum elements
+        qpu[:]  # returns all the quantum elements
+        ```
+
+        If the key is a class, a list of quantum elements of a given type is returned:
+
+        ```python
+        qpu[Transmon]  # returns the quantum elements that are a subclass of Transmon
+        ```
+
+        Arguments:
+            key: The key determining the quantum element(s) to retrieve.
+
+        Returns:
+            The selected quantum element(s).
+
+        Raises:
+            KeyError: If the quantum element is not found in the QPU.
+            TypeError: If `key` has an invalid type.
+        """
+        if isinstance(key, str):
+            return self._quantum_element_map[key]
+        if isinstance(key, list):
+            return [self._quantum_element_map[uid] for uid in key]
+        if isinstance(key, slice):
+            return self.quantum_elements[key]
+        if inspect.isclass(key) and issubclass(key, QuantumElement):
+            return [q for q in self.quantum_elements if isinstance(q, key)]
+        raise TypeError(
+            f"The quantum element key has an invalid type: {type(key)}. "
+            f"Expected type: str | list[str] | slice | type[QuantumElement]."
+        )
+
+    def __rich_repr__(self):
+        if isinstance(self._quantum_operations_input, list):
+            quantum_operations = [
+                qop.__name__ for qop in self._quantum_operations_input
+            ]
+        else:
+            quantum_operations = type(self.quantum_operations).__name__
+
+        yield "quantum_elements", self.quantum_element_uids
+        yield (
+            "groups",
+            {key: [q.uid for q in value] for key, value in self.groups._groups.items()},
+        )
+        yield "quantum_operations", quantum_operations
+        yield "topology", self.topology
+
+    @property
+    def quantum_element_uids(self) -> list[str]:
+        """Return the list of quantum element UIDs."""
+        return [q.uid for q in self.quantum_elements]
+
+    def copy_quantum_elements(self) -> QuantumElements:
+        """Return new quantum elements that are a copy of the original quantum elements."""
+        return [q.copy() for q in self.quantum_elements]
+
+    @classmethod
+    def _get_invalid_param_paths(
+        cls, quantum_element, overrides: dict[str, Any]
+    ) -> Sequence:
+        invalid_params = []
+        for param_path in overrides:
+            keys = param_path.split(".")
+            obj = quantum_element.parameters
+            for key in keys:
+                if isinstance(obj, dict):
+                    if key not in obj:
+                        invalid_params.append(param_path)
+                        break
+                    obj = obj[key]
+                elif not hasattr(obj, key):
+                    invalid_params.append(param_path)
+                    break
+                else:
+                    obj = getattr(obj, key)
+        return invalid_params
+
+    def override_quantum_elements(
+        self,
+        quantum_element_parameters: dict[
+            str, dict[str, int | float | str | dict | None]
+        ],
+    ) -> QPU:
+        """Override quantum element parameters and return a new QPU.
+
+        !!! note
+            This method detaches the quantum operations from the QPU and attaches them to the new QPU.
+
+        Arguments:
+            quantum_element_parameters:
+                The quantum elements and their parameters that need to be updated passed a dict
+                of the form:
+                    ```python
+                    {qb_uid: {qb_param_name: qb_param_value}}
+                    ```
+
+        Returns:
+            A new QPU with overridden quantum element parameters.
+
+        Raises:
+            ValueError:
+                If one of the quantum elements passed is not found in the qpu.
+                If one of the parameters passed is not found in the quantum element.
+        """
+        self.quantum_operations.detach_qpu()
+        new_qpu = QPU(self.copy_quantum_elements(), self.quantum_operations)
+        for edge in self.topology.edges():
+            new_qpu.topology.add_edge(
+                edge.tag,
+                edge.source_node,
+                edge.target_node,
+                parameters=edge.parameters.copy()
+                if edge.parameters is not None
+                else None,
+                quantum_element=edge.quantum_element.uid
+                if edge.quantum_element is not None
+                else None,
+            )
+        new_qpu.update(quantum_element_parameters)
+        return new_qpu
+
+    def update(
+        self,
+        parameters: dict[
+            str | tuple[str, str, str], dict[str, int | float | str | dict | None]
+        ],
+    ) -> None:
+        """Updates quantum object parameters.
+
+        A quantum object is any object that has associated quantum parameters. This
+        includes quantum elements and topology edges.
+
+        Arguments:
+            parameters:
+                The quantum objects and their parameters that need to be updated
+                passed as a dict of the form:
+                    ```python
+                    {key: {param_name: param_value}}
+                    ```
+
+        !!! note
+            The key for a quantum element is the quantum element UID. The key for a
+            topology edge is the tuple `(tag, source node UID, target node UID)`, as
+            returned by the `self.topology.edge_keys()` method.
+
+        Raises:
+            TypeError:
+                If one of the quantum object keys has an invalid type.
+            ValueError:
+                If one of the quantum objects passed is not found in the qpu.
+                If one of the parameters passed is not found in the quantum object.
+        """
+        invalid_params: list[str] = []
+        for key, params_dict in parameters.items():
+            if not isinstance(key, str) and not (
+                isinstance(key, tuple)
+                and len(key) == 3
+                and all(isinstance(k, str) for k in key)
+            ):
+                raise TypeError(
+                    f"The key {key} has invalid type: {type(key)}. Expected type: str | tuple[str, str, str]."
+                )
+
+            if isinstance(key, str):
+                if key not in self._quantum_element_map:
+                    raise ValueError(f"Quantum element {key} was not found in the QPU.")
+                quantum_object = self._quantum_element_map[key]
+            elif isinstance(key, tuple):
+                if key not in self.topology.edge_keys():
+                    raise ValueError(f"Topology edge {key} was not found in the QPU.")
+                quantum_object = self.topology[key[0], key[1], key[2]]
+            invalid_params += self._get_invalid_param_paths(quantum_object, params_dict)
+        if invalid_params:
+            raise ValueError(
+                f"Update parameters do not match the quantum object "
+                f"parameters: {invalid_params}.",
+            )
+
+        for key, params_dict in parameters.items():
+            if isinstance(key, str):
+                self[key].update(**params_dict)
+            elif isinstance(key, tuple):
+                self.topology.update_edge(*key, **params_dict)
+
+    @staticmethod
+    @deprecated(
+        "`QPU.measure_section_length` is deprecated and will be removed in "
+        "LabOne Q 26.7.0. The functionality has been moved to implementations of "
+        "`QuantumOperations` for qubit types where this property is meaningful.",
+        category=FutureWarning,
+    )
+    def measure_section_length(quantum_elements: QuantumElements) -> float:
+        """Calculates the length of the measure section for multiplexed readout.
+
+        In order to allow the quantum elements to have different readout and/or integration
+        lengths, the measure section length needs to be fixed to the longest one
+        across the quantum elements used in the experiment.
+
+        Args:
+            quantum_elements:
+                The quantum elements that are being measured.
+
+        Returns:
+            The length of the multiplexed-readout measure section.
+        """
+        # TODO: Only works on the TunableTransmonQubit from laboneq_applications
+        #       currently.
+        return max(
+            [q.readout_integration_parameters()[1]["length"] for q in quantum_elements]
+            + [q.readout_parameters()[1]["length"] for q in quantum_elements]
+        )
+
+
+@classformatter
+class QuantumElementGroups:
+    """A wrapper to provide read-only attribute-style access for the quantum element
+    groups dictionary."""
+
+    def __init__(self, groups: dict[str, QuantumElements]):
+        self.__dict__["_groups"] = groups
+        if existing_attributes := set(super().__dir__()) & set(groups.keys()):
+            raise ValueError(
+                f"The following group names shadow existing attributes of "
+                f"{self.__class__.__name__}: {', '.join(existing_attributes)}."
+            )
+
+    def __dir__(self) -> list[str]:
+        return list(self._groups) + list(super().__dir__())
+
+    def __getattr__(self, key: str) -> list[QuantumElement]:
+        try:
+            return self._groups[key]
+        except KeyError as err:
+            raise AttributeError(
+                f"The {type(self).__name__} object has no attribute `{key}`."
+            ) from err
+
+    def __setattr__(self, key: str, value: QuantumElements):
+        raise AttributeError(f"The attributes of {type(self).__name__} are read-only.")
+
+    def __delattr__(self, key: str):
+        raise AttributeError(f"The attributes of {type(self).__name__} are read-only.")
+
+    def __repr__(self) -> str:
+        return repr(self._groups)
+
+    def __rich_repr__(self):
+        yield self._groups
+
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, QuantumElementGroups):
+            return self._groups == other._groups
+        return NotImplemented
+
+    def __bool__(self):
+        return False if self._groups == {} else True

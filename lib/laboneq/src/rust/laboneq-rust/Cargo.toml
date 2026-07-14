@@ -1,0 +1,26 @@
+[package]
+name = "laboneq-rust"
+authors.workspace = true
+description.workspace = true
+documentation.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+rust-version.workspace = true
+version.workspace = true
+
+[lints]
+workspace = true
+
+[lib]
+name = "laboneq_rust"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { workspace = true }
+
+codegenerator-py = { workspace = true }
+laboneq-scheduler = { workspace = true }
+laboneq-compiler-py = { workspace = true }
+laboneq-qccs-backend = { workspace = true }
+laboneq-py-utils = { workspace = true }

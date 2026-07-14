@@ -1,0 +1,4 @@
+#laboneq 
+LabOne Q abstracts the real, physical channels in your system into logical signal lines, which are grouped in logical signal groups. Logical signal lines abstract instruments, physical channels, and hardware calibration settings into a single Python object. This separates the hardware from the quantum experiments—which you can define freely, and whose experimental signal lines are mapped only later to the logical signal lines. This allows for instrumentation-agnostic experiment definitions, which can be re-used later.
+In this chapter, we will explain the concept of logical signals, experimental signals, and how they are related to, but differ, from physical instrument lines. First, logical signals and how they are defined in the [[Device Setup and Descriptor#Descriptor|Descriptor]] are introduced. Then, it is shown how they are linked to experimental signals.
+# Logical Signals

@@ -1,0 +1,144 @@
+# Copyright 2024 Zurich Instruments AG
+# SPDX-License-Identifier: Apache-2.0
+
+from __future__ import annotations
+
+import attrs
+
+from laboneq.dsl.enums import (
+    AcquisitionType,
+    AveragingMode,
+)
+
+
+@attrs.define(kw_only=True)
+class SingleProgramOptions:
+    """LabOne Q Experiment options for a single OpenQASM program.
+
+    Attributes:
+        count:
+            The number of acquire iterations.
+        averaging_mode:
+            The mode of how to average the acquired data.
+        acquisition_type:
+            The type of acquisition to perform.
+
+            The acquisition type may also be specified within the
+            OpenQASM program using `pragma zi.acqusition_type raw`,
+            for example.
+
+            If an acquisition type is passed here, it overrides
+            any value set by a pragma.
+
+            If the acquisition type is not specified, it defaults
+            to [AcquisitionType.INTEGRATION]().
+        reset_oscillator_phase:
+            When true, reset all oscillators at the start of every
+            acquisition loop iteration.
+    """
+
+    count: int = attrs.field(default=1)
+    averaging_mode: AveragingMode = attrs.field(
+        default=AveragingMode.CYCLIC, converter=AveragingMode
+    )
+    # NOTE: integration != AcquisitionType.INTEGRATION as the enum value is integration_trigger instead
+    # TODO: Fix
+    acquisition_type: AcquisitionType = attrs.field(
+        default=None, converter=lambda x: AcquisitionType(x) if x is not None else x
+    )
+    reset_oscillator_phase: bool = attrs.field(default=False)
+
+    @count.validator
+    def _check_count(self, attribute, value):
+        if not isinstance(value, int) or value < 0:
+            raise ValueError("count must be an positive integer")
+
+    @reset_oscillator_phase.validator
+    def _check_reset_oscillator_phase(self, attribute, value):
+        if not isinstance(value, bool):
+            raise ValueError("reset_oscillator_phase must be boolean value")
+
+
+@attrs.define(kw_only=True)
+class MultiProgramOptions(SingleProgramOptions):
+    """LabOne Q Experiment options for multiple OpenQASM programs.
+
+    Attributes:
+        count:
+            The number of acquire iterations.
+        averaging_mode:
+            The mode of how to average the acquired data.
+        acquisition_type:
+            The type of acquisition to perform.
+
+            The acquisition type may also be specified within the
+            OpenQASM program using `pragma zi.acqusition_type raw`,
+            for example.
+
+            If an acquisition type is passed here, it overrides
+            any value set by a pragma.
+
+            If the acquisition type is not specified, it defaults
+            to [AcquisitionType.INTEGRATION]().
+        reset_oscillator_phase:
+            When true, reset all oscillators at the start of every
+            acquisition loop iteration.
+        repetition_time:
+            The length that any single program is padded to. If `None`,
+            all programs retain their own length.
+        batch_execution_mode:
+            The execution mode for the sequence of programs. Can be any of the following:
+
+            - "nt": The individual programs are dispatched by software.
+            - "chunking": enable dividing the full experiment into individual chunks along the pseudo-sweep axis of the program list.
+            - "pipeline": Deprecated - use "chunking" instead.
+            - "rt": All the programs are combined into a single real-time program.
+
+            "rt" offers the fastest execution, but is limited by device memory.
+            In comparison, "chunking" introduces non-deterministic delays between
+            programs of up to a few 100 microseconds but allows more efficient use of instrument restrictions.
+            "nt" is the slowest.
+        add_reset:
+            If `True`, a reset operation for each qubit is added to the beginning of each program.
+        add_measurement:
+            If `True`, add measurement at the end for all qubits used.
+        add_measurement_handle:
+            A template for the handles of measurements added when `add_measurement` is true.
+            Defaults to `{qubit.uid}/result`.
+        pipeline_chunk_count:
+            The number of chunks to divide the experiment into.
+        automated_chunking:
+            Whether to enable automated chunking when the compiler hits hardware resource limitations.
+
+    !!! version-changed "Changed in version 2.56.0"
+        The default value of `repetition_time` was changed from `1e-3` to `None`
+        and `None` was added as an allowed value.
+
+    !!! version-changed "Changed in version 2.61.0"
+        Deprecated the "pipeline" option for the batch_execution_mode parameter.
+        Use "chunking" instead.
+        Added the "automated_chunking" parameter.
+    """
+
+    repetition_time: float | None = attrs.field(
+        default=None,
+        validator=attrs.validators.optional(attrs.validators.instance_of(float)),
+    )
+    batch_execution_mode: str = attrs.field(
+        default="chunking",
+        validator=attrs.validators.in_(("chunking", "pipeline", "nt", "rt")),
+    )
+    add_reset: bool = attrs.field(
+        default=False, validator=attrs.validators.instance_of(bool)
+    )
+    add_measurement: bool = attrs.field(
+        default=True, validator=attrs.validators.instance_of(bool)
+    )
+    add_measurement_handle: str = attrs.field(default="{qubit.uid}/result")
+    pipeline_chunk_count: int | None = attrs.field(
+        default=1,
+        validator=attrs.validators.optional(attrs.validators.instance_of(int)),
+    )
+    automated_chunking: bool = attrs.field(
+        default=False, validator=attrs.validators.instance_of(bool)
+    )

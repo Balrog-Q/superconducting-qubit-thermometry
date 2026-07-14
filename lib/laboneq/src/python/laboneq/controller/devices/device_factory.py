@@ -1,0 +1,65 @@
+# Copyright 2022 Zurich Instruments AG
+# SPDX-License-Identifier: Apache-2.0
+
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+from laboneq.controller.devices.device_hdawg import DeviceHDAWG
+from laboneq.controller.devices.device_nonqc import DeviceNonQC
+from laboneq.controller.devices.device_pqsc import DevicePQSC
+from laboneq.controller.devices.device_qhub import DeviceQHUB
+from laboneq.controller.devices.device_shfppc import DeviceSHFPPC
+from laboneq.controller.devices.device_shfqa import DeviceSHFQA
+from laboneq.controller.devices.device_shfsg import DeviceSHFSG
+from laboneq.controller.devices.device_uhfqa import DeviceUHFQA
+from laboneq.controller.utilities.exception import LabOneQControllerException
+
+if TYPE_CHECKING:
+    from laboneq.controller.devices.device_setup_dao import (
+        DeviceQualifier,
+        ServerQualifier,
+    )
+    from laboneq.controller.devices.device_zi import DeviceZI
+    from laboneq.controller.versioning import SetupCaps
+
+
+class DeviceFactory:
+    _registered_devices: dict[str, type[DeviceZI]] = {}
+
+    @classmethod
+    def register_device(cls, driver: str, dev_class: type[DeviceZI]):
+        driver_key = driver.upper()
+        existing = cls._registered_devices.get(driver_key)
+        if existing is not None:
+            if existing is dev_class:
+                return
+            raise LabOneQControllerException(
+                f"Device driver {driver_key} already registered with {existing!r}, "
+                f"cannot re-register with {dev_class!r}"
+            )
+        cls._registered_devices[driver_key] = dev_class
+
+    @classmethod
+    def create(
+        cls,
+        server_qualifier: ServerQualifier,
+        device_qualifier: DeviceQualifier,
+        setup_caps: SetupCaps,
+    ) -> DeviceZI:
+        dev_class = cls._registered_devices.get(device_qualifier.driver.upper())
+        if dev_class is None:
+            raise LabOneQControllerException(
+                f"Unknown device driver {device_qualifier.driver}"
+            )
+        return dev_class(server_qualifier, device_qualifier, setup_caps)
+
+
+DeviceFactory.register_device("HDAWG", DeviceHDAWG)
+DeviceFactory.register_device("UHFQA", DeviceUHFQA)
+DeviceFactory.register_device("SHFQA", DeviceSHFQA)
+DeviceFactory.register_device("SHFSG", DeviceSHFSG)
+DeviceFactory.register_device("SHFPPC", DeviceSHFPPC)
+DeviceFactory.register_device("PQSC", DevicePQSC)
+DeviceFactory.register_device("QHUB", DeviceQHUB)
+DeviceFactory.register_device("NONQC", DeviceNonQC)

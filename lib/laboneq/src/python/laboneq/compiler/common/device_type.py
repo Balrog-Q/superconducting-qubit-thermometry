@@ -1,0 +1,115 @@
+# Copyright 2022 Zurich Instruments AG
+# SPDX-License-Identifier: Apache-2.0
+
+from __future__ import annotations
+
+from dataclasses import asdict, dataclass
+from enum import Enum
+from typing import Optional
+
+
+@dataclass(eq=True, frozen=True)
+class DeviceTraits:
+    """Device specific traits."""
+
+    str_value: str
+    sampling_rate: float
+    min_play_wave: int
+    sample_multiple: int
+    channels_per_awg: int
+    sampling_rate_2GHz: float | None = None
+    oscillator_set_latency: float = 0.0
+    reset_osc_duration: float = 0.0
+    lo_frequency_granularity: Optional[float] = None
+    min_lo_frequency: Optional[float] = None
+    max_lo_frequency: Optional[float] = None
+
+
+class DeviceType(DeviceTraits, Enum):
+    def __new__(cls, value: DeviceTraits):
+        # This is needed to ensure DeviceType(<str_value>) resolves to the corresponding enum
+        obj = object.__new__(cls)
+        obj._value_ = value.str_value
+        return obj
+
+    def __init__(self, value: DeviceTraits):
+        # This is needed to ensure DeviceType instance (created in custom __new__() above)
+        # gets properly initialized with the original DeviceTraits value members
+        super().__init__(**asdict(value))
+
+    HDAWG = DeviceTraits(
+        str_value="hdawg",
+        sampling_rate=2.4e9,
+        sampling_rate_2GHz=2.0e9,
+        min_play_wave=32,
+        sample_multiple=16,
+        channels_per_awg=2,
+        # @2.4GHz, device grid of 16 samples
+        # - 7x16 = 112 cycles (~ 46.7ns) for the setDouble sequence to ensure gapless playback (measured)
+        # - 4x16 = 64 additional cycles for the frequency switching (~ 24ns after the above 112 cycles, measured)
+        # - 27x16 = 432 cycles for if/else tree for up to 9 tests for 512 steps, assuming ~6 sequencer
+        #           cycles (1/8 of sampling rate) per test with possible wait states (estimated worst case)
+        # As the value below is given in seconds, calculate it for the worst case of running at 2.0GHz:
+        oscillator_set_latency=304e-9,
+        # Verified by PW (2022-10-13) on dev8047, proc. FPGA 68603. Observed ~77 ns.
+        reset_osc_duration=80e-9,
+    )
+
+    UHFQA = DeviceTraits(
+        str_value="uhfqa",
+        sampling_rate=1.8e9,
+        min_play_wave=16,
+        sample_multiple=8,
+        channels_per_awg=2,
+        # Verified by PW (2022-10-13) on dev2086, rev 68366. Observed ~25 ns.
+        reset_osc_duration=40e-9,
+    )
+
+    SHFQA = DeviceTraits(
+        str_value="shfqa",
+        sampling_rate=2.0e9,
+        # TODO(2K):
+        # https://docs.zhinst.com/shfqa_user_manual/specifications.html#digital-signal-processing-specifications
+        # - minimum waveform length
+        # - waveform granularity
+        # - minimum weight length
+        # - integration weight granularity
+        # min_play_wave=4,
+        # sample_multiple=4,
+        min_play_wave=32,
+        sample_multiple=16,
+        channels_per_awg=1,
+        oscillator_set_latency=88e-9,
+        # Verified by PW (2022-10-13) on dev12093, rev 68689. Observed ~50 ns.
+        reset_osc_duration=56e-9,
+        lo_frequency_granularity=100e6,
+        min_lo_frequency=1e9,
+        max_lo_frequency=8.5e9,
+    )
+    SHFSG = DeviceTraits(
+        str_value="shfsg",
+        sampling_rate=2.0e9,
+        min_play_wave=32,
+        sample_multiple=16,
+        channels_per_awg=1,
+        oscillator_set_latency=88e-9,
+        # todo (PW): exact worst-case runtime unknown.
+        # Verified by PW (2022-10-13) on dev12117, rev 68689. Observed ~35 ns.
+        reset_osc_duration=56e-9,
+        lo_frequency_granularity=100e6,
+        min_lo_frequency=1e9,
+        max_lo_frequency=8.5e9,
+    )
+    ZQCS = DeviceTraits(
+        str_value="zqcs",
+        sampling_rate=2.0e9,
+        min_play_wave=4,
+        sample_multiple=4,
+        channels_per_awg=1,
+        oscillator_set_latency=36e-9,
+        reset_osc_duration=32e-9,
+    )
+
+    def __repr__(self):
+        cls_name = self.__class__.__name__
+        return f"{cls_name}.{self.name}"
