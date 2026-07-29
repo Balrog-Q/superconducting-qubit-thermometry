@@ -1,1 +1,0 @@
-::: laboneq_applications.analysis.lifetime_measurement

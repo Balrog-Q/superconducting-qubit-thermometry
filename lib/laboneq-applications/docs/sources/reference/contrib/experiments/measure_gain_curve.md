@@ -1,1 +1,0 @@
-::: laboneq_applications.contrib.experiments.measure_gain_curve

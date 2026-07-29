@@ -1,1 +1,0 @@
-::: laboneq_applications.experiments.amplitude_rabi
