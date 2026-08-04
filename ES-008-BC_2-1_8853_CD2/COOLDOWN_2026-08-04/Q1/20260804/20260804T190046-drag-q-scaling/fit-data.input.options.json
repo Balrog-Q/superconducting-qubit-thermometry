@@ -1,0 +1,1 @@
+{"__creator__":["laboneq","26.4.0"],"__data__":{"class__":"laboneq_applications.analysis.options.FitDataOptions","do_fitting":true,"do_rotation":true,"fit_parameters_hints":null},"__serializer__":"laboneq.serializers.implementations.TaskOptionsSerializer","__version__":1}
