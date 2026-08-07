@@ -1,5 +1,6 @@
 # Virtual environment
 
+
 .venv/
 
 venv/
@@ -54,6 +55,8 @@ slicing_code/
 
 # Obsidian
 .obsidian/
+docs/
+docs/LabOne_Q_notes
 
 # Presentation
 presentation/
