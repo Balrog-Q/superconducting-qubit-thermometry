@@ -1,1 +1,0 @@
-{"__creator__":["laboneq","26.4.0"],"__data__":{"cal_states":"ge","class__":"laboneq_applications.analysis.options.PlotPopulationOptions","close_figures":false,"do_fitting":true,"do_pca":false,"do_rotation":true,"save_figures":true,"transition":"ge"},"__serializer__":"laboneq.serializers.implementations.TaskOptionsSerializer","__version__":1}

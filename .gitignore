@@ -52,6 +52,8 @@ BlueFTC/
 laboneq_output/
 laboneq_output/log/
 slicing_code/
+workflows/
+data/
 
 # Obsidian
 .obsidian/

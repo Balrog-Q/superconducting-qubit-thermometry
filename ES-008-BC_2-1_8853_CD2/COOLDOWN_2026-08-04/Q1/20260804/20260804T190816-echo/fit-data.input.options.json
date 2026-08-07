@@ -1,1 +1,0 @@
-{"__creator__":["laboneq","26.4.0"],"__data__":{"class__":"laboneq_applications.analysis.echo.FitDataEchoOptions","do_fitting":true,"do_pca":false,"do_rotation":true,"fit_parameters_hints":null,"transition":"ge","use_cal_traces":true},"__serializer__":"laboneq.serializers.implementations.TaskOptionsSerializer","__version__":1}

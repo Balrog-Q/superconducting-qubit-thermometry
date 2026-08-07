@@ -1,1 +1,0 @@
-{"__creator__":["laboneq","26.4.0"],"__data__":{"class__":"laboneq_applications.analysis.resonator_spectroscopy.PlotMagnitudePhaseOptions","close_figures":false,"find_peaks":false,"fit_lorentzian":false,"save_figures":true},"__serializer__":"laboneq.serializers.implementations.TaskOptionsSerializer","__version__":1}
