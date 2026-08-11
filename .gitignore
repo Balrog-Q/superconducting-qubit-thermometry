@@ -1,6 +1,7 @@
 # Virtual environment
 
 
+
 .venv/
 
 venv/
@@ -64,3 +65,10 @@ docs/LabOne_Q_notes
 presentation/
 *.pptx
 
+# AI & Data
+.codegraph/
+N:\\/
+graphify-out/
+lib/
+qmeas/
+scresonators/
