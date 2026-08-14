@@ -59,7 +59,7 @@ data/
 # Obsidian
 .obsidian/
 docs/
-docs/LabOne_Q_notes
+LabOne_Q_notes/
 
 # Presentation
 presentation/
