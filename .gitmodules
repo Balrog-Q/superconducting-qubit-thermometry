@@ -1,0 +1,3 @@
+[submodule "laboneq-applications"]
+	path = laboneq-applications
+	url = https://github.com/zhinst/laboneq-applications.git

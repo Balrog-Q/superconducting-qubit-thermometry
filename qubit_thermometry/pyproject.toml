@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qubit-thermometry"
+version = "2.0.0"
+description = "Qubit tune-up, population/temperature, fast-flux and SINIS calibration workflows built on LabOne Q Applications."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "scipy",
+    "matplotlib",
+    "pandas",
+    "attrs",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
