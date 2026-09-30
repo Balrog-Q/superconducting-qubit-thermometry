@@ -1,84 +1,29 @@
 # qubit_thermometry
 
-**Version: v2.0.0**
+**Version**: <b><font color="#008000">v2.0.0</font></b>
 
-`qubit_thermometry` is a LabOne Q / LabOne Q Applications based toolkit for tuning up a
-single superconducting qubit and running effective-temperature (thermometry) measurements
-on it: population/temperature analysis, fast-flux-drive experiments, and SINIS-based DC
-calibration and heating sweeps.
+## Changelog
 
-It is a restructured, modular successor to the single monolithic `Workflow-v1.7.3.json`
-notebook (625 cells, ~9000 lines) that used to contain every experiment. That notebook has
-been split into **4 focused template notebooks**, backed by a shared, reusable Python
-package (`src/qubit_thermometry`) modeled on the `experiments/` + `analysis/` layout of
-[`laboneq_applications`](../laboneq-applications).
+All changes must be logged here! Do not make changes to this notebook other than expanding or modifying the standard experiments in a meaningful! All device-specific parameters and measurements have to be done in a different notebook!
 
-## Why this structure
+Stick to semantic versioning:
+- **Last Digit**: Fix a bug that does not add any new features and is backwards compatible -> increment last digit by one (e.g. 0.0.4 to 0.0.5)
+- **Middle Digit**: Add a new feature while keeping backwards compatibility (older versions can still be executed without any modifications) -> increment middle digit by one and set last digit to 0 (e.g. 1.2.12 to 1.3.0)
+- **First Digit**: Make changes that will break older versions, making them incompatible with the new version -> increment first digit by one and set all other digits to 0 (e.g. 3.2.9 to 4.0.0)
 
-The original notebook mixed generic setup, 12 tune-up experiments, single-shot/population
-measurements, fast-flux experiments, and SINIS DC-calibration/heating sweeps in one place,
-with a lot of near-duplicated code (e.g. the same manual sweep loop written out twice for
-the g-e and e-f transitions, or ~8 nearly identical "heating sweep" subsections in the SINIS
-section). Splitting the work this way:
-
-- Lets you run/re-run only the part of the workflow you need (e.g. re-run just the SINIS
-  heating sweeps without re-doing the full tune-up).
-- Moves all reusable logic (fitting, temperature calculations, plotting, custom LabOne Q
-  experiments) out of notebook cells and into a tested, importable package, so notebook
-  cells stay short: *set parameters -> run a workflow -> analyze/plot*.
-- Only the tune-up notebook builds and saves the QPU (qubits + calibrated parameters) from
-  scratch; the other three notebooks load that saved QPU and connect to the instruments
-  needed for their own measurements.
-
-## The 4 template notebooks
-
-All notebooks live in `templates/` and are meant to be copied/renamed per cooldown and
-filled in with real hardware values (device IDs, sample name, etc.) before running.
-
-Run them in this order:
-
-1. **`tune-up_experiments_workflow.ipynb`** - Tune-up experiments.
-   Builds the `DeviceSetup` and a brand-new QPU from manually-entered starting parameters,
-   then runs: Resonator & Qubit Spectroscopy; Amplitude Rabi, Amplitude Rabi Chevron, Rabi
-   Chevron, Rabi Frequency Calibration, T1 Lifetime, Ramsey, Rabi Error Amplification, DRAG
-   Calibration and Hahn-Echo (each for both the g-e and e-f transitions); and Readout
-   Amplitude Optimisation + Dispersive Shift. Every experiment that changes a QPU parameter
-   saves the QPU immediately and appends a short entry to an in-notebook `tuning_log`. The
-   **final cell** prints a full summary: every qubit's final tuned parameters, the ordered
-   list of what was tuned, and the file path the QPU was saved to.
-
-2. **`population_&_temperature_measurements_workflow.ipynb`** - Population & temperature
-   measurements. Loads the tuned QPU, then runs: Single Shot 0 & 1 Measurements (one
-   measurement plus 3 sweeps - vs. Rabi/drive-length, vs. integration length & delay, vs.
-   readout amplitude & length - each picking the sweep point with the highest g/e/f
-   assignment fidelity); and Population Measurements (Rabi Population Measurement setup,
-   oscillation/pi-pulse checks, population + effective-temperature measurement, three-level
-   population statistics, projection-phase/rotation optimization, population with a swept
-   ge pre-pulse, and population vs. readout frequency). Readout-tuning steps here still
-   update and re-save the QPU, matching the original notebook's behavior.
-
-3. **`fast_flux_drive_workflow.ipynb`** - Fast Flux Drive. Loads the tuned QPU and runs
-   flux-pulse-only experiments on the qubit's own flux/`th_res` line: flux-amplitude
-   calibration, a flux-pulse timing check, T1 decay under flux detuning, population with a
-   flux drive (single point + sweep), and T1 + population vs. flux amplitude simultaneously.
-   This notebook is purely diagnostic - it never updates or re-saves the QPU.
-
-4. **`sinis_calibration_&_temperature_sweep_workflow.ipynb`** - SINIS Calibration,
-   Statistics and Temperature Sweep Measurements. Loads the tuned QPU, connects the DC
-   instruments (BlueFors temperature controller, Keysight DMM, SIM928 heater-bias sources),
-   runs a qubit-health "Statistics" loop, then runs ~8 heating-bias sweeps (nonlocal/local
-   heating, several bias ranges and split-junction geometries, with and without
-   single-shot-readout data collection) that read the SINIS thermometer voltage and the
-   qubit's population/T1/Ramsey response at each bias point.
-
-### Every loop-based sweep suppresses per-iteration logging
-
-Any cell (or helper function) that runs a LabOne Q workflow repeatedly inside a `for`/`while`
-loop wraps that loop in `qubit_thermometry.helper.setup.logging_disabled(folder_store,
-logging_store)`. This deactivates LabOne Q's `FolderStore`/`LoggingStore` logbooks for the
-duration of the sweep, so only the sweep's own aggregated `.mat`/`.png` outputs are saved,
-instead of one full logbook entry per sweep point. One-shot (non-looped) experiment cells
-are unaffected and keep logging active.
+**Logging Book:** 
+1. Version v1.0.0 (up to version v1.7.4)
+	- **2026-07-23**, *Elias*: Created this template notebook and added resonator and qubit spectroscopy, amplitude Rabi, Ramsey T1 and DRAG. (v1.0.0)
+	- **2026-08-07**, *Kha*: Updated Hahn Echo, added Readout Optimisation, Single Shots, Population Measurements. (v1.2.0)
+	- **2026-08-13**, *Kha*: Added Rabi Shevron, Rabi Frequency Calibration, Rabi Error Amplification. (v1.4.0)
+	- **2026-08-26**, *Kha*: Update code output, visualization, and Amplitude Rabi Chevron. (v1.5.5)
+	- **2026-08-27**, *Kha*: New experiments: Fast Flux Drive, SINIS Calibration. (v1.7.0)
+	- **2026-08-27**, *Kha*: Fix table of content bug. (v1.7.1)
+	- **2026-09-02**, *Kha*: Fix logging data bug, order of experiments (T1 Lifetime -> Ramsey -> Rabi Error Amplification). (v1.7.2)
+	- **2026-09-26**, *Kha*: Change the Single shot measurement with different rabi freq, integration lengths and delays, readout amplitudes and lengths, using the fidelity as the optimal points. (v1.7.3)
+	- **2026-09-26**, *Kha*: Every loop-based sweep suppresses per-iteration logging. Any cell (or helper function) that runs a LabOne Q workflow repeatedly inside a `for`/`while` loop wraps that loop in `qubit_thermometry.helper.setup.logging_disabled(folder_store, logging_store)`. This deactivates LabOne Q's `FolderStore`/`LoggingStore` logbooks for the duration of the sweep, so only the sweep's own aggregated `.mat`/`.png` outputs are saved, instead of one full logbook entry per sweep point. One-shot (non-looped) experiment cells are unaffected and keep logging active. (v1.7.4)
+2. Version v2.0.0
+	- **2026-09-27**, *Kha*: Separate all 4 section from previous version v1.7.4 into 4 distinct experiments script: Tune-up experiments, Population & temperature experiments, Flux drive experiments, and SINIS calibration & temperature sweep experiments. (v2.0.0)
 
 ## Package layout (`src/qubit_thermometry`)
 
@@ -155,28 +100,10 @@ sys.path.insert(0, str(REPO_ROOT / "qubit_thermometry" / "src"))
 The SINIS notebook additionally adds `REPO_ROOT` itself to `sys.path`, since
 `helper/sinis_devices.py` imports the hardware drivers under the repo-root `lib/` package.
 
-After that, fill in the `# TODO` cells for your setup: `shfqc_device_id`/`ip_address`
-(device descriptor), and `sample_name`/`qubit_name`/`cooldown_start_date` (used to locate
-the per-cooldown data directory and the QPU file shared across all 4 notebooks). The
-tune-up notebook additionally needs the starting per-qubit calibration guesses (drive/readout
-frequencies, ranges, etc.) filled in near its device-setup cells.
+After that, fill in the `# TODO` cells for your setup: `shfqc_device_id/ip_address` (device descriptor), and `sample_name/qubit_name/cooldown_start_date` (used to locate the per-cooldown data directory and the QPU file shared across all 4 notebooks). The tune-up notebook additionally needs the starting per-qubit calibration guesses (drive/readout frequencies, ranges, etc.) filled in near its device-setup cells.
 
-If you prefer an installed package over the `sys.path` bootstrap, `qubit_thermometry` also
-has its own `pyproject.toml`:
+If you prefer an installed package over the `sys.path` bootstrap, `qubit_thermometry` also has its own `pyproject.toml`:
 
 ```sh
 pip install -e qubit_thermometry/
 ```
-
-## Known items carried over from the original notebook
-
-A couple of pre-existing inconsistencies in `Workflow-v1.7.3.json` were intentionally
-preserved (not silently fixed) during the port, and are flagged with `NOTE` comments in
-`tune-up_experiments_workflow.ipynb`, since fixing them would change tuning behavior:
-
-- "Amplitude Rabi Chevron" always computes its sweep frequencies from
-  `resonance_frequency_ge`, even when run for the e-f transition.
-- "DRAG Calibration": the g-e "Run Workflow" cell does not pass `temporary_parameters` to
-  `drag_q_scaling.experiment_workflow`, while the e-f mirror does.
-
-Review these and decide whether to fix them for your setup.
